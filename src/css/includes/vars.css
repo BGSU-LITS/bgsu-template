@@ -1,0 +1,42 @@
+:root {
+    --colorBrown: #4f2c1d;
+    --colorBrownDark: #2e271e;
+    --colorBrownLight: #7f3f2f;
+    --colorGray: #f2f2f2;
+    --colorGrayDark: #ccc;
+    --colorHightlight: #f9f6b8;
+    --colorOrange: #ff7300;
+    --colorOrangeBorder: #f26303;
+    --colorOrangeDark: #ff5900;
+    --colorOrangeLight: #ff9d4d;
+    --colorShadow: rgba(0, 0, 0, 0.6);
+    --colorText: #444;
+    --colorTextDark: #333;
+    --colorTextLight: #595959;
+    --colorWhite: #fff;
+    --colorYellow: #ff0;
+    --fontFamilyGeorgia: Georgia, Times, "Times New Roman", serif;
+    --fontFamilyVerb: Verb, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    --fontSize: 16px;
+    --fontSizeLarge: 1.25em;
+    --fontSizeMedium: 0.875em;
+    --fontSizeSite: 1.375em;
+    --fontSizeSmall: 0.75em;
+    --fontSizeUnit: 1.75em;
+    --fontWeight: 400;
+    --fontWeightBlack: 800;
+    --fontWeightBold: 700;
+    --fontWeightLight: 300;
+    --lineHeightLarge: 1.8;
+    --lineHeightMedium: 1.5;
+    --lineHeightSmall: 1.25;
+    --widthLarge: 32px;
+    --widthMedium: 20px;
+    --widthSmall: 4px;
+}
+
+@custom-media --breakpointLarge (width >= 1200px);
+
+@custom-media --breakpointMedium (width >= 980px);
+
+@custom-media --breakpointSmall (width >= 768px);

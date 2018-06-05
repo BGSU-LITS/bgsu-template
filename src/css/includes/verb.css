@@ -1,0 +1,27 @@
+@font-face {
+    font-family: Verb;
+    font-style: normal;
+    font-weight: var(--fontWeight);
+    src: url("../woff/verb-regular.woff") format("woff");
+}
+
+@font-face {
+    font-family: Verb;
+    font-style: normal;
+    font-weight: var(--fontWeightBold);
+    src: url("../woff/verb-bold.woff") format("woff");
+}
+
+@font-face {
+    font-family: Verb;
+    font-style: normal;
+    font-weight: var(--fontWeightLight);
+    src: url("../woff/verb-light.woff") format("woff");
+}
+
+@font-face {
+    font-family: Verb;
+    font-style: normal;
+    font-weight: var(--fontWeightBlack);
+    src: url("../woff/verb-black.woff") format("woff");
+}

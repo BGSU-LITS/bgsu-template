@@ -1,0 +1,35 @@
+@import "includes/vars.css";
+
+:global {
+    & .tippy-popper[x-placement^="top"] .tippy-tooltip .tippy-arrow {
+        border-top-color: var(--colorBrownDark);
+    }
+
+    & .tippy-popper[x-placement^="bottom"] .tippy-tooltip .tippy-arrow {
+        border-bottom-color: var(--colorBrownDark);
+    }
+
+    & .tippy-popper[x-placement^="left"] .tippy-tooltip .tippy-arrow {
+        border-left-color: var(--colorBrownDark);
+    }
+
+    & .tippy-popper[x-placement^="right"] .tippy-tooltip .tippy-arrow {
+        border-right-color: var(--colorBrownDark);
+    }
+
+    & .tippy-tooltip {
+        background-color: var(--colorBrownDark);
+        color: var(--colorWhite);
+        font-family: var(--fontFamilyVerb);
+        font-size: var(--fontSizeMedium);
+        line-height: var(--lineHeightSmall);
+
+        & .tippy-backdrop {
+            background-color: var(--colorBrownDark);
+        }
+
+        & .tippy-roundarrow {
+            fill: var(--colorBrownDark);
+        }
+    }
+}

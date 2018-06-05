@@ -1,0 +1,98 @@
+doctype html
+html(lang="en")
+    head
+        meta(charset="utf-8")
+        title BGSU Template
+    body
+        h1 Page Title
+        nav(aria-label="breadcrumb")
+            ol.breadcrumb
+                li: a(href="#") Digital Gallery
+                li(aria-current="page") Page Title
+        p.lead Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut eget consequat mi. Pellentesque ex purus, lobortis vitae laoreet sed, imperdiet non massa. Nam auctor, nisl nec volutpat malesuada, nibh sem tristique dui, vitae faucibus enim purus sit amet velit. Sed iaculis ligula at arcu malesuada, a ornare quam rutrum. Sed maximus nulla ac pharetra rhoncus. Proin ante elit, rhoncus id leo nec, ornare scelerisque metus. Sed quis ante euismod nisi ornare tincidunt ut imperdiet turpis. Donec in tristique ipsum, in sodales purus. Proin ullamcorper velit non ex luctus rhoncus. Nunc malesuada aliquam tellus, id consequat erat eleifend ac. Sed quis dignissim mi. Aliquam erat volutpat. Nulla malesuada commodo lorem in hendrerit.
+        p Vestibulum auctor tincidunt ligula. Donec in facilisis ante, ac maximus neque. Aenean finibus auctor lacus vitae elementum. Phasellus gravida rutrum varius. Praesent porta nec odio eu tristique. Phasellus eget leo velit. Cras egestas metus nec ante sollicitudin molestie. Nullam posuere aliquam massa, non hendrerit arcu molestie nec. Ut in massa ut ipsum semper tincidunt vitae a lectus. Duis massa nisi, lacinia sit amet libero dapibus, molestie tempus turpis. Fusce vel ante eget dolor malesuada consequat.
+        h2 Heading 2
+        p Phasellus eu semper libero. Vestibulum tempus neque a lectus gravida elementum. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aliquam consequat lectus et leo ullamcorper, et finibus lorem bibendum. Donec sit amet tellus in libero elementum aliquam. Sed vitae commodo justo. Pellentesque at purus purus.
+        h3 Heading 3
+        p Phasellus eu semper libero. Vestibulum tempus neque a lectus gravida elementum. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aliquam consequat lectus et leo ullamcorper, et finibus lorem bibendum. Donec sit amet tellus in libero elementum aliquam. Sed vitae commodo justo. Pellentesque at purus purus.
+        hr
+        h4 Heading 4
+        h5 Heading 5
+        h6 Heading 6
+        script.
+            bgsu_template.setup({
+                meta: true,
+                body: true,
+                main: {
+                    id: 'content',
+                    top: 'top'
+                },
+                unit: {
+                    thin: 'University',
+                    text: 'Libraries',
+                    href: 'https://www.bgsu.edu/library/',
+                },
+                site: {
+                    text: 'Digital Gallery',
+                    href: '#homepage',
+                },
+                menu: [
+                    {
+                        text: 'About This Site',
+                        href: '#about',
+                    },
+                    {
+                        text: 'Copyright & Use Guidelines',
+                        href: '#copyright',
+                    },
+                    {
+                        text: 'Additional Digital Resources',
+                        href: '#',
+                        menu: [
+                            {
+                                text: 'Avalon Media System',
+                                href: 'https://avalon.bgsu.edu/',
+                                title: 'Avalon Media System description.',
+                            },
+                            {
+                                text: 'Great Lakes Databases',
+                                href: 'https://www.bgsu.edu/library/cac/collections/hcgl.html',
+                                title: 'Great Lakes Databases description.',
+                            },
+                            {
+                                text: 'Scholarworks@BGSU',
+                                href: 'https://scholarworks.bgsu.edu/',
+                                title: 'ScholarWorks@BGSU description.'
+                            },
+                            {
+                                text: 'Student Digital Gallery',
+                                href: 'https://digitalgallery.bgsu.edu/student/',
+                                title: 'Student Digital Gallery description.',
+                            },
+                        ],
+                    },
+                ],
+                form: {
+                    action: '#search',
+                    method: 'post',
+                    button: 'Search',
+                    name: 'search',
+                    text: 'Search Digital Gallery',
+                    menu: [
+                        {
+                            text: 'Advanced Search',
+                            href: '#'
+                        },
+                    ],
+                },
+                gray: {
+                    text: 'A Bowling Green State University Libraries Collaborative Project between Collections and Technical Services and the Center for Archival Collections'
+                },
+                help: {
+                    heading: 'Contact Us',
+                    text: 'libadmin@bgsu.edu',
+                    href: 'mailto:libadmin@bgsu.edu'
+                }
+            });
+            
+            bgsu_common.setup();
