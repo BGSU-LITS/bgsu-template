@@ -82,15 +82,15 @@ export function setup(config = {}) {
 
         var count = 0;
 
-        while (from.children[count]) {
-            if (from.children[count] === main
-             || from.children[count] === container
-             || from.children[count].id === 'top') {
+        while (from.childNodes[count]) {
+            if (from.childNodes[count] === main
+             || from.childNodes[count] === container
+             || from.childNodes[count].id === 'top') {
                 count++;
                 continue;
             }
 
-            container.appendChild(from.children[count]);
+            container.appendChild(from.childNodes[count]);
         }
     }
 
