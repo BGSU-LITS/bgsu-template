@@ -49,7 +49,6 @@ module.exports = function(env, argv) {
                             options: {
                                 importLoaders: 1,
                                 localIdentName: 'bgsu_[local]_[hash:base64:5]',
-                                minimize: true,
                                 modules: true,
                                 sourceMap: sourceMap,
                             },
@@ -76,7 +75,6 @@ module.exports = function(env, argv) {
                         {
                             loader: 'css-loader',
                             options: {
-                                minimize: true,
                                 sourceMap: sourceMap,
                             },
                         },

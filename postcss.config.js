@@ -20,6 +20,7 @@ module.exports = {
                 'nesting-rules': true,
             }
         },
+        'cssnano': {},
         'postcss-reporter': {
             clearReportedMessages: true,
         },
