@@ -67,8 +67,6 @@
     }
 
     & .top {
-        text-transform: uppercase;
-
         & .logo,
         & .unit {
             display: inline-block;
@@ -88,7 +86,7 @@
 
         & .unit {
             font-size: var(--fontSizeLarge);
-            font-weight: var(--fontWeightBlack);
+            font-weight: var(--fontWeightBold);
             line-height: 1;
             text-rendering: optimizeLegibility;
             -webkit-font-smoothing: antialiased;
@@ -98,7 +96,7 @@
 
     & .nav .site {
         font-size: var(--fontSizeSite);
-        font-weight: var(--fontWeightBold);
+        font-weight: var(--fontWeight);
     }
 }
 
@@ -240,7 +238,6 @@
                     list-style: disc;
                     margin: 0;
                     padding: 0 0 0 var(--widthLarge);
-                    text-transform: none;
 
                     & > li {
                         display: list-item;

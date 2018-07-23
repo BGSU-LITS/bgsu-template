@@ -42,11 +42,13 @@
     }
 
     & h1 {
-        font-size: 2em;
+        font-size: 2.2em;
+        font-weight: var(--fontWeight);
     }
 
     & h2 {
-        font-size: 1.8em;
+        font-size: 2em;
+        font-weight: var(--fontWeight);
     }
 
     & h3 {
@@ -101,6 +103,22 @@
         }
     }
 
+    & table {
+        border-collapse: collapse;
+    }
+
+    & td,
+    & th {
+        text-align: left;
+    }
+
+    & td + td,
+    & td + th,
+    & th + td,
+    & th + th {
+        padding-left: 1em;
+    }
+
     & :target {
         background: var(--colorGray);
         border-radius: 1px;
@@ -124,14 +142,22 @@
             cursor: pointer;
             pointer-events: auto;
 
-            &[aria-expanded="false"]::after {
-                content: " ▼";
-                font-size: var(--fontSizeMedium);
+            &::before {
+                border: 5px solid transparent;
+                content: "";
+                display: inline-block;
+                margin-right: 8px;
+                position: relative;
             }
 
-            &[aria-expanded="true"]::after {
-                content: " ▲";
-                font-size: var(--fontSizeMedium);
+            &[aria-expanded="false"]::before {
+                border-left-color: var(--colorText);
+                left: 3px;
+            }
+
+            &[aria-expanded="true"]::before {
+                border-top-color: var(--colorText);
+                top: 3px;
             }
         }
     }
@@ -180,6 +206,14 @@
             content: "/";
             display: inline-block;
             padding-right: var(--widthSmall);
+        }
+    }
+
+    & .has-toggle {
+        list-style: none;
+
+        & [data-toggle] {
+            margin-left: -18px;
         }
     }
 
@@ -305,7 +339,7 @@
             color: var(--colorText);
         }
 
-        & h3 {
+        & .record-title {
             text-decoration: underline;
         }
 
@@ -357,8 +391,10 @@
                     transition: all 1s;
                 }
 
-                & h3 {
+                & .record-title {
                     color: var(--colorTextDark);
+                    font-size: 1.6em;
+                    font-weight: var(--fontWeightBold);
                     text-decoration: none;
                 }
 
@@ -390,6 +426,18 @@
                 }
             }
         }
+    }
+
+    & .text-center {
+        text-align: center;
+    }
+
+    & .text-left {
+        text-align: left;
+    }
+
+    & .text-right {
+        text-align: right;
     }
 }
 
