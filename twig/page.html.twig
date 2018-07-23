@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+{{
+    helper.metas()
+    .add({charset: 'utf-8'})
+    .addName('viewport', 'width=device-width,initial-scale=1')
+    .addHttp('X-UA-Compatible', 'IE=edge')
+    |raw
+}}
+{{
+    helper.title(title)
+    .append(title and settings.template.site ? ' - ' : '')
+    .append(settings.template.site)
+    |raw
+}}
+{% block styles %}
+{% endblock %}
+{% block scripts %}
+    {{
+    helper.scripts()
+    .add('https://lib.bgsu.edu/template/bgsu_common.js')
+    .add('https://lib.bgsu.edu/template/bgsu_template.js')
+    |raw
+}}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    bgsu_template.setup({
+        body: true,
+        main: {
+            id: 'content'
+        },
+        unit: {
+            thin: 'University',
+            text: 'Libraries',
+            href: 'https://www.bgsu.edu/library/',
+        },
+        site: {
+            text: '{{ settings.template.site|raw }}',
+            href: '{{ base_url() }}',
+            heading: {{ is_current_path() ? 'true' : 'false' }},
+        },
+{% if settings.template.menu %}
+        menu: {{ settings.template.menu|json_encode()|raw }},
+{% endif %}
+        help: {
+            heading: 'Contact Us',
+            text: 'libadmin@bgsu.edu',
+            href: 'mailto:libadmin@bgsu.edu'
+        }
+    });
+
+    bgsu_common.setup();
+});
+</script>
+{% endblock %}
+</head>
+<body>
+<main id="content">
+{% block content %}
+<h1>{{ title }}</h1>
+{% for message in messages %}
+<div class="alert alert-{{message.level}}">{{message.message}}</div>
+{% endfor %}
+{% endblock %}
+</main>
+</body>
+</html>
