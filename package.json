@@ -11,6 +11,7 @@
     "accessible-toggle": "^1.2.1",
     "core-js": "^2.5.4",
     "events-polyfill": "^2.0.5",
+    "flatpickr": "^4.5.1",
     "flickity": "^2.1.1",
     "tippy.js": "^2.4.1"
   },
@@ -18,7 +19,6 @@
     "@babel/core": "^7.0.0-beta.44",
     "@babel/preset-env": "^7.0.0-beta.44",
     "babel-loader": "^8.0.0-beta",
-    "clean-webpack-plugin": "^0.1.19",
     "colorguard": "^1.2.1",
     "css-loader": "^1.0.0",
     "cssnano": "^4.0.0",

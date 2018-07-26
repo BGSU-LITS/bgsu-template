@@ -1,4 +1,3 @@
-const CleanWebpackPlugin = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = function(env, argv) {
@@ -17,7 +16,6 @@ module.exports = function(env, argv) {
         devtool = 'source-map';
         sourceMap = false;
         publicPath = 'https://lib.bgsu.edu/template/';
-        plugins.push(new CleanWebpackPlugin('dist'));
     }
 
     return {
@@ -28,6 +26,7 @@ module.exports = function(env, argv) {
         entry: {
             bgsu_template: './src/bgsu_template.js',
             bgsu_common: './src/bgsu_common.js',
+            flatpickr: './src/flatpickr.js',
             flickity: './src/flickity.js',
             tippy: './src/tippy.js',
         },

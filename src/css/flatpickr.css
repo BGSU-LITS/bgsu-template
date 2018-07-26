@@ -1,0 +1,11 @@
+@import "includes/vars.css";
+
+:global {
+    & .flatpickr-calendar {
+        font-family: var(--fontFamilyVerb);
+    }
+
+    & .flatpickr-current-month .numInputWrapper {
+        width: 5ch;
+    }
+}

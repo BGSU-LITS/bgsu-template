@@ -182,39 +182,34 @@
         }
     }
 
-    & .breadcrumb,
-    & .inline {
-        list-style: none;
-        margin: 0;
-        padding: 0;
+    & .icon {
+        margin-left: var(--widthSmall);
 
-        & > li {
+        &::before {
             display: inline-block;
-
-            & + li {
-                padding-left: var(--widthSmall);
-            }
+            font-size: var(--fontSizeLarge);
+            font-style: normal;
+            font-weight: var(--fontWeightBold);
+            text-align: center;
+            vertical-align: middle;
         }
     }
 
-    & .breadcrumb {
-        color: var(--colorTextLight);
-        font-size: var(--fontSizeMedium);
-        margin: 0 0 var(--widthMedium) 0;
-
-        & > li + li::before {
-            content: "/";
-            display: inline-block;
-            padding-right: var(--widthSmall);
-        }
+    & .icon-info::before {
+        border: 1px solid;
+        border-radius: calc(var(--lineHeightMedium) * 1em / 2);
+        content: "i";
+        font-family: var(--fontFamilyGeorgia);
+        font-size: calc(var(--lineHeightMedium) * 1em / 3);
+        font-style: italic;
+        height: calc(var(--lineHeightMedium) * 1em);
+        line-height: var(--lineHeightMedium);
+        width: calc(var(--lineHeightMedium) * 1em);
     }
 
-    & .has-toggle {
-        list-style: none;
-
-        & [data-toggle] {
-            margin-left: -18px;
-        }
+    & .icon-remove::before {
+        color: var(--colorRed);
+        content: "×";
     }
 
     & .img-thumb {
@@ -236,40 +231,6 @@
         }
     }
 
-    & .info {
-        margin-left: var(--widthSmall);
-
-        &::before {
-            background: var(--colorBrownLight);
-            border-radius: calc(var(--lineHeightMedium) * 1em / 2);
-            color: var(--colorWhite);
-            content: "i";
-            display: inline-block;
-            font-family: var(--fontFamilyGeorgia);
-            font-size: calc(var(--lineHeightMedium) * 1em / 3);
-            font-weight: var(--fontWeightBold);
-            font-style: italic;
-            height: calc(var(--lineHeightMedium) * 1em);
-            line-height: var(--lineHeightMedium);
-            position: relative;
-            text-align: center;
-            vertical-align: middle;
-            width: calc(var(--lineHeightMedium) * 1em);
-        }
-
-        &:hover,
-        &:focus {
-            &::before {
-                background: var(--colorOrange);
-            }
-        }
-    }
-
-    & .lead {
-        font-size: var(--fontSizeSite);
-        line-height: var(--lineHeightMedium);
-    }
-
     & .link-block {
         border: 1px solid var(--colorBrownLight);
         border-radius: var(--widthSmall);
@@ -289,7 +250,42 @@
         }
     }
 
-    & .pagination {
+    & .list-breadcrumb,
+    & .list-inline {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+
+        & > li {
+            display: inline-block;
+
+            & + li {
+                padding-left: var(--widthSmall);
+            }
+        }
+    }
+
+    & .list-breadcrumb {
+        color: var(--colorTextLight);
+        font-size: var(--fontSizeMedium);
+        margin: 0 0 var(--widthMedium) 0;
+
+        & > li + li::before {
+            content: "/";
+            display: inline-block;
+            padding-right: var(--widthSmall);
+        }
+    }
+
+    & .list-item-toggle {
+        list-style: none;
+
+        & [data-toggle] {
+            margin-left: -18px;
+        }
+    }
+
+    & .nav-page {
         background: var(--colorGray);
         border-radius: var(--widthSmall);
         display: flex;
@@ -313,19 +309,19 @@
             }
         }
 
-        & .pagination-first::before {
+        & .nav-page-first::before {
             content: "« ";
         }
 
-        & .pagination-previous::before {
+        & .nav-page-previous::before {
             content: "‹ ";
         }
 
-        & .pagination-next::after {
+        & .nav-page-next::after {
             content: " ›";
         }
 
-        & .pagination-last::after {
+        & .nav-page-last::after {
             content: " »";
         }
     }
@@ -432,6 +428,11 @@
         text-align: center;
     }
 
+    & .text-lead {
+        font-size: var(--fontSizeSite);
+        line-height: var(--lineHeightMedium);
+    }
+
     & .text-left {
         text-align: left;
     }
@@ -461,7 +462,7 @@
             width: calc(100% / 2);
         }
 
-        & .pagination :first-child {
+        & .nav-page :first-child {
             flex: 1 0 auto;
         }
     }
