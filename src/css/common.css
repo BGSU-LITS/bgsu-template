@@ -134,9 +134,11 @@
         border: 0;
         color: inherit;
         font: inherit;
+        line-height: var(--lineHeightMedium);
         margin: 0;
         padding: 0;
         pointer-events: none;
+        text-align: left;
 
         &[aria-controls] {
             cursor: pointer;
@@ -280,7 +282,7 @@
     & .list-item-toggle {
         list-style: none;
 
-        & [data-toggle] {
+        & [data-toggle]::before {
             margin-left: -18px;
         }
     }
@@ -424,6 +426,11 @@
         }
     }
 
+    & .sidebar {
+        display: flex;
+        flex-direction: column;
+    }
+
     & .text-center {
         text-align: center;
     }
@@ -471,6 +478,38 @@
 @media screen and (--breakpointMedium) {
     .common :global .records-gallery .record {
         width: calc(100% / 3);
+    }
+
+    .common :global .sidebar {
+        flex-direction: row;
+        height: 100%;
+
+        & > * {
+            flex: 1 0 0;
+            order: 1;
+        }
+
+        & > .sidebar-left,
+        & > .sidebar-right {
+            flex: 0 0 20%;
+        }
+
+        & > .sidebar-left {
+            padding-right: var(--widthMedium);
+            order: 0;
+        }
+
+        & > .sidebar-right {
+            padding-left: var(--widthMedium);
+            order: 2;
+        }
+
+        & .sidebar-title {
+            font-size: inherit;
+            line-height: inherit;
+            font-weight: var(--fontWeightBold);
+            margin: var(--widthSmall) 0;
+        }
     }
 }
 
