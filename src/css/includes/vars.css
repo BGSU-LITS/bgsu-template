@@ -17,7 +17,8 @@
     --colorWhite: #fff;
     --colorYellow: #ff0;
     --fontFamilyGeorgia: Georgia, Times, "Times New Roman", serif;
-    --fontFamilyVerb: Verb, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    --fontFamilyHelvetica: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    --fontFamilyVerb: Verb, var(--fontFamilyHelvetica);
     --fontSize: 16px;
     --fontSizeLarge: 1.25em;
     --fontSizeMedium: 0.875em;

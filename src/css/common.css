@@ -81,7 +81,7 @@
 
     & mark {
         background: var(--colorYellow);
-        border-radius: 4px;
+        border-radius: var(--widthSmall);
         color: inherit;
         padding: 0 1px;
     }
@@ -148,7 +148,7 @@
                 border: 5px solid transparent;
                 content: "";
                 display: inline-block;
-                margin-right: 8px;
+                margin-right: var(--widthSmall);
                 position: relative;
             }
 
@@ -192,6 +192,7 @@
             font-size: var(--fontSizeLarge);
             font-style: normal;
             font-weight: var(--fontWeightBold);
+            line-height: 0;
             text-align: center;
             vertical-align: middle;
         }
@@ -282,8 +283,8 @@
     & .list-item-toggle {
         list-style: none;
 
-        & [data-toggle]::before {
-            margin-left: -18px;
+        & > [data-toggle][aria-controls]::before {
+            margin: 0 calc(var(--widthSmall) * 2) 0 -18px;
         }
     }
 
@@ -429,6 +430,7 @@
     & .sidebar {
         display: flex;
         flex-direction: column;
+        position: relative;
     }
 
     & .text-center {
@@ -476,39 +478,41 @@
 }
 
 @media screen and (--breakpointMedium) {
-    .common :global .records-gallery .record {
-        width: calc(100% / 3);
-    }
-
-    .common :global .sidebar {
-        flex-direction: row;
-        height: 100%;
-
-        & > * {
-            flex: 1 0 0;
-            order: 1;
+    .common :global {
+        & .records-gallery .record {
+            width: calc(100% / 3);
         }
 
-        & > .sidebar-left,
-        & > .sidebar-right {
-            flex: 0 0 20%;
-        }
+        & .sidebar {
+            flex-direction: row;
+            height: 100%;
 
-        & > .sidebar-left {
-            padding-right: var(--widthMedium);
-            order: 0;
-        }
+            & > * {
+                flex: 1 0 0;
+                order: 1;
+            }
 
-        & > .sidebar-right {
-            padding-left: var(--widthMedium);
-            order: 2;
-        }
+            & > .sidebar-left,
+            & > .sidebar-right {
+                flex: 0 0 20%;
+            }
 
-        & .sidebar-title {
-            font-size: inherit;
-            line-height: inherit;
-            font-weight: var(--fontWeightBold);
-            margin: var(--widthSmall) 0;
+            & > .sidebar-left {
+                padding-right: var(--widthMedium);
+                order: 0;
+            }
+
+            & > .sidebar-right {
+                padding-left: var(--widthMedium);
+                order: 2;
+            }
+
+            & .sidebar-title {
+                font-size: inherit;
+                line-height: inherit;
+                font-weight: var(--fontWeightBold);
+                margin: var(--widthSmall) 0;
+            }
         }
     }
 }
