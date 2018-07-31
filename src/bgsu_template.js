@@ -18,13 +18,16 @@ export function header(config, before) {
     }
 
     if (config.menu || config.form) {
-        this.toggle(document.getElementById(css.menu), '(max-width: 767px)');
+        exports.toggle(
+            document.getElementById(css.menu),
+            '(max-width: 767px)'
+        );
     }
 
     if (config.menu) {
         for (var index = 0; index < config.menu.length; index++) {
             if (config.menu[index].menu) {
-                this.toggle(
+                exports.toggle(
                     document.getElementById(css.menu + '_' + index),
                     '(min-width: 768px)',
                     true
@@ -94,8 +97,8 @@ export function setup(config = {}) {
         }
     }
 
-    this.header(config, main);
-    this.footer(config, main);
+    exports.header(config, main);
+    exports.footer(config, main);
 }
 
 export function toggle(
