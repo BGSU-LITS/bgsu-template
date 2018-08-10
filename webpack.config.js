@@ -29,6 +29,7 @@ module.exports = function(env, argv) {
             flatpickr: './src/flatpickr.js',
             flickity: './src/flickity.js',
             tippy: './src/tippy.js',
+            toggle: './src/toggle.js',
         },
 
         module: {

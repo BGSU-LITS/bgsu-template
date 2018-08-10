@@ -1,12 +1,10 @@
-import 'core-js/fn/object/assign';
-import 'events-polyfill/src/constructors/Event.js';
-import Toggle from 'accessible-toggle';
-
 import pugHeader from './pug/header.pug';
 import pugFooter from './pug/footer.pug';
 
 import css from './css/template.css';
-export { css };
+import { setup as toggle } from './toggle.js';
+
+export { css, toggle };
 
 export function header(config, before) {
     var html = pugHeader({config: config, css: css});
@@ -18,7 +16,7 @@ export function header(config, before) {
     }
 
     if (config.menu || config.form) {
-        exports.toggle(
+        toggle(
             document.getElementById(css.menu),
             '(max-width: 767px)'
         );
@@ -27,7 +25,7 @@ export function header(config, before) {
     if (config.menu) {
         for (var index = 0; index < config.menu.length; index++) {
             if (config.menu[index].menu) {
-                exports.toggle(
+                toggle(
                     document.getElementById(css.menu + '_' + index),
                     '(min-width: 768px)',
                     true
@@ -97,19 +95,6 @@ export function setup(config = {}) {
         }
     }
 
-    exports.header(config, main);
-    exports.footer(config, main);
-}
-
-export function toggle(
-    element,
-    mediaQuery = false,
-    closeOnClickOutside = false
-) {
-    new Toggle(element, {
-        assignFocus: false,
-        closeOnClickOutside: closeOnClickOutside,
-        mediaQuery: mediaQuery,
-        trapFocus: false,
-    });
+    header(config, main);
+    footer(config, main);
 }
