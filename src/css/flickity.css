@@ -17,6 +17,10 @@
             outline: 5px auto -webkit-focus-ring-color;
         }
 
+        &:hover {
+            background: transparent;
+        }
+
         &.previous {
             left: var(--widthSmall);
         }
@@ -25,15 +29,15 @@
             right: var(--widthSmall);
         }
 
-        & svg {
+        & .flickity-button-icon {
             left: 0;
             height: 100%;
             top: 0;
             width: 100%;
-        }
 
-        & svg .arrow {
-            fill: var(--colorOrange);
+            & .arrow {
+                fill: var(--colorOrange);
+            }
         }
     }
 }
