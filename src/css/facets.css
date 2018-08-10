@@ -1,0 +1,60 @@
+@import "includes/vars.css";
+
+:global .sidebar .list-facets {
+    columns: calc(var(--widthMedium) * 10);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    &.list-facets-top {
+        display: none;
+    }
+
+    & > li {
+        border-bottom: 1px solid var(--colorGrayDark);
+        display: inline-block;
+        font-size: var(--fontSizeMedium);
+        line-height: var(--lineHeightMedium);
+        margin: var(--widthSmall) 0;
+        padding: 0 5ch calc(var(--widthSmall) * 2) 0;
+        position: relative;
+        width: 100%;
+    }
+
+    & .list-facets-count {
+        font-family: var(--fontFamilyHelvetica);
+        color: var(--colorTextLight);
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
+}
+
+@media screen and (--breakpointMedium) {
+    :global .sidebar .list-facets {
+        &.list-facets-all {
+            background: var(--colorGray);
+            border: var(--widthSmall) solid var(--colorGray);
+            border-radius: var(--widthSmall);
+            bottom: var(--widthSmall);
+            box-shadow: 0 1px 2px 0 var(--colorShadow);
+            left: 25%;
+            overflow-x: auto;
+            padding: var(--widthSmall);
+            position: absolute;
+            right: calc(var(--widthSmall) * -1);
+            top: calc(var(--widthSmall) * -1);
+            z-index: 1;
+        }
+
+        &.list-facets-top {
+            display: block;
+        }
+    }
+}
+
+@media screen and (--breakpointLarge) {
+    :global .sidebar .list-facets.list-facets-all {
+        left: 20%;
+    }
+}

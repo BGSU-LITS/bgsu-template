@@ -26,6 +26,7 @@ module.exports = function(env, argv) {
         entry: {
             bgsu_template: './src/bgsu_template.js',
             bgsu_common: './src/bgsu_common.js',
+            facets: './src/facets.js',
             flatpickr: './src/flatpickr.js',
             flickity: './src/flickity.js',
             tippy: './src/tippy.js',
