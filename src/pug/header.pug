@@ -6,64 +6,62 @@ mixin link(item)
             aria-label=item.title
             data-toggle=item.toggle
         )= item.text
-        
+
         ul(id=item.toggle): each subitem in item.menu
             li: +link(subitem)
     else
         = item.text
-        
+
 header(class=css.header)
     if (config.main.id)
         a(href="#" + config.main.id id=config.main.top class=css.skip)
             = 'Skip to main content'
-    
+
     div(class=css.top): div(class=css.container)
         a(href="https://www.bgsu.edu/" class=css.logo)
             img(src=require("../svg/bgsu.svg") alt="BGSU" width=60 height=18)
-                
+
         if config.unit && config.unit.text
             a(href=config.unit.href class=css.unit)
                 if config.unit.thin
                     span(class=css.thin)= config.unit.thin + " "
                 = config.unit.text
-                
+
     nav(class=css.nav aria-label="Site navigation"): div(class=css.container)
         if config.site && config.site.text
             if (config.site.heading)
                 h1(class=css.site): +link(config.site)
-            else 
+            else
                 div(class=css.site): +link(config.site)
-                    
+
         if config.menu || config.form
             button(
                 aria-label="Toggle site navigation"
                 data-toggle=css.menu
                 class=css.toggle
             ) ☰
-            
+
             div(class=css.menu id=css.menu)
                 if config.menu
                     ul: each item, index in config.menu
                         - item.toggle = css.menu + "_" + index
                         li: +link(item)
-                                                    
+
                 if config.form
                     form(action=config.form.action method=config.form.method)
-                        input(
-                            type="text"
-                            name=config.form.name || "search"
-                            value=config.form.value || ""
-                            aria-label=config.form.text || "Search Site"
-                            placeholder=config.form.text || "Search Site"
-                        )
-                        
-                        button(type="submit"): img(
-                            src=require("../svg/search.svg")
-                            alt=config.form.button || "Search"
-                            width=14 
-                            height=14
-                        )
-                        
+                        div
+                            input(
+                                type="text"
+                                name=config.form.name || "search"
+                                value=config.form.value || ""
+                                aria-label=config.form.text || "Search Site"
+                                placeholder=config.form.text || "Search Site"
+                            )
+
+                            button(type="submit"): span(
+                                aria-label=config.form.button || "Search"
+                            )
+
                         if config.form.menu
                             ul: each item, index in config.form.menu
                                 li: +link(item)

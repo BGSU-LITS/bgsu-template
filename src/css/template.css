@@ -203,28 +203,42 @@
                     margin: 0;
                     padding: var(--widthSmall) 0;
 
-                    & input,
-                    & button {
-                        border: 1px solid var(--colorBrown);
-                        color: inherit;
-                        font: inherit;
-                        height: 28px;
-                        margin: 0;
-                        padding: 0 var(--widthSmall);
-                        vertical-align: bottom;
-                    }
-
-                    & input {
-                        background: var(--colorWhite);
-                        width: 211px;
-                    }
-
-                    & button {
-                        background: var(--colorBrown);
-                        cursor: pointer;
+                    & > div {
+                        display: flex;
                         font-size: var(--fontSizeMedium);
-                        line-height: 1;
-                        width: 29px;
+                        line-height: var(--lineHeightLarge);
+                        max-width: 288px;
+
+                        & > input,
+                        & > button {
+                            background: var(--colorWhite);
+                            border: 1px solid var(--colorBrown);
+                            color: inherit;
+                            flex: 1 0 auto;
+                            font: inherit;
+                            margin: 0;
+                            padding: 0 var(--widthSmall);
+                        }
+
+                        & > button {
+                            background: var(--colorBrown);
+                            color: var(--colorWhite);
+                            cursor: pointer;
+                            flex: 0 0 auto;
+
+                            & > span {
+                                margin: 0 4px;
+
+                                &::before {
+                                    content: "⚲";
+                                    display: inline-block;
+                                    font-size: var(--fontSizeLarge);
+                                    line-height: 0;
+                                    transform: rotate(45deg);
+                                    vertical-align: middle;
+                                }
+                            }
+                        }
                     }
 
                     & ul > li {
@@ -374,6 +388,7 @@
         bottom: 0;
         position: absolute;
         right: 0;
+        width: 25%;
     }
 }
 
@@ -384,6 +399,10 @@
 
     .header .top .unit .thin {
         display: inline;
+    }
+
+    .header .nav .menu form {
+        width: 20%;
     }
 }
 
