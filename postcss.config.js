@@ -1,11 +1,6 @@
 module.exports = {
     plugins: {
         'postcss-import': {},
-        'colorguard': {
-            whitelist: [
-                ['#ffffff', '#f2f2f2'],
-            ],
-        },
         'stylelint': {},
         'postcss-preset-env': {
             features: {
