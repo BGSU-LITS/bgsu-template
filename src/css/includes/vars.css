@@ -1,4 +1,5 @@
 :root {
+    --colorBrighten: rgba(255, 255, 255, 0.2);
     --colorBrown: #4f2c1d;
     --colorBrownDark: #2e271e;
     --colorBrownLight: #7f3f2f;

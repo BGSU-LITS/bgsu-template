@@ -74,10 +74,6 @@ export function setup(config = {}) {
 
         main.classList.add(css.main);
 
-        if (config.main.common) {
-            main.classList.add(css.common);
-        }
-
         container = main.appendChild(document.createElement('div'));
         container.classList.add(css.container);
 
@@ -85,8 +81,13 @@ export function setup(config = {}) {
 
         while (from.childNodes[count]) {
             if (from.childNodes[count] === main
-             || from.childNodes[count] === container
-             || from.childNodes[count].id === 'top') {
+             || from.childNodes[count] === container) {
+                count++;
+                continue;
+            }
+
+            if (from.childNodes[count].id === config.main.top) {
+                config.main.top = false;
                 count++;
                 continue;
             }

@@ -230,11 +230,11 @@
                                 margin: 0 4px;
 
                                 &::before {
-                                    content: "⚲";
+                                    background: url("../svg/search.svg") no-repeat;
+                                    content: "";
                                     display: inline-block;
-                                    font-size: var(--fontSizeLarge);
-                                    line-height: 0;
-                                    transform: rotate(45deg);
+                                    height: 12px;
+                                    width: 12px;
                                     vertical-align: middle;
                                 }
                             }
@@ -353,11 +353,12 @@
                         box-shadow: 0 1px 2px 0 var(--colorShadow);
                         color: var(--colorBrownDark);
                         left: 0;
+                        min-width: 200px;
                         padding: var(--widthSmall);
                         padding-left: var(--widthLarge);
                         position: absolute;
                         top: var(--widthLarge);
-                        min-width: 100%;
+                        width: 100%;
                         z-index: 1;
                     }
                 }

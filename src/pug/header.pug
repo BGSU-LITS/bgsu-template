@@ -12,8 +12,27 @@ mixin link(item)
     else
         = item.text
 
+mixin form(form)
+    form(action=form.action method=form.method)
+        div
+            input(
+                type="text"
+                name=form.name || "search"
+                value=form.value || ""
+                aria-label=form.text || "Search Site"
+                placeholder=form.text || "Search Site"
+            )
+
+            button(type="submit"): span(
+                aria-label=form.button || "Search"
+            )
+
+        if form.menu
+            ul: each item, index in form.menu
+                li: +link(item)
+
 header(class=css.header)
-    if (config.main.id)
+    if (config.main && config.main.id && config.main.top)
         a(href="#" + config.main.id id=config.main.top class=css.skip)
             = 'Skip to main content'
 
@@ -27,41 +46,27 @@ header(class=css.header)
                     span(class=css.thin)= config.unit.thin + " "
                 = config.unit.text
 
-    nav(class=css.nav aria-label="Site navigation"): div(class=css.container)
-        if config.site && config.site.text
-            if (config.site.heading)
-                h1(class=css.site): +link(config.site)
-            else
-                div(class=css.site): +link(config.site)
+    if (config.site || config.menu || config.form)
+        nav(class=css.nav aria-label="Site navigation")
+            div(class=css.container)
+                if config.site
+                    if (config.site.heading)
+                        h1(class=css.site): +link(config.site)
+                    else
+                        div(class=css.site): +link(config.site)
 
-        if config.menu || config.form
-            button(
-                aria-label="Toggle site navigation"
-                data-toggle=css.menu
-                class=css.toggle
-            ) ☰
+                if config.menu || config.form
+                    button(
+                        aria-label="Toggle site navigation"
+                        data-toggle=css.menu
+                        class=css.toggle
+                    ) ☰
 
-            div(class=css.menu id=css.menu)
-                if config.menu
-                    ul: each item, index in config.menu
-                        - item.toggle = css.menu + "_" + index
-                        li: +link(item)
-
-                if config.form
-                    form(action=config.form.action method=config.form.method)
-                        div
-                            input(
-                                type="text"
-                                name=config.form.name || "search"
-                                value=config.form.value || ""
-                                aria-label=config.form.text || "Search Site"
-                                placeholder=config.form.text || "Search Site"
-                            )
-
-                            button(type="submit"): span(
-                                aria-label=config.form.button || "Search"
-                            )
-
-                        if config.form.menu
-                            ul: each item, index in config.form.menu
+                    div(class=css.menu id=css.menu)
+                        if config.menu
+                            ul: each item, index in config.menu
+                                - item.toggle = css.menu + "_" + index
                                 li: +link(item)
+
+                        if config.form
+                            +form(config.form)

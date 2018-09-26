@@ -13,6 +13,12 @@
         box-sizing: inherit;
     }
 
+    & aside,
+    & small {
+        font-size: var(--fontSizeMedium);
+        line-height: var(--lineHeightMedium);
+    }
+
     & blockquote {
         border-left: 1px solid var(--colorGrayDark);
         color: var(--colorTextLight);
@@ -103,22 +109,6 @@
         }
     }
 
-    & table {
-        border-collapse: collapse;
-    }
-
-    & td,
-    & th {
-        text-align: left;
-    }
-
-    & td + td,
-    & td + th,
-    & th + td,
-    & th + th {
-        padding-left: 1em;
-    }
-
     & :target {
         background: var(--colorGray);
         border-radius: 1px;
@@ -188,6 +178,28 @@
         font-weight: var(--fontWeightBold);
     }
 
+    & .form-item {
+        align-items: baseline;
+        display: flex;
+        flex-wrap: wrap;
+        margin: var(--widthSmall) 0;
+
+        & > * {
+            flex: 0 0 100%;
+        }
+
+        & > .form-item-row {
+            & > * {
+                display: block;
+                margin: 0 var(--widthSmall) var(--widthSmall) 0;
+
+                &:last-child {
+                    margin-right: 0;
+                }
+            }
+        }
+    }
+
     & .form-search {
         display: flex;
         max-width: 288px;
@@ -243,9 +255,10 @@
     }
 
     & .icon-search::before {
-        content: "⚲";
-        font-weight: var(--fontWeight);
-        transform: rotate(45deg);
+        background: url("../svg/search.svg") no-repeat;
+        content: "";
+        height: 12px;
+        width: 12px;
     }
 
     & .img-thumb {
@@ -396,8 +409,10 @@
             width: 100%;
 
             & a {
-                border: var(--widthSmall) solid transparent;
+                background: var(--colorGrayDark);
+                border: var(--widthSmall) solid var(--colorWhite);
                 display: block;
+                height: calc(300px + var(--widthSmall) * 2);
                 margin: 0 var(--widthSmall);
                 margin-bottom: calc(var(--widthSmall) * 2);
                 position: relative;
@@ -511,6 +526,25 @@
         }
     }
 
+    & .table {
+        border-collapse: collapse;
+        margin: 0 0 var(--widthMedium) 0;
+        padding: 0;
+
+        & td,
+        & th {
+            border-bottom: 1px solid var(--colorGray);
+            padding-right: 1em;
+            text-align: left;
+            vertical-align: top;
+        }
+
+        & td:last-child,
+        & th:last-child {
+            padding-right: 0;
+        }
+    }
+
     & .text-center {
         text-align: center;
     }
@@ -524,6 +558,10 @@
         text-align: left;
     }
 
+    & .text-nowrap {
+        white-space: nowrap;
+    }
+
     & .text-right {
         text-align: right;
     }
@@ -531,6 +569,40 @@
 
 @media screen and (--breakpointSmall) {
     .common :global {
+        & .form-item {
+            & > * {
+                flex: 0 0 60%;
+                margin: 0 auto;
+            }
+
+            & > label {
+                flex: 0 0 20%;
+                margin: 0;
+                padding-right: calc(var(--widthSmall) * 2);
+                text-align: right;
+
+                & + * {
+                    margin-left: 0;
+                }
+            }
+
+            & > .form-item-row {
+                display: flex;
+
+                & > * {
+                    flex: 1 1 auto;
+                    min-width: 0;
+                }
+            }
+
+            & > .form-item-after {
+                flex: 0 0 20%;
+                margin: 0;
+                padding-left: calc(var(--widthSmall) * 2);
+                text-align: left;
+            }
+        }
+
         & .records-list .record a {
             display: flex;
 
