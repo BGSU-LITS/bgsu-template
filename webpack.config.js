@@ -29,6 +29,7 @@ module.exports = function(env, argv) {
             facets: './src/facets.js',
             flatpickr: './src/flatpickr.js',
             flickity: './src/flickity.js',
+            libraryh3lp: './src/libraryh3lp.js',
             tippy: './src/tippy.js',
             toggle: './src/toggle.js',
         },

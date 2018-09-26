@@ -1,0 +1,40 @@
+div(class=css.libraryh3lp id=css.libraryh3lp)
+    div(class=css.head)
+        = (config.title || "Ask Us!")
+        a(
+            href="javascript:libraryh3lp.close(true)"
+            class=css.close
+            aria-label="Close chat notifcation"
+            style=(config.color ? "color:" + config.color : "")
+        ) &times;
+    div(class=css.body)
+        if config.body
+            != config.body
+        else
+            div(style="margin:0 50px;text-align:center")
+                img(
+                    src=require("../svg/askus.svg")
+                    width=46
+                    height=46
+                    alt=""
+                    style="margin:4px"
+                )
+                br
+                | Hi there. Let us know if we can help you find something!
+    div(class=css.foot)
+        a(
+            href=href + "?skin=" + (config.skin || 28594)
+            onclick=(
+                "return libraryh3lp.open(this.href,'" +
+                "width=" + (config.width || 300) + "," +
+                "height=" + (config.height || 400) + "')"
+            )
+            style=(config.color ? "background:" + config.color : "")
+            target="_blank"
+        )
+            = (config.accept || "Chat with us now")
+        a(
+            href="javascript:libraryh3lp.close(true)"
+            style=(config.color ? "background:" + config.color : "")
+        )
+            = (config.decline || "No thanks")

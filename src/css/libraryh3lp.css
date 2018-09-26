@@ -1,0 +1,68 @@
+@import "includes/vars.css";
+
+.libraryh3lp {
+    background: var(--colorGray);
+    border-radius: var(--widthSmall);
+    bottom: var(--widthSmall);
+    box-shadow: 0 1px 2px 0 var(--colorShadow);
+    color: var(--colorText);
+    font-family: var(--fontFamilyVerb);
+    font-size: calc(var(--fontSize) * 0.875);
+    min-height: calc(var(--widthLarge) * 5);
+    line-height: var(--lineHeightMedium);
+    padding: calc(var(--widthSmall) * 2);
+    position: fixed;
+    right: var(--widthSmall);
+    width: calc(var(--widthLarge) * 10);
+    z-index: 1;
+
+    & > .head {
+        font-weight: var(--fontWeightBold);
+        margin: 0 var(--widthMedium) 0 0;
+
+        & > .close {
+            color: var(--colorBrownLight);
+            font-size: 2em;
+            font-weight: var(--fontWeight);
+            line-height: 1;
+            position: absolute;
+            right: var(--widthSmall);
+            top: 0;
+
+            &:hover,
+            &:focus {
+                color: var(--colorOrange);
+            }
+        }
+    }
+
+    & > .body {
+        margin-bottom: var(--widthLarge);
+    }
+
+    & > .foot {
+        bottom: var(--widthSmall);
+        left: var(--widthSmall);
+        position: absolute;
+        right: var(--widthSmall);
+        text-align: center;
+
+        & > :any-link {
+            background: var(--colorBrownLight);
+            border-radius: 1px;
+            box-shadow:
+                inset
+                0 1px 0 var(--colorBrighten),
+                0 1px 2px var(--colorShadow);
+            color: var(--colorWhite);
+            display: inline-block;
+            margin: var(--widthSmall);
+            padding: calc(var(--widthSmall) / 2) calc(var(--widthSmall) * 2);
+
+            &:hover,
+            &:focus {
+                background: var(--colorOrange);
+            }
+        }
+    }
+}
