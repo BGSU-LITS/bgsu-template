@@ -1,13 +1,12 @@
-import tippy from 'tippy.js';
-import './css/tippy.css';
+import tablist from '@accede-web/tablist';
+import './css/tablist.css';
 
-export function setup(selector, config = {}) {
+export function setup(selector) {
     document.addEventListener('DOMContentLoaded', function() {
         Array.prototype.forEach.call(
             document.querySelectorAll(selector),
             function(element) {
-                config.content = element.getAttribute('title');
-                tippy(element, config);
+                new tablist(element).mount();
             }
         );
     });
