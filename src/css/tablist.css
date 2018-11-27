@@ -1,0 +1,46 @@
+@import "includes/vars.css";
+
+.tablist [role="tablist"] {
+    background: transparent;
+    border-radius: 0;
+    box-shadow: none;
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: calc(var(--widthMedium) / 2) 0;
+
+    & [role="tab"] {
+        background: var(--colorGray);
+        border-top: var(--widthSmall) solid var(--colorWhite);
+        color: var(--colorTextLight);
+        cursor: pointer;
+        flex: 1 0 auto;
+        font-weight: var(--fontWeightBold);
+        line-height: var(--lineHeightMedium);
+        padding: calc(var(--widthMedium) / 2) 0;
+        text-align: center;
+
+        &:hover {
+            background: var(--colorGrayDark);
+        }
+
+        &[aria-selected="true"] {
+            background: var(--colorWhite);
+            border-top-color: var(--colorOrange);
+            color: var(--colorText);
+            cursor: default;
+            box-shadow:
+                0 calc(var(--widthMedium) / 2) 0 0 var(--colorWhite),
+                0 calc(var(--widthMedium) / -2) 0 0 var(--colorWhite),
+                var(--widthSmall) 0 calc(var(--widthMedium) / 2)
+                calc(var(--widthSmall) * -1) var(--colorShadowLight),
+                calc(var(--widthSmall) * -1) 0 calc(var(--widthMedium) / 2)
+                calc(var(--widthSmall) * -1) var(--colorShadowLight);
+            z-index: 1;
+
+            &:hover {
+                background: inherit;
+            }
+        }
+    }
+}
