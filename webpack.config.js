@@ -24,6 +24,7 @@ module.exports = function(env, argv) {
         devtool: devtool,
 
         entry: {
+            bgsu_addremove: './src/addremove.js',
             bgsu_common: './src/common.js',
             bgsu_facets: './src/facets.js',
             bgsu_flatpickr: './src/flatpickr.js',
