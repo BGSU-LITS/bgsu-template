@@ -27,7 +27,7 @@
         padding: 0 0 0 var(--widthSmall);
 
         & em {
-            background: var(--colorHightlight);
+            background: var(--colorHighlight);
             color: var(--colorText);
             font-style: normal;
         }
@@ -44,6 +44,7 @@
         line-height: var(--lineHeightSmall);
         margin: 0;
         padding: 0;
+        word-break: break-word;
         -webkit-font-smoothing: antialiased;
     }
 
@@ -80,6 +81,10 @@
         overflow: visible;
     }
 
+    & iframe {
+        border: none;
+    }
+
     & img {
         border: none;
         vertical-align: middle;
@@ -110,9 +115,9 @@
     }
 
     & :target {
-        background: var(--colorGray);
+        background: var(--colorHighlight);
         border-radius: 1px;
-        box-shadow: 0 0 0 var(--widthSmall) var(--colorGray);
+        box-shadow: 0 0 0 var(--widthSmall) var(--colorHighlight);
     }
 
     & [data-toggle][aria-controls] {
@@ -164,6 +169,10 @@
         display: flex;
         flex-wrap: wrap;
         margin: var(--widthSmall) 0;
+
+        &.form-item-disabled {
+            display: none;
+        }
 
         & > * {
             flex: 0 0 100%;
@@ -288,23 +297,36 @@
 
         & > li {
             display: inline-block;
-
-            & + li {
-                padding-left: var(--widthSmall);
-            }
         }
     }
 
     & .list-breadcrumb {
         color: var(--colorTextLight);
         font-size: var(--fontSizeMedium);
+        line-height: var(--lineHeightMedium);
         margin: 0 0 var(--widthMedium) 0;
 
-        & > li + li::before {
-            content: "/";
-            display: inline-block;
-            padding-right: var(--widthSmall);
+        & > li {
+            word-break: break-word;
+
+            &::after {
+                border-left: 1px solid;
+                content: "";
+                display: inline-block;
+                height: var(--fontSizeMedium);
+                margin: 0 calc(var(--widthSmall) * 2);
+                transform: rotate(15deg);
+                vertical-align: middle;
+            }
+
+            &:last-child::after {
+                display: none;
+            }
         }
+    }
+
+    & .list-inline > li + li {
+        padding-left: var(--widthSmall);
     }
 
     & .list-item-toggle {
@@ -320,6 +342,7 @@
         border-radius: var(--widthSmall);
         display: flex;
         flex-wrap: wrap;
+        line-height: calc(var(--widthLarge) - var(--widthSmall) * 2);
         margin: 0 0 calc(var(--widthSmall) * 2) 0;
         padding: 0;
 
@@ -329,7 +352,7 @@
 
         & a {
             display: inline-block;
-            padding: var(--widthSmall) calc(var(--widthSmall) * 2);
+            padding: var(--widthSmall);
 
             &::before,
             &::after {
@@ -358,7 +381,8 @@
 
     & .records .record a {
         display: block;
-        margin: 0 0 var(--widthMedium) 0;
+        margin: 0;
+        padding: 0 0 var(--widthMedium) 0;
         text-decoration: none;
 
         & .record-description {
@@ -383,24 +407,25 @@
 
     & .records-gallery {
         margin: 0 calc(var(--widthSmall) * -2);
+        overflow: auto;
 
         & .record {
-            display: inline-block;
+            float: left;
             vertical-align: middle;
             width: 100%;
 
             & a {
-                background: var(--colorGrayDark);
                 border: var(--widthSmall) solid var(--colorWhite);
                 display: block;
-                height: calc(300px + var(--widthSmall) * 2);
                 margin: 0 var(--widthSmall);
                 margin-bottom: calc(var(--widthSmall) * 2);
+                min-height: calc(50px + (var(--widthSmall) * 2));
+                padding: 0;
                 position: relative;
                 transition: all 1s;
 
                 & .record-details {
-                    background: color-mod(var(--colorGray) alpha(85%));
+                    background: var(--colorBack);
                     bottom: 0;
                     left: 0;
                     margin: 0;
@@ -446,7 +471,7 @@
                     outline: none;
 
                     & .record-details {
-                        background: color-mod(var(--colorGray) alpha(95%));
+                        background: var(--colorBackHover);
                         min-height: 100%;
                     }
 
@@ -464,6 +489,7 @@
         &.records-gallery-column,
         &.records-gallery-single {
             & .record {
+                float: none;
                 width: 100%;
             }
         }
@@ -482,6 +508,10 @@
         }
     }
 
+    & .records-paginated {
+        min-height: calc(100% - var(--widthMedium) * 4);
+    }
+
     & .sidebar {
         display: flex;
         flex-direction: column;
@@ -493,8 +523,8 @@
         }
 
         & .sidebar-title {
-            font-size: inherit;
-            line-height: inherit;
+            font-size: var(--fontSizeLarge);
+            line-height: var(--lineHeightMedium);
             font-weight: var(--fontWeightBold);
         }
 
@@ -509,7 +539,8 @@
 
     & .table {
         border-collapse: collapse;
-        margin: 0 0 var(--widthMedium) 0;
+        line-height: var(--lineHeightMedium);
+        margin: 0 0 calc(var(--widthSmall) * 2) 0;
         padding: 0;
 
         & td,
@@ -552,12 +583,13 @@
     .common :global {
         & .form-item {
             & > * {
-                flex: 0 0 60%;
-                margin: 0 auto;
+                flex: 0 0 70%;
+                margin: 0 0 0 15%;
             }
 
-            & > label {
-                flex: 0 0 20%;
+            & > label,
+            & > .form-item-before {
+                flex: 0 0 15%;
                 margin: 0;
                 padding-right: calc(var(--widthSmall) * 2);
                 text-align: right;
@@ -572,12 +604,12 @@
 
                 & > * {
                     flex: 1 1 auto;
-                    min-width: 0;
+                    width: 0;
                 }
             }
 
             & > .form-item-after {
-                flex: 0 0 20%;
+                flex: 0 0 15%;
                 margin: 0;
                 padding-left: calc(var(--widthSmall) * 2);
                 text-align: left;
@@ -628,7 +660,6 @@
 
         & .sidebar {
             flex-direction: row;
-            height: 100%;
 
             & > * {
                 flex: 1 0 0;
@@ -641,13 +672,18 @@
             }
 
             & > .sidebar-left {
-                margin-right: calc(var(--widthSmall) * 2);
+                margin-right: calc(var(--widthSmall) * 4);
                 order: 0;
             }
 
             & > .sidebar-right {
-                margin-left: calc(var(--widthSmall) * 2);
+                margin-left: calc(var(--widthSmall) * 4);
                 order: 2;
+            }
+
+            & .sidebar > .sidebar-left,
+            & .sidebar > .sidebar-right {
+                flex: 0 0 calc(33% - calc(var(--widthSmall) * 2));
             }
         }
     }
@@ -670,6 +706,11 @@
             & > .sidebar-left,
             & > .sidebar-right {
                 flex: 0 0 20%;
+            }
+
+            & .sidebar > .sidebar-left,
+            & .sidebar > .sidebar-right {
+                flex: 0 0 calc(25% - calc(var(--widthSmall) * 3));
             }
         }
     }

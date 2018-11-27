@@ -1,17 +1,20 @@
 :root {
+    --colorBack: rgba(242, 242, 242, 0.85);
+    --colorBackHover: rgba(242, 242, 242, 0.95);
     --colorBrighten: rgba(255, 255, 255, 0.2);
     --colorBrown: #4f2c1d;
     --colorBrownDark: #2e271e;
     --colorBrownLight: #7f3f2f;
     --colorGray: #f2f2f2;
     --colorGrayDark: #ccc;
-    --colorHightlight: #f9f6b8;
+    --colorHighlight: #f9f6b8;
     --colorOrange: #ff7300;
     --colorOrangeBorder: #f26303;
     --colorOrangeDark: #ff5900;
     --colorOrangeLight: #ff9d4d;
     --colorRed: #c00;
     --colorShadow: rgba(0, 0, 0, 0.6);
+    --colorShadowLight: rgba(0, 0, 0, 0.3);
     --colorText: #444;
     --colorTextDark: #333;
     --colorTextLight: #595959;
