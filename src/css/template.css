@@ -115,25 +115,6 @@
         background: var(--colorGray);
         color: var(--colorBrownDark);
 
-        & [aria-hidden="true"] {
-            display: none;
-        }
-
-        & [data-toggle] {
-            background: transparent;
-            border: 0;
-            color: inherit;
-            font: inherit;
-            margin: 0;
-            padding: 0;
-            pointer-events: none;
-        }
-
-        & [data-toggle][aria-controls] {
-            cursor: pointer;
-            pointer-events: auto;
-        }
-
         & [data-toggle],
         & :any-link {
             color: inherit;
