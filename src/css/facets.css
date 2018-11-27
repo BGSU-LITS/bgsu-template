@@ -1,6 +1,6 @@
 @import "includes/vars.css";
 
-:global .sidebar .list-facets {
+.facets :global .list-facets {
     columns: calc(var(--widthMedium) * 10);
     list-style: none;
     margin: 0;
@@ -16,9 +16,14 @@
         font-size: var(--fontSizeMedium);
         line-height: var(--lineHeightMedium);
         margin: var(--widthSmall) 0;
-        padding: 0 5ch calc(var(--widthSmall) * 2) 0;
+        padding: 0 0 calc(var(--widthSmall) * 2) 0;
         position: relative;
         width: 100%;
+
+        & > a:not(.icon) {
+            display: inline-block;
+            margin-right: 5ch;
+        }
     }
 
     & .list-facets-count {
@@ -31,7 +36,7 @@
 }
 
 @media screen and (--breakpointMedium) {
-    :global .sidebar .list-facets {
+    .facets :global .list-facets {
         &.list-facets-all {
             background: var(--colorGray);
             border: var(--widthSmall) solid var(--colorGray);
@@ -54,7 +59,7 @@
 }
 
 @media screen and (--breakpointLarge) {
-    :global .sidebar .list-facets.list-facets-all {
+    .facets :global .list-facets.list-facets-all {
         left: 20%;
     }
 }
