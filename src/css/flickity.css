@@ -3,7 +3,6 @@
 :global {
     & .flickity-enabled {
         padding: 0 calc(var(--widthMedium) * 2);
-        padding-bottom: var(--widthMedium);
     }
 
     & .flickity-prev-next-button {
