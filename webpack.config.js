@@ -24,15 +24,15 @@ module.exports = function(env, argv) {
         devtool: devtool,
 
         entry: {
-            bgsu_template: './src/bgsu_template.js',
-            bgsu_common: './src/bgsu_common.js',
-            facets: './src/facets.js',
-            flatpickr: './src/flatpickr.js',
-            flickity: './src/flickity.js',
+            bgsu_common: './src/common.js',
+            bgsu_facets: './src/facets.js',
+            bgsu_flatpickr: './src/flatpickr.js',
+            bgsu_flickity: './src/flickity.js',
+            bgsu_tablist: './src/tablist.js',
+            bgsu_template: './src/template.js',
+            bgsu_tippy: './src/tippy.js',
+            bgsu_toggle: './src/toggle.js',
             libraryh3lp: './src/libraryh3lp.js',
-            tablist: './src/tablist.js',
-            tippy: './src/tippy.js',
-            toggle: './src/toggle.js',
         },
 
         module: {

@@ -1,5 +1,5 @@
-import pugHeader from './pug/header.pug';
-import pugFooter from './pug/footer.pug';
+import pugHeader from './pug/template/header.pug';
+import pugFooter from './pug/template/footer.pug';
 
 import css from './css/template.css';
 import { setup as toggle } from './toggle.js';
