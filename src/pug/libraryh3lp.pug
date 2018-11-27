@@ -20,7 +20,10 @@ div(class=css.libraryh3lp id=css.libraryh3lp)
                     style="margin:4px"
                 )
                 br
-                | Hi there. Let us know if we can help you find something!
+                if config.message
+                    != config.message
+                else
+                    | Hi there. Let us know if we can help you find something!
     div(class=css.foot)
         a(
             href=href + "?skin=" + (config.skin || 28594)
