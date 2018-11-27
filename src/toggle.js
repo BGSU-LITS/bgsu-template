@@ -1,16 +1,21 @@
 import 'core-js/fn/object/assign';
 import 'events-polyfill/src/constructors/Event.js';
 import Toggle from 'accessible-toggle';
+import css from './css/toggle.css';
 
 export function setup(
-    element,
-    mediaQuery = false,
-    closeOnClickOutside = false
+    selector = '[data-toggle]',
+    config = { assignFocus: false, trapFocus: false }
 ) {
-    new Toggle(element, {
-        assignFocus: false,
-        closeOnClickOutside: closeOnClickOutside,
-        mediaQuery: mediaQuery,
-        trapFocus: false,
-    });
+    document.body.classList.add(css.toggle);
+
+    Array.prototype.forEach.call(
+        document.querySelectorAll(selector),
+        function (element) {
+            new Toggle(
+                document.getElementById(element.dataset.toggle),
+                config
+            );
+        }
+    );
 }

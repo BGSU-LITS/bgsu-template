@@ -17,8 +17,12 @@ export function header(config, before) {
 
     if (config.menu || config.form) {
         toggle(
-            document.getElementById(css.menu),
-            '(max-width: 767px)'
+            '[data-toggle=' + css.menu + ']',
+            {
+                assignFocus: false,
+                mediaQuery: '(max-width: 767px)',
+                trapFocus: false,
+            }
         );
     }
 
@@ -26,9 +30,13 @@ export function header(config, before) {
         for (var index = 0; index < config.menu.length; index++) {
             if (config.menu[index].menu) {
                 toggle(
-                    document.getElementById(css.menu + '_' + index),
-                    '(min-width: 768px)',
-                    true
+                    '[data-toggle=' + css.menu + '_' + index + ']',
+                    {
+                        assignFocus: false,
+                        closeOnClickOutside: true,
+                        mediaQuery: '(min-width: 768px)',
+                        trapFocus: false,
+                    }
                 );
             }
         }

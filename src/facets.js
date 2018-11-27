@@ -1,17 +1,24 @@
-import './css/facets.css';
+import css from './css/facets.css';
 
 export function setup(toggle) {
-    document.addEventListener('DOMContentLoaded', function() {
-        Array.prototype.forEach.call(
-            document.querySelectorAll('[data-toggle^="facets-"]'),
-            function (element) {
-                toggle(
-                    document.getElementById(element.dataset.toggle),
-                    element.dataset.toggle.match(/-all$/)
-                        ? '(min-width: 980px)' : false,
-                    true
-                );
-            }
-        );
-    });
+    document.body.classList.add(css.facets);
+
+    toggle(
+        '[data-toggle^="facets-top-"]',
+        {
+            assignFocus: false,
+            closeOnClickOutside: true,
+            trapFocus: false,
+        }
+    );
+
+    toggle(
+        '[data-toggle^="facets-all-"]',
+        {
+            assignFocus: false,
+            closeOnClickOutside: true,
+            mediaQuery: '(min-width: 980px)',
+            trapFocus: false,
+        }
+    );
 }

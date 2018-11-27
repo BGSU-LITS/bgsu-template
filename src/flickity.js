@@ -29,27 +29,25 @@ Flickity.PrevNextButton.prototype.update = function() {
 };
 
 export function setup(selector, config = {}) {
-    document.addEventListener('DOMContentLoaded', function() {
-        Array.prototype.forEach.call(
-            document.querySelectorAll(selector),
-            function(group) {
-                var flickity = new Flickity(group, config);
+    Array.prototype.forEach.call(
+        document.querySelectorAll(selector),
+        function(group) {
+            var flickity = new Flickity(group, config);
 
-                Array.prototype.forEach.call(
-                    group.querySelectorAll('a'),
-                    function(anchor, index) {
-                        anchor.addEventListener('focus', function() {
-                            if (index > flickity.selectedIndex) {
-                                if (!flickity.nextButton.isEnabled) {
-                                    return;
-                                }
+            Array.prototype.forEach.call(
+                group.querySelectorAll('a'),
+                function(anchor, index) {
+                    anchor.addEventListener('focus', function() {
+                        if (index > flickity.selectedIndex) {
+                            if (!flickity.nextButton.isEnabled) {
+                                return;
                             }
+                        }
 
-                            flickity.selectCell(index);
-                        });
-                    }
-                );
-            }
-        );
-    });
+                        flickity.selectCell(index);
+                    });
+                }
+            );
+        }
+    );
 }
