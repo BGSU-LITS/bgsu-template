@@ -1,8 +1,10 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const Path = require('path');
 
 module.exports = function(env, argv) {
     var devtool = 'eval-source-map';
     var sourceMap = true;
+    var path = Path.resolve(__dirname, 'dist');
     var publicPath = '';
 
     var plugins = [
@@ -15,7 +17,8 @@ module.exports = function(env, argv) {
     if (argv.mode === 'production') {
         devtool = 'source-map';
         sourceMap = false;
-        publicPath = 'https://lib.bgsu.edu/template/';
+        path = Path.resolve(path, process.env.npm_package_version);
+        publicPath = 'https://lib.bgsu.edu/template/' + process.env.npm_package_version;
     }
 
     return {
@@ -24,16 +27,16 @@ module.exports = function(env, argv) {
         devtool: devtool,
 
         entry: {
-            bgsu_addremove: './src/addremove.js',
-            bgsu_common: './src/common.js',
-            bgsu_facets: './src/facets.js',
-            bgsu_flatpickr: './src/flatpickr.js',
-            bgsu_flickity: './src/flickity.js',
-            bgsu_tablist: './src/tablist.js',
-            bgsu_template: './src/template.js',
-            bgsu_tippy: './src/tippy.js',
-            bgsu_toggle: './src/toggle.js',
+            addremove: './src/addremove.js',
+            common: './src/common.js',
+            facets: './src/facets.js',
+            flatpickr: './src/flatpickr.js',
+            flickity: './src/flickity.js',
             libraryh3lp: './src/libraryh3lp.js',
+            tablist: './src/tablist.js',
+            template: './src/template.js',
+            tippy: './src/tippy.js',
+            toggle: './src/toggle.js',
         },
 
         module: {
@@ -118,7 +121,8 @@ module.exports = function(env, argv) {
         },
 
         output: {
-            library: '[name]',
+            library: 'bgsu_[name]',
+            path: path,
             publicPath: publicPath,
         },
 
