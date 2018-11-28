@@ -6,6 +6,7 @@ module.exports = function(env, argv) {
     var sourceMap = true;
     var path = Path.resolve(__dirname, 'dist');
     var publicPath = '';
+    var version = process.env.npm_package_version;
 
     var plugins = [
         new HtmlWebpackPlugin({
@@ -17,8 +18,8 @@ module.exports = function(env, argv) {
     if (argv.mode === 'production') {
         devtool = 'source-map';
         sourceMap = false;
-        path = Path.resolve(path, process.env.npm_package_version);
-        publicPath = 'https://lib.bgsu.edu/template/' + process.env.npm_package_version;
+        path = Path.resolve(path, version);
+        publicPath = 'https://lib.bgsu.edu/template/' + version + '/';
     }
 
     return {
