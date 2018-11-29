@@ -1,0 +1,81 @@
+- const path = webpackConfig.output.publicPath
+
+script(src=path + "common.js")
+script(src=path + "template.js")
+script.
+    bgsu_template.setup({
+        meta: true,
+        body: true,
+        main: {
+            id: 'content',
+            top: 'top'
+        },
+        unit: {
+            thin: 'University',
+            text: 'Libraries',
+            href: 'https://www.bgsu.edu/library/',
+        },
+        site: {
+            text: 'Template Scripts v#{htmlWebpackPlugin.options.version}',
+            href: '#{path}',
+            heading: #{heading || false}
+        },
+        menu: [
+            {
+                text: 'template.js',
+                href: '#{path}docs/template/',
+            },
+            {
+                text: 'common.js',
+                href: '#{path}docs/common/',
+            },
+            {
+                text: 'Components',
+                menu: [
+                    {
+                        text: 'addremove.js',
+                        href: '#{path}docs/addremove/',
+                    },
+                    {
+                        text: 'facets.js',
+                        href: '#{path}docs/facets/',
+                    },
+                    {
+                        text: 'flatpickr.js',
+                        href: '#{path}docs/flatpickr/',
+                    },
+                    {
+                        text: 'flickity.js',
+                        href: '#{path}docs/flickity/',
+                    },
+                    {
+                        text: 'libraryh3lp.js',
+                        href: '#{path}docs/libraryh3lp/',
+                    },
+                    {
+                        text: 'tablist.js',
+                        href: '#{path}docs/tablist/',
+                    },
+                    {
+                        text: 'tippy.js',
+                        href: '#{path}docs/tippy/',
+                    },
+                    {
+                        text: 'toggle.js',
+                        href: '#{path}docs/toggle/',
+                    },
+                ],
+            },
+            {
+                text: 'Other Versions',
+                href: '#{path}../',
+            },
+        ],
+        help: {
+            heading: 'Contact Us',
+            text: 'libadmin@bgsu.edu',
+            href: 'mailto:libadmin@bgsu.edu'
+        }
+    });
+
+    bgsu_common.setup();

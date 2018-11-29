@@ -1,25 +1,56 @@
+const path = require('path');
+const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const Path = require('path');
 
 module.exports = function(env, argv) {
+    var entries = [
+        'addremove',
+        'common',
+        'facets',
+        'flatpickr',
+        'flickity',
+        'libraryh3lp',
+        'tablist',
+        'template',
+        'tippy',
+        'toggle'
+    ];
+
     var devtool = 'eval-source-map';
     var sourceMap = true;
-    var path = Path.resolve(__dirname, 'dist');
+    var outputPath = path.resolve(__dirname, 'dist');
     var publicPath = '';
     var version = process.env.npm_package_version;
-
-    var plugins = [
-        new HtmlWebpackPlugin({
-            inject: 'head',
-            template: 'src/pug/index.pug',
-        }),
-    ];
 
     if (argv.mode === 'production') {
         devtool = 'source-map';
         sourceMap = false;
-        path = Path.resolve(path, version);
+        outputPath = path.resolve(outputPath, version);
         publicPath = 'https://lib.bgsu.edu/template/' + version + '/';
+    }
+
+    var plugins = [
+        new webpack.BannerPlugin({
+            banner: publicPath + 'docs/[name]/',
+        }),
+        new HtmlWebpackPlugin({
+            inject: false,
+            template: 'src/pug/index.pug',
+            version: version,
+        }),
+    ];
+
+    var entry = {};
+
+    for (const name of entries) {
+        entry[name] = './src/' + name + '.js';
+
+        plugins.push(new HtmlWebpackPlugin({
+            inject: false,
+            filename: 'docs/' + name + '/index.html',
+            template: 'src/pug/docs/' + name + '.pug',
+            version: version,
+        }));
     }
 
     return {
@@ -27,18 +58,7 @@ module.exports = function(env, argv) {
 
         devtool: devtool,
 
-        entry: {
-            addremove: './src/addremove.js',
-            common: './src/common.js',
-            facets: './src/facets.js',
-            flatpickr: './src/flatpickr.js',
-            flickity: './src/flickity.js',
-            libraryh3lp: './src/libraryh3lp.js',
-            tablist: './src/tablist.js',
-            template: './src/template.js',
-            tippy: './src/tippy.js',
-            toggle: './src/toggle.js',
-        },
+        entry: entry,
 
         module: {
             rules: [
@@ -123,7 +143,7 @@ module.exports = function(env, argv) {
 
         output: {
             library: 'bgsu_[name]',
-            path: path,
+            path: outputPath,
             publicPath: publicPath,
         },
 

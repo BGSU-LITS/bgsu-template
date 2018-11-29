@@ -1,0 +1,14 @@
+- const path = webpackConfig.output.publicPath
+
+doctype html
+html(lang="en")
+    head
+        meta(charset="utf-8")
+        title librarh3lp.js - Template Scripts v#{htmlWebpackPlugin.options.version}
+    body
+        h1 librarh3lp.js
+        nav(aria-label="breadcrumb")
+            ol.list-breadcrumb
+                li: a(href=path) Template Scripts v#{htmlWebpackPlugin.options.version}
+                li(aria-current="page") librarh3lp.js
+        include ../includes/script.pug
