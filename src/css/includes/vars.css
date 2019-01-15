@@ -20,9 +20,27 @@
     --colorTextLight: #595959;
     --colorWhite: #fff;
     --colorYellow: #ff0;
-    --fontFamilyGeorgia: Georgia, Times, "Times New Roman", serif;
-    --fontFamilyHelvetica: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    --fontFamilyVerb: Verb, var(--fontFamilyHelvetica);
+    --fontFamilyGeorgia:
+        Georgia,
+        Times,
+        "Times New Roman",
+        serif;
+    --fontFamilyHelvetica:
+        "Helvetica Neue",
+        Helvetica,
+        Arial,
+        sans-serif;
+    --fontFamilyMonospace:
+        SFMono-Regular,
+        Menlo,
+        Monaco,
+        Consolas,
+        "Liberation Mono",
+        "Courier New",
+        monospace;
+    --fontFamilyVerb:
+        Verb,
+        var(--fontFamilyHelvetica);
     --fontSize: 16px;
     --fontSizeLarge: 1.25em;
     --fontSizeMedium: 0.875em;

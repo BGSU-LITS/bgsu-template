@@ -13,6 +13,10 @@
         box-sizing: inherit;
     }
 
+    & ::placeholder {
+        color: var(--colorTextLight);
+    }
+
     & aside,
     & small {
         font-size: var(--fontSizeMedium);
@@ -31,6 +35,11 @@
             color: var(--colorText);
             font-style: normal;
         }
+    }
+
+    & code {
+        font-family: var(--fontFamilyMonospace);
+        font-size: var(--fontSizeMedium);
     }
 
     & h1,
@@ -104,6 +113,10 @@
         padding: 0;
     }
 
+    & pre {
+        overflow: auto;
+    }
+
     & ol,
     & ul {
         padding-left: 25px;
@@ -120,7 +133,7 @@
         box-shadow: 0 0 0 var(--widthSmall) var(--colorHighlight);
     }
 
-    & [data-toggle][aria-controls] {
+    & .toggle-control[aria-controls] {
         &::before {
             border: 5px solid transparent;
             content: "";
@@ -140,8 +153,8 @@
         }
     }
 
-    & [data-toggle],
-    & :any-link {
+    & :any-link,
+    & .toggle-control {
         color: var(--colorBrownLight);
         text-decoration: underline;
 
@@ -158,10 +171,6 @@
         & h6 {
             color: inherit;
         }
-    }
-
-    & .active {
-        font-weight: var(--fontWeightBold);
     }
 
     & .form-item {
@@ -307,14 +316,15 @@
         margin: 0 0 var(--widthMedium) 0;
 
         & > li {
+            font-weight: var(--fontWeight);
             word-break: break-word;
 
             &::after {
                 border-left: 1px solid;
                 content: "";
-                display: inline-block;
+                float: right;
                 height: var(--fontSizeMedium);
-                margin: 0 calc(var(--widthSmall) * 2);
+                margin: var(--widthSmall) calc(var(--widthSmall) * 2);
                 transform: rotate(15deg);
                 vertical-align: middle;
             }
@@ -332,7 +342,7 @@
     & .list-item-toggle {
         list-style: none;
 
-        & > [data-toggle][aria-controls]::before {
+        & > .toggle-control[aria-controls]::before {
             margin: 0 calc(var(--widthSmall) * 2) 0 -18px;
         }
     }
@@ -518,8 +528,23 @@
         position: relative;
 
         & .sidebar-image {
-            margin: 4px 0;
+            margin: var(--widthSmall) 0;
             max-width: 100%;
+        }
+
+        & .sidebar-nav {
+            border-radius: var(--widthSmall);
+            margin: var(--widthSmall) 0;
+            padding: var(--widthSmall) 0;
+
+            &.sidebar-nav-background {
+                background: var(--colorBack);
+            }
+
+            & > ol,
+            & > ul {
+                margin: 0;
+            }
         }
 
         & .sidebar-title {

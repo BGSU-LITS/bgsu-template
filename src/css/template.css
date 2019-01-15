@@ -10,18 +10,6 @@
     font-weight: var(--fontWeightLight);
 }
 
-.body {
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
-    margin: 0;
-    padding: 0;
-}
-
-.main {
-    flex: 1 0 auto;
-}
-
 .header,
 .footer {
     box-sizing: border-box;
@@ -38,14 +26,18 @@
         box-sizing: inherit;
     }
 
-    & img {
-        border: none;
-        vertical-align: middle;
+    & ::placeholder {
+        color: var(--colorTextLight);
     }
 
     & :any-link {
         color: inherit;
         text-decoration: underline;
+    }
+
+    & img {
+        border: none;
+        vertical-align: middle;
     }
 }
 
@@ -101,14 +93,18 @@
 }
 
 @media screen {
+    .body {
+        display: flex;
+        flex-direction: column;
+        height: 100vh;
+        margin: 0;
+        padding: 0;
+    }
+
     .container {
         margin: 0 auto;
         padding: 0 var(--widthMedium);
         position: relative;
-    }
-
-    .main > .container {
-        margin: var(--widthMedium) auto;
     }
 
     .header {
@@ -190,8 +186,8 @@
                         line-height: var(--lineHeightLarge);
                         max-width: 288px;
 
-                        & > input,
-                        & > button {
+                        & > button,
+                        & > [type="text"] {
                             background: var(--colorWhite);
                             border: 1px solid var(--colorBrown);
                             color: inherit;
@@ -250,6 +246,14 @@
                 right: var(--widthMedium);
                 z-index: 2;
             }
+        }
+    }
+
+    .main {
+        flex: 1 0 auto;
+
+        & > .container {
+            margin: var(--widthMedium) auto;
         }
     }
 
