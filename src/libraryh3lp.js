@@ -26,7 +26,6 @@ export function close(shhhh = false) {
         element.parentNode.removeChild(element);
     }
 
-
     // If specified, prevent notification from appearing on future pages.
     if (shhhh) {
         document.cookie = 'libraryh3lp-shhhh=true; path=/';
@@ -61,6 +60,8 @@ export function open(href, features) {
  * @param {number} [config.wait] Time in seconds to wait before display.
  * @param {string} [config.title] Title of notification if not the default.
  * @param {string} [config.body] HTML body of notification if not the default.
+ * @param {string} [config.message] Message used as part of the body if html
+ *  was not configured above and not the default.
  * @param {string} [config.accept] Text for the button to accept the chat.
  * @param {string} [config.decline] Text for the button to decline the chat.
  * @param {string} [config.color] CSS color of the buttons on the notificaiton

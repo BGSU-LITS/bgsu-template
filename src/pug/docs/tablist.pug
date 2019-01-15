@@ -11,4 +11,24 @@ html(lang="en")
             ol.list-breadcrumb
                 li: a(href=path) Template Scripts v#{htmlWebpackPlugin.options.version}
                 li(aria-current="page") tablist.js
+        p.text-lead Displays sections of a page as tabs using tab lists.
+        h2 Introduction
+        p This component uses the #[a(href="https://www.npmjs.com/package/@accede-web/tablist") @accede-web/tablist] NPM package.
+        h2 Setup
+        p Begin by creating a list of #[code role="tablist"] to specify the name of each tab as an item of #[code role="tab"]. The items should also each specify an #[code aria-controls] attribute having the value being the ID of the element containing the content of the tab. Those elements containing the content should have #[code role="tabpanel"].
+        pre: code
+            = '<ul role="tablist">\n'
+            = '<li role="tab" aria-controls="tab-1">Name 1</li>\n'
+            = '<li role="tab" aria-controls="tab-2">Name 2</li>\n'
+            = '<li role="tab" aria-controls="tab-3">Name 3</li>\n'
+            = '</ul>\n'
+            = '<div role="tabpanel" id="tab-1">Content 1</div>\n'
+            = '<div role="tabpanel" id="tab-2">Content 2</div>\n'
+            = '<div role="tabpanel" id="tab-3">Content 3</div>'
+        p A tab can be set to be opened by default by adding #[code data-open="true"] to the list item. A tab may also be disabled by adding #[code aria-disabled="true"] to the list item.
+        p Include the #[a(href=path + "tablist.js") component javascript file] and setup any tab lists:
+        pre: code
+            = '<script src="' + path + 'tablist.js"></script>\n'
+            = '<script>bgsu_tablist.setup();</script>'
+        p By default, any element with a #[code role="tablist"] attribute value will be considered a tab list. A CSS selector can be specified as the first parameter to select specific elements as tab lists. Those lists must otherwise be setup as described above.
         include ../includes/script.pug

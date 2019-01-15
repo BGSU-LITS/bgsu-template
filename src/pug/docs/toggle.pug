@@ -11,4 +11,23 @@ html(lang="en")
             ol.list-breadcrumb
                 li: a(href=path) Template Scripts v#{htmlWebpackPlugin.options.version}
                 li(aria-current="page") toggle.js
+        p.text-lead Toggles display of a section of a site via a button.
+        h2 Introduction
+        p Web applications frequently use components that could be described as toggleable such as menus, drop-downs and disclosures. This component adds accessibile support for toggles using the #[a(href="https://www.npmjs.com/package/accessible-toggle") accessible-toggle] NPM package.
+        h2 Setup
+        p Create an element with an ID as the region to be toggled, and an element with a #[code data-toggle] attribute of that ID to act as the toggler.
+        pre: code
+            = '<button data-toggle="toggle">Toggle</button>\n'
+            = '<div id="toggle">Content to Toggle</div>'
+        p Include the #[a(href=path + "toggle.js") component javascript file] and setup any toggles:
+        pre: code
+            = '<script src="' + path + 'toggle.js"></script>\n'
+            = '<script>bgsu_toggle.setup();</script>'
+        p By default, any element with a #[code data-toggle] attribute will be used as the toggler with the value of the attribute as the ID of the element to be toggled. A CSS selector can be specified as the first parameter to select specific elements to act as togglers. The #[code data-toggle] attribute must still exist on the selected elements to specify the ID of the element to be toggled.
+        h2 Configuration
+        p Configuration options may be passed to the second parameter as an object. The options that may be configured are described in the #[a(href="https://www.npmjs.com/package/accessible-toggle#configuration") accessible-toggle Configuration documentation]. Remember to specify a selector in the first parameter, for example:
+        pre: code
+            = '<script src="' + path + 'toggle.js"></script>\n'
+            = '<script>bgsu_toggle.setup("[data-toggle]", {closeOnClickOutside: true});</script>'
+        p By default, the #[code assignFocus] and #[code trapFocus] options are both set to #[code false].
         include ../includes/script.pug

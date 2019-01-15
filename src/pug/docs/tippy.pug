@@ -11,4 +11,19 @@ html(lang="en")
             ol.list-breadcrumb
                 li: a(href=path) Template Scripts v#{htmlWebpackPlugin.options.version}
                 li(aria-current="page") tippy.js
+        p.text-lead Opens stylized tooltips for elements on hover.
+        h2 Introduction
+        p While HTML provides the title attribute to show tooltips, they are only displayed after a short time hovering on an element. To make the tooltips more accessible, this component uses the #[a(href="https://www.npmjs.com/package/tippy.js") tippy.js] NPM package.
+        h2 Setup
+        p Include the #[a(href=path + "tippy.js") component javascript file] and setup any tooltips:
+        pre: code
+            = '<script src="' + path + 'tippy.js"></script>\n'
+            = '<script>bgsu_tippy.setup();</script>'
+        p By default, any element with a #[code title] attribute will use the value of that attribute as the content of a tooltip. A CSS selector can be specified as the first parameter to select specific elements to apply tooltips to. The #[code title] attribute must still exist on the selected elements to specify the content of the tooltip for each element.
+        h2 Configuration
+        p Configuration options may be passed to the second parameter as an object. The options that may be configured are described in the #[a(href="https://atomiks.github.io/tippyjs/#all-options") tippy.js All Options documentation]. Remember to specify a selector in the first parameter, for example:
+        pre: code
+            = '<script src="' + path + 'tippy.js"></script>\n'
+            = '<script>bgsu_tippy.setup("[title]", {placement: "left"});</script>'
+        p By default, the #[code arrow] option is set to #[code true], and the #[code placement] option is set to #[code "right"].
         include ../includes/script.pug
