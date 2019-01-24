@@ -234,30 +234,30 @@
             text-align: center;
             vertical-align: middle;
         }
-    }
 
-    & .icon-info::before {
-        border: 1px solid;
-        border-radius: calc(var(--lineHeightMedium) * 1em / 2);
-        content: "i";
-        font-family: var(--fontFamilyGeorgia);
-        font-size: calc(var(--lineHeightMedium) * 1em / 3);
-        font-style: italic;
-        height: calc(var(--lineHeightMedium) * 1em);
-        line-height: var(--lineHeightMedium);
-        width: calc(var(--lineHeightMedium) * 1em);
-    }
+        &.icon-info::before {
+            border: 1px solid;
+            border-radius: calc(var(--lineHeightMedium) * 1em / 2);
+            content: "i";
+            font-family: var(--fontFamilyGeorgia);
+            font-size: calc(var(--lineHeightMedium) * 1em / 3);
+            font-style: italic;
+            height: calc(var(--lineHeightMedium) * 1em);
+            line-height: var(--lineHeightMedium);
+            width: calc(var(--lineHeightMedium) * 1em);
+        }
 
-    & .icon-remove::before {
-        color: var(--colorRed);
-        content: "×";
-    }
+        &.icon-remove::before {
+            color: var(--colorRed);
+            content: "×";
+        }
 
-    & .icon-search::before {
-        background: url("../svg/search.svg") no-repeat;
-        content: "";
-        height: 12px;
-        width: 12px;
+        &.icon-search::before {
+            background: url("../svg/search.svg") no-repeat;
+            content: "";
+            height: 12px;
+            width: 12px;
+        }
     }
 
     & .img-thumb {
