@@ -10,6 +10,7 @@ module.exports = function(env, argv) {
         'facets',
         'flatpickr',
         'flickity',
+        'libcal',
         'libraryh3lp',
         'tablist',
         'template',

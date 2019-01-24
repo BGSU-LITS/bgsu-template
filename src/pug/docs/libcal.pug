@@ -1,0 +1,14 @@
+- const path = webpackConfig.output.publicPath
+
+doctype html
+html(lang="en")
+    head
+        meta(charset="utf-8")
+        title libcal.js - Template Scripts v#{htmlWebpackPlugin.options.version}
+    body
+        h1 libcal.js
+        nav(aria-label="breadcrumb")
+            ol.list-breadcrumb
+                li: a(href=path) Template Scripts v#{htmlWebpackPlugin.options.version}
+                li(aria-current="page") libcal.js
+        include ../includes/script.pug

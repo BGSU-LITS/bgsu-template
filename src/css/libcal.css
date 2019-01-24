@@ -1,0 +1,22 @@
+.libcal-title {
+    font-size: 1.4em;
+    color: #444;
+    line-height: 1.6em;
+    font-weight: 200;
+}
+
+.libcal-day {
+    font-weight: 700;
+    float: left;
+    width: 8em;
+}
+
+.libcal-desc {
+    float: right;
+}
+
+.libcal-time {
+    margin-bottom: 10px;
+    min-width: 8em;
+    overflow: hidden;
+}

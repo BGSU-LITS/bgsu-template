@@ -9,11 +9,13 @@
   },
   "dependencies": {
     "@accede-web/tablist": "^2.0.0",
+    "@ungap/url-search-params": "^0.1.2",
     "accessible-toggle": "^1.2.1",
     "core-js": "^2.5.4",
     "events-polyfill": "^2.0.5",
     "flatpickr": "^4.5.1",
     "flickity": "^2.1.1",
+    "jsonp": "^0.2.1",
     "tippy.js": "^3.0.0"
   },
   "devDependencies": {

@@ -1,0 +1,74 @@
+mixin desc(desc)
+  if desc
+    div(class=css['libcal-desc'])
+      =new DOMParser().parseFromString(desc, 'text/html').body.textContent
+
+mixin link(href, text)
+  if href
+    a(href=href)
+      strong=text
+  else
+    strong=text
+
+mixin times(times)
+  case times.status
+    when '24hours'
+      em Open 24 Hours
+    when 'ByApp'
+      em By Appointment
+    when 'closed'
+      em Closed
+    when 'text'
+      em=times.note
+    default
+      each hours in times.hours
+        div
+          =hours.from.replace(/[ap]m/g, ' $&') + " to "
+          =hours.to.replace(/[ap]m/g, ' $&')
+
+if config.mode === 'select'
+  form
+    label Select a Calendar
+      select(name="location")
+        if config.all
+          option(value="") All Locations - Weekly
+        each location in locations
+          option(
+            value=location.lid
+            selected=(location.lid == params.get('location'))
+          )
+            =location.name + (config.all ? " - Monthly" : "")
+    input(type="submit" value="View")
+else
+  each location in locations
+    if config.location
+      if location.lid === parseInt(config.location, 10)
+        if config.mode === 'week'
+          div(class=css["libcal-title"]) This Week's Hours
+          each day, name in location.weeks.shift()
+            div(class=css['libcal-day'])
+              =name
+            div(class=css['libcal-time'])
+              +times(day.times)
+        else
+          div(class=css["libcal-title"]) Today's Hours
+          div
+            +times(location.times)
+    else if config.all || location.category === 'library' || location.desc
+      div
+        div
+          if location.category === 'library'
+            +link(
+              config.link || location.url,
+              "Today's " + location.name + " Building Hours"
+            )
+          else
+            +link(location.url, location.name)
+        +desc(location.desc)
+        div(class=css['libcal-time'])
+          +times(location.times)
+  if config.link
+    +link(
+      config.link,
+      config.location ? "More Hours" : "All Library Hours"
+    )
