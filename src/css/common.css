@@ -557,6 +557,7 @@
         & .sidebar-right {
             background-color: var(--colorGray);
             border-radius: var(--widthSmall);
+            line-height: var(--lineHeightMedium);
             margin: 0 0 calc(var(--widthSmall) * 2) 0;
             padding: var(--widthSmall) calc(var(--widthSmall) * 2);
         }
