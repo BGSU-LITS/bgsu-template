@@ -10,7 +10,7 @@ mixin link(item)
 footer(class=css.footer)
     if config.gray && config.gray.text
         div(class=css.gray)
-            div(class=css.container)= config.gray.text
+            div(class=css.container)!= config.gray.text
     div(class=css.container)
         div
             p: img(
