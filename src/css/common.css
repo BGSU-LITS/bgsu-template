@@ -4,6 +4,7 @@
     box-sizing: border-box;
     color: var(--colorText);
     font-family: var(--fontFamilyVerb);
+    font-feature-settings: "tnum";
     font-size: var(--fontSizeMedium);
     line-height: var(--lineHeightLarge);
 
