@@ -1,0 +1,31 @@
+@import "includes/vars.css";
+
+.libraryh3lp_ask_results {
+    background: var(--colorWhite);
+    border-radius: var(--widthSmall);
+    box-sizing: border-box;
+    box-shadow: 0 1px 2px 0 var(--colorShadow);
+    color: var(--colorText);
+    font-size: calc(var(--fontSize) * 0.875);
+    line-height: var(--lineHeightMedium);
+    margin: var(--widthSmall) 0;
+    padding: 0;
+    position: absolute;
+    z-index: 999;
+}
+
+.libraryh3lp_ask_results:empty {
+    display: none;
+}
+
+.libraryh3lp_ask_results > a {
+    color: inherit;
+    display: block;
+    padding: var(--widthSmall) calc(var(--widthSmall) * 2);
+}
+
+.libraryh3lp_ask_results > a:focus,
+.libraryh3lp_ask_results > a:hover {
+    background: var(--colorGray);
+    color: var(--colorTextDark);
+}

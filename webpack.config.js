@@ -12,6 +12,7 @@ module.exports = function(env, argv) {
         'flickity',
         'libcal',
         'libraryh3lp',
+        'libraryh3lp_ask',
         'tablist',
         'template',
         'tippy',
