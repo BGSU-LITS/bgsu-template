@@ -14,8 +14,10 @@ export function setup(selector, name) {
 
             results.setAttribute('hidden', '');
             results.classList.add(css.libraryh3lp_ask_results);
+            results.id = css.libraryh3lp_ask_results;
 
             element.parentNode.insertBefore(results, element.nextSibling);
+            element.setAttribute('aria-controls', css.libraryh3lp_ask_results);
             coreInput(element);
 
             document.addEventListener('input.filter', function(event) {
