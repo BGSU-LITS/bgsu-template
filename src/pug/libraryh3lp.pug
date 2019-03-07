@@ -2,7 +2,7 @@ div(class=css.libraryh3lp id=css.libraryh3lp)
     div(class=css.head)
         = (config.title || "Ask Us!")
         a(
-            href="javascript:libraryh3lp.close(true)"
+            href="javascript:bgsu_libraryh3lp.close(true)"
             class=css.close
             aria-label="Close chat notifcation"
             style=(config.color ? "color:" + config.color : "")
@@ -28,7 +28,7 @@ div(class=css.libraryh3lp id=css.libraryh3lp)
         a(
             href=href + "?skin=" + (config.skin || 28594)
             onclick=(
-                "return libraryh3lp.open(this.href,'" +
+                "return bgsu_libraryh3lp.open(this.href,'" +
                 "width=" + (config.width || 300) + "," +
                 "height=" + (config.height || 400) + "')"
             )
@@ -37,7 +37,7 @@ div(class=css.libraryh3lp id=css.libraryh3lp)
         )
             = (config.accept || "Chat with us now")
         a(
-            href="javascript:libraryh3lp.close(true)"
+            href="javascript:bgsu_libraryh3lp.close(true)"
             style=(config.color ? "background:" + config.color : "")
         )
             = (config.decline || "No thanks")
