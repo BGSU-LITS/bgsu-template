@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', function() {
         site: {
             text: '{{ settings.template.site|raw }}',
             href: '{{ base_url() }}',
-            heading: {{ is_current_path() ? 'true' : 'false' }},
+            heading: {{ is_current_path('') ? 'true' : 'false' }},
         },
 {% if settings.template.menu %}
         menu: {{ settings.template.menu|json_encode()|raw }},
