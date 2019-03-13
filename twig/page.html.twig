@@ -16,45 +16,6 @@
 }}
 {% block styles %}
 {% endblock %}
-{% block scripts %}
-    {{
-    helper.scripts()
-    .add('https://lib.bgsu.edu/template/1.0.0/common.js')
-    .add('https://lib.bgsu.edu/template/1.0.0/template.js')
-    |raw
-}}
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    {% if not iframe %}
-    bgsu_template.setup({
-        body: true,
-        main: {
-            id: 'content'
-        },
-        unit: {
-            thin: 'University',
-            text: 'Libraries',
-            href: 'https://www.bgsu.edu/library/',
-        },
-        site: {
-            text: '{{ settings.template.site|raw }}',
-            href: '{{ base_url() }}',
-            heading: {{ is_current_path('') ? 'true' : 'false' }},
-        },
-{% if settings.template.menu %}
-        menu: {{ settings.template.menu|json_encode()|raw }},
-{% endif %}
-        help: {
-            heading: 'Contact Us',
-            text: 'libadmin@bgsu.edu',
-            href: 'mailto:libadmin@bgsu.edu'
-        }
-    });
-    {% endif %}
-    bgsu_common.setup();
-});
-</script>
-{% endblock %}
 </head>
 <body>
 <main id="content">
@@ -67,5 +28,45 @@ document.addEventListener('DOMContentLoaded', function() {
 {% endfor %}
 {% endblock %}
 </main>
+{% block scripts %}
+{{
+    helper.scripts()
+    .add('https://lib.bgsu.edu/template/1.0.0/common.js')
+    .add('https://lib.bgsu.edu/template/1.0.0/template.js')
+    |raw
+}}
+<script>
+{% if not iframe %}
+bgsu_template.setup({
+    body: true,
+    main: {
+        id: 'content'
+    },
+    unit: {
+        thin: 'University',
+        text: 'Libraries',
+        href: 'https://www.bgsu.edu/library/',
+    },
+{% if settings.template.site %}
+    site: {
+        text: '{{ settings.template.site|raw }}',
+        href: '{{ base_url() }}',
+        heading: {{ is_current_path('') ? 'true' : 'false' }},
+    },
+{% endif %}
+{% if settings.template.menu %}
+    menu: {{ settings.template.menu|json_encode()|raw }},
+{% endif %}
+    help: {
+        heading: 'Contact Us',
+        text: 'libadmin@bgsu.edu',
+        href: 'mailto:libadmin@bgsu.edu'
+    }
+});
+{% endif %}
+
+bgsu_common.setup();
+</script>
+{% endblock %}
 </body>
 </html>
