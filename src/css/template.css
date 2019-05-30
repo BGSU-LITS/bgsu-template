@@ -89,6 +89,8 @@
     & .nav .site {
         font-size: var(--fontSizeSite);
         font-weight: var(--fontWeight);
+        margin: 0;
+        padding: 0;
     }
 }
 
@@ -147,16 +149,13 @@
             min-height: var(--widthLarge);
             padding: calc(var(--widthMedium) / 2) 0;
 
-            & .site,
             & .menu {
                 margin: 0;
                 padding: 0;
-            }
 
-            & .menu {
                 & ul {
                     list-style: none;
-                    margin: 0 0 0 calc(var(--widthMedium) / -2);
+                    margin: 0 calc(var(--widthMedium) / -2);
                     padding: 0;
 
                     & > li {
@@ -222,6 +221,10 @@
                         font-size: var(--fontSizeSmall);
                         padding-bottom: 0;
                     }
+                }
+
+                & .user div {
+                    font-size: var(--fontSizeSmall);
                 }
 
                 & ul > li > ul {
@@ -376,6 +379,13 @@
         right: 0;
         width: 25%;
     }
+
+    .header .nav .menu .user {
+        bottom: 0;
+        position: absolute;
+        right: 0;
+        text-align: right;
+    }
 }
 
 @media screen and (--breakpointLarge) {
@@ -430,6 +440,7 @@
     .footer {
         border-top: 1px solid;
         font-size: var(--fontSizeSmall);
+        margin-top: var(--widthMedium);
         padding-top: var(--widthSmall);
 
         & p {

@@ -12,8 +12,6 @@ export function setup(
     Array.prototype.forEach.call(
         document.querySelectorAll(selector),
         function (element) {
-            element.classList.add('toggle-control');
-
             new Toggle(
                 document.getElementById(element.dataset.toggle),
                 config

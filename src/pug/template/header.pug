@@ -5,6 +5,7 @@ mixin link(item)
         button(
             aria-label=item.title
             data-toggle=item.toggle
+            class="toggle-control"
         )= item.text
 
         ul(id=item.toggle): each subitem in item.menu
@@ -46,7 +47,7 @@ header(class=css.header)
                     span(class=css.thin)= config.unit.thin + " "
                 = config.unit.text
 
-    if (config.site || config.menu || config.form)
+    if (config.site || config.menu || config.user || config.form)
         nav(class=css.nav aria-label="Site navigation")
             div(class=css.container)
                 if config.site
@@ -59,14 +60,23 @@ header(class=css.header)
                     button(
                         aria-label="Toggle site navigation"
                         data-toggle=css.menu
-                        class=css.toggle
+                        class=css.toggle + " toggle-control"
                     ) ☰
 
                     div(class=css.menu id=css.menu)
                         if config.menu
                             ul: each item, index in config.menu
                                 - item.toggle = css.menu + "_" + index
-                                li: +link(item)
+                                li(class=item.class): +link(item)
+
+                        if config.user
+                            div(class=css.user)
+                                if config.user.text
+                                    div= config.user.text
+
+                                if config.user.menu
+                                    ul: each item, index in config.user.menu
+                                        li: +link(item)
 
                         if config.form
                             +form(config.form)
