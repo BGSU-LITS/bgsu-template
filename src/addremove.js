@@ -1,16 +1,25 @@
+import css from './css/addremove.css';
+
 export function setup() {
-    document.querySelector('.form-item-add').removeAttribute('disabled');
+    document.body.classList.add(css.addremove);
 
     Array.prototype.forEach.call(
-        document.querySelectorAll('.form-item-disabled [name]'),
+        document.querySelectorAll('.addremove-add'),
+        function(element) {
+            element.removeAttribute('disabled');
+        }
+    );
+
+    Array.prototype.forEach.call(
+        document.querySelectorAll('.addremove-disabled [name]'),
         function (element) {
             element.setAttribute('disabled', '');
         }
     );
 
     document.addEventListener('click', function(event) {
-        if (event.target.classList.contains('form-item-add')) {
-            var closest = event.target.closest('.form-item');
+        if (event.target.classList.contains('addremove-add')) {
+            var closest = event.target.closest('.addremove');
             var final = closest.previousElementSibling;
             var clone = final.cloneNode(true);
 
@@ -42,12 +51,12 @@ export function setup() {
                 }
             );
 
-            final.classList.remove('form-item-disabled');
+            final.classList.remove('addremove-disabled');
             final.parentNode.insertBefore(clone, final.nextElementSibling);
         }
 
-        if (event.target.classList.contains('form-item-remove')) {
-            event.target.closest('.form-item').remove();
+        if (event.target.classList.contains('addremove-remove')) {
+            event.target.closest('.addremove').remove();
         }
     });
 }
