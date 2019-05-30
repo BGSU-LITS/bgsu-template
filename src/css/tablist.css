@@ -11,6 +11,7 @@
 
     & [role="tab"] {
         background: var(--colorGray);
+        border-left: 1px solid var(--colorWhite);
         border-top: var(--widthSmall) solid var(--colorWhite);
         color: var(--colorTextLight);
         cursor: pointer;
@@ -22,10 +23,16 @@
 
         &:hover {
             background: var(--colorGrayDark);
+            color: var(--colorTextLight);
+        }
+
+        &:first-child {
+            border-left: none;
         }
 
         &[aria-selected="true"] {
             background: var(--colorWhite);
+            border-left: none;
             border-top-color: var(--colorOrange);
             color: var(--colorText);
             cursor: default;
