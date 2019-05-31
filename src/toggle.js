@@ -1,4 +1,4 @@
-import 'core-js/fn/object/assign';
+import 'core-js/features/object/assign';
 import 'events-polyfill/src/constructors/Event.js';
 import Toggle from 'accessible-toggle';
 import css from './css/toggle.css';

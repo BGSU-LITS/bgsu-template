@@ -1,19 +1,19 @@
 @import "includes/vars.css";
 
 :global {
-    & .tippy-popper[x-placement^="top"] .tippy-tooltip .tippy-arrow {
+    & .tippy-tooltip[x-placement^="top"] .tippy-arrow {
         border-top-color: var(--colorBrownDark);
     }
 
-    & .tippy-popper[x-placement^="bottom"] .tippy-tooltip .tippy-arrow {
+    & .tippy-tooltip[x-placement^="bottom"] .tippy-arrow {
         border-bottom-color: var(--colorBrownDark);
     }
 
-    & .tippy-popper[x-placement^="left"] .tippy-tooltip .tippy-arrow {
+    & .tippy-tooltip[x-placement^="left"] .tippy-arrow {
         border-left-color: var(--colorBrownDark);
     }
 
-    & .tippy-popper[x-placement^="right"] .tippy-tooltip .tippy-arrow {
+    & .tippy-tooltip[x-placement^="right"] .tippy-arrow {
         border-right-color: var(--colorBrownDark);
     }
 
