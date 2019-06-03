@@ -1,4 +1,4 @@
-import Flickity from 'flickity';
+import Flickity from 'flickity-bg-lazyload';
 import 'flickity/css/flickity.css';
 import './css/flickity.css';
 

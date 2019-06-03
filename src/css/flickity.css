@@ -3,6 +3,10 @@
 :global {
     & .flickity-enabled {
         padding: 0 calc(var(--widthMedium) * 2);
+
+        & [aria-hidden="true"] {
+            display: block;
+        }
     }
 
     & .flickity-prev-next-button {
