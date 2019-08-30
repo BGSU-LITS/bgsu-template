@@ -1,7 +1,7 @@
 @import "includes/vars.css";
 
 .libraryh3lp {
-    background: var(--colorGray);
+    background: var(--colorGrayLight);
     border-radius: var(--widthSmall);
     bottom: var(--widthSmall);
     box-sizing: border-box;

@@ -43,7 +43,7 @@
 
 .header {
     & .skip {
-        background: var(--colorGray);
+        background: var(--colorGrayLight);
         left: 50%;
         padding: 0 var(--widthSmall);
         position: absolute;
@@ -110,7 +110,7 @@
     }
 
     .header {
-        background: var(--colorGray);
+        background: var(--colorGrayLight);
         color: var(--colorBrownDark);
 
         & [data-toggle],
@@ -281,7 +281,7 @@
         }
 
         & .gray {
-            background: var(--colorGray);
+            background: var(--colorGrayLight);
             color: var(--colorText);
             font-size: var(--fontSizeMedium);
             margin: calc(-1 * var(--widthMedium)) 0 var(--widthMedium) 0;
@@ -336,7 +336,7 @@
                     position: relative;
 
                     & > ul {
-                        background: var(--colorGray);
+                        background: var(--colorGrayLight);
                         border-radius: var(--widthSmall);
                         box-shadow: 0 1px 2px 0 var(--colorShadow);
                         color: var(--colorBrownDark);

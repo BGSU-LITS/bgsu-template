@@ -37,6 +37,6 @@
 
 .libraryh3lp_ask_results > a:focus,
 .libraryh3lp_ask_results > a:hover {
-    background: var(--colorGray);
+    background: var(--colorGrayLight);
     color: var(--colorTextDark);
 }

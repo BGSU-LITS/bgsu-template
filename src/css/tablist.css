@@ -10,7 +10,7 @@
     padding: calc(var(--widthMedium) / 2) 0;
 
     & [role="tab"] {
-        background: var(--colorGray);
+        background: var(--colorGrayLight);
         border-left: 1px solid var(--colorWhite);
         border-top: var(--widthSmall) solid var(--colorWhite);
         color: var(--colorTextLight);
