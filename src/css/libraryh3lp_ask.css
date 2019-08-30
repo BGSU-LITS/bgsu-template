@@ -1,5 +1,16 @@
 @import "includes/vars.css";
 
+.libraryh3lp_ask_cloud {
+    margin: 0 0 var(--widthMedium) 0;
+    text-align: center;
+}
+
+.libraryh3lp_ask_cloud a {
+    display: inline-block;
+    padding: var(--widthSmall);
+    vertical-align: middle;
+}
+
 .libraryh3lp_ask_results {
     background: var(--colorWhite);
     border-radius: var(--widthSmall);
