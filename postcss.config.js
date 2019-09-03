@@ -9,7 +9,6 @@ module.exports = {
                 },
                 'custom-properties': {
                     preserve: false,
-                    warnings: true,
                 },
                 'custom-media-queries': true,
                 'nesting-rules': true,

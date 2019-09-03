@@ -22,7 +22,7 @@ module.exports = function(env, argv) {
     var devtool = 'eval-source-map';
     var sourceMap = true;
     var outputPath = path.resolve(__dirname, 'dist');
-    var publicPath = '';
+    var publicPath = '/';
     var version = process.env.npm_package_version;
 
     if (argv.mode === 'production') {
@@ -69,18 +69,15 @@ module.exports = function(env, argv) {
                     test: /\.css$/,
                     exclude: /node_modules/,
                     use: [
-                        {
-                            loader: 'style-loader',
-                            options: {
-                                sourceMap: sourceMap,
-                            },
-                        },
+                        'style-loader',
                         {
                             loader: 'css-loader',
                             options: {
                                 importLoaders: 1,
-                                localIdentName: 'bgsu_[local]_[hash:base64:5]',
-                                modules: true,
+                                modules: {
+                                    localIdentName:
+                                        'bgsu_[local]_[hash:base64:5]',
+                                },
                                 sourceMap: sourceMap,
                             },
                         },
@@ -97,12 +94,7 @@ module.exports = function(env, argv) {
                     test: /\.css$/,
                     include: /node_modules/,
                     use: [
-                        {
-                            loader: 'style-loader',
-                            options: {
-                                sourceMap: sourceMap,
-                            },
-                        },
+                        'style-loader',
                         {
                             loader: 'css-loader',
                             options: {
