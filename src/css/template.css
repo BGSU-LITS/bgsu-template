@@ -87,20 +87,27 @@
     }
 
     & .nav .site {
+        color: inherit;
         font-size: var(--fontSizeSite);
         font-weight: var(--fontWeight);
+        line-height: var(--lineHeightMedium);
         margin: 0 var(--widthLarge) 0 0;
         padding: 0;
+        text-align: left;
     }
 }
 
 @media screen {
     .body {
+        background: inherit;
+        color: inherit;
         display: flex;
         flex-direction: column;
+        font: inherit;
         height: 100vh;
         margin: 0;
         padding: 0;
+        text-align: left;
     }
 
     .container {
