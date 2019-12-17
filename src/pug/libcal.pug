@@ -19,12 +19,14 @@ mixin times(times)
     when 'closed'
       em Closed
     when 'text'
-      em=times.note
     default
       each hours in times.hours
         div
           =hours.from.replace(/[ap]m/g, ' $&') + " to "
           =hours.to.replace(/[ap]m/g, ' $&')
+  if times.note
+    div
+      em=times.note
 
 if config.mode === 'select'
   form
