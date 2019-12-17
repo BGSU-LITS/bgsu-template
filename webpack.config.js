@@ -123,6 +123,7 @@ module.exports = function(env, argv) {
                     loader: 'file-loader',
                     options: {
                         name: '[name].[ext]',
+                        esModule: false,
                     },
                 },
 
@@ -131,6 +132,7 @@ module.exports = function(env, argv) {
                     loader: 'url-loader',
                     options: {
                         limit: 8192,
+                        esModule: false,
                     },
                 },
             ],

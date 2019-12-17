@@ -1,35 +1,14 @@
 @import "includes/vars.css";
 
 :global {
-    & .tippy-tooltip[x-placement^="top"] .tippy-arrow {
-        border-top-color: var(--colorBrownDark);
-    }
-
-    & .tippy-tooltip[x-placement^="bottom"] .tippy-arrow {
-        border-bottom-color: var(--colorBrownDark);
-    }
-
-    & .tippy-tooltip[x-placement^="left"] .tippy-arrow {
-        border-left-color: var(--colorBrownDark);
-    }
-
-    & .tippy-tooltip[x-placement^="right"] .tippy-arrow {
-        border-right-color: var(--colorBrownDark);
-    }
-
     & .tippy-tooltip {
-        background-color: var(--colorBrownDark);
-        color: var(--colorWhite);
         font-family: var(--fontFamilyVerb);
         font-size: var(--fontSizeMedium);
         line-height: var(--lineHeightSmall);
 
-        & .tippy-backdrop {
-            background-color: var(--colorBrownDark);
-        }
-
-        & .tippy-roundarrow {
-            fill: var(--colorBrownDark);
+        &.light-border-theme {
+            background: var(--colorWhite);
+            color: var(--colorText);
         }
     }
 }

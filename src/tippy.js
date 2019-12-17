@@ -1,10 +1,16 @@
 import tippy from 'tippy.js';
+import 'tippy.js/dist/tippy.css';
+import 'tippy.js/themes/light-border.css';
 import './css/tippy.css';
 
-export function setup(
-    selector = '[title]',
-    config = { arrow: true, placement: 'right' }
-) {
+export function setup(selector = null, config = {}) {
+    selector = selector || '[title]';
+
+    config = Object.assign(
+        { arrow: true, placement: 'right', theme: 'light-border' },
+        config
+    );
+
     Array.prototype.forEach.call(
         document.querySelectorAll(selector),
         function(element) {
