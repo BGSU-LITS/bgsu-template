@@ -1,12 +1,12 @@
 @import "includes/vars.css";
 
 .libraryh3lp {
-    background: var(--colorGrayLight);
+    background: var(--colorGray);
     border-radius: var(--widthSmall);
     bottom: var(--widthSmall);
     box-sizing: border-box;
     box-shadow: 0 1px 2px 0 var(--colorShadow);
-    color: var(--colorText);
+    color: var(--colorTextDark);
     font-family: var(--fontFamilyHelvetica);
     font-size: calc(var(--fontSize) * 0.875);
     min-height: calc(var(--widthLarge) * 5);
@@ -37,38 +37,46 @@
 
             &:hover,
             &:focus {
-                color: var(--colorOrange);
+                color: var(--colorBrown);
             }
         }
     }
 
     & > .body {
-        margin-bottom: var(--widthLarge);
+        margin-bottom: var(--widthSmall);
     }
 
     & > .foot {
-        bottom: var(--widthSmall);
-        left: var(--widthSmall);
-        position: absolute;
-        right: var(--widthSmall);
         text-align: center;
 
         & > :any-link {
-            background: var(--colorBrownLight);
-            border-radius: 1px;
+            background: var(--colorTextLight);
+            border: 1px solid var(--colorShadeDark);
+            border-radius: calc(var(--widthSmall) / 2);
             box-shadow:
-                inset
-                0 1px 0 var(--colorBrighten),
-                0 1px 2px var(--colorShadow);
+                inset 1px 1px 0 var(--colorShadeLight),
+                -1px -1px 0 var(--colorShade);
             color: var(--colorWhite);
+            cursor: pointer;
             display: inline-block;
-            margin: var(--widthSmall);
-            padding: calc(var(--widthSmall) / 2) calc(var(--widthSmall) * 2);
+            font: inherit;
+            line-height: var(--widthLarge);
+            margin: var(--widthSmall) calc(var(--widthSmall) * 2);
+            padding: 0 calc(var(--widthSmall) * 4);
             text-decoration: none;
+            text-align: center;
+            text-indent: 0;
+            vertical-align: baseline;
 
             &:hover,
             &:focus {
-                background: var(--colorOrange);
+                background: var(--colorText);
+                border: 1px solid var(--colorShadowLight);
+                box-shadow:
+                    inset 1px 1px 0 var(--colorShadeLight),
+                    inset -1px -1px 0 var(--colorShade),
+                    0 0 var(--widthSmall) var(--colorShadow);
+                color: var(--colorWhite);
             }
         }
     }
