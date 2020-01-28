@@ -208,8 +208,9 @@
         }
     }
 
-    & .button {
-        background: var(--colorGray);
+    & .button,
+    & .field {
+        background: var(--colorWhite);
         border: 1px solid var(--colorShadeDark);
         border-radius: calc(var(--widthSmall) / 2);
         box-shadow:
@@ -222,15 +223,20 @@
         line-height: var(--widthLarge);
         margin: var(--widthSmall) calc(var(--widthSmall) * 2);
         margin-left: 0;
-        padding: 0 calc(var(--widthSmall) * 4);
+        padding: 0 calc(var(--widthSmall) * 2);
+        text-align: left;
         text-decoration: none;
-        text-align: center;
         text-indent: 0;
         vertical-align: baseline;
 
         &[aria-hidden="true"] {
             display: none;
         }
+    }
+
+    & .button {
+        background: var(--colorGray);
+        text-align: center;
 
         &:hover,
         &:focus {
@@ -277,6 +283,16 @@
         }
     }
 
+    & .form-flex {
+        & .field {
+            width: 100%;
+        }
+
+        & label {
+            font-weight: var(--fontWeightBold);
+        }
+    }
+
     & .form-item {
         align-items: baseline;
         display: flex;
@@ -319,6 +335,22 @@
             color: var(--colorWhite);
             cursor: pointer;
             flex: 0 0 auto;
+        }
+    }
+
+    & .has-failure {
+        color: var(--colorRed);
+
+        & .field {
+            border-color: var(--colorRed);
+        }
+    }
+
+    & .has-success {
+        color: var(--colorGreen);
+
+        & .field {
+            border-color: var(--colorGreen);
         }
     }
 
@@ -816,6 +848,19 @@
 
 @media screen and (--breakpointSmall) {
     .common :global {
+        & .form-flex {
+            display: flex;
+
+            & > * {
+                flex: 1 1 0;
+                padding: calc(var(--widthMedium) / 2) 0;
+
+                & + * {
+                    padding-left: var(--widthMedium);
+                }
+            }
+        }
+
         & .form-item {
             & > * {
                 flex: 0 0 70%;
