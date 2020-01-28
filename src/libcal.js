@@ -11,7 +11,7 @@ export function setup(selector, iid, lid = 0, config = {}) {
     if (config.mode === 'week') {
         url += 'grid.php?format=json&systemTime=0&weeks=1&iid=' + iid;
     } else {
-        url += 'today.php?format=json&systemTime=1&iid=' + iid + '&lid=' + lid;
+        url += 'today.php?format=json&systemTime=0&iid=' + iid + '&lid=' + lid;
     }
 
     jsonp(url, function(err, data) {

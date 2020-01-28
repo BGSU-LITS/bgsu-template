@@ -19,11 +19,11 @@ mixin times(times)
     when 'closed'
       em Closed
     when 'text'
+      !=times.text
     default
-      each hours in times.hours
-        div
-          =hours.from.replace(/[ap]m/g, ' $&') + " to "
-          =hours.to.replace(/[ap]m/g, ' $&')
+      if times.hours
+        each hours in times.hours
+          div=hours.from + " - " + hours.to
   if times.note
     div
       em=times.note
