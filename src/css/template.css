@@ -329,6 +329,10 @@
                 line-height: inherit;
                 margin-top: 2px;
                 padding: 7px 14px;
+
+                & .thin {
+                    display: inline;
+                }
             }
         }
 
@@ -398,10 +402,6 @@
 @media screen and (--breakpointLarge) {
     .container {
         width: 1170px;
-    }
-
-    .header .top .unit .thin {
-        display: inline;
     }
 
     .header .nav .menu form {
