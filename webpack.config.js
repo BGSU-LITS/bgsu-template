@@ -139,6 +139,7 @@ module.exports = function(env, argv) {
         },
 
         output: {
+            devtoolNamespace: 'bgsu-template',
             library: 'bgsu_[name]',
             path: outputPath,
             publicPath: publicPath,
