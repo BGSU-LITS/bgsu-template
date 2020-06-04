@@ -1,8 +1,8 @@
 .libcal-title {
-    font-size: 1.4em;
+    font-size: 1.142857em;
     color: #444;
     line-height: 1.6em;
-    font-weight: 200;
+    font-weight: 700;
 }
 
 .libcal-day {
@@ -16,7 +16,7 @@
 }
 
 .libcal-time {
-    margin-bottom: 10px;
+    margin-bottom: 8px;
     min-width: 8em;
     overflow: hidden;
 

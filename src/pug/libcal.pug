@@ -3,9 +3,9 @@ mixin desc(desc)
     div(class=css['libcal-desc'])
       =new DOMParser().parseFromString(desc, 'text/html').body.textContent
 
-mixin link(href, text)
+mixin link(href, text, label)
   if href
-    a(href=href)
+    a(href=href aria-label=label)
       strong=text
   else
     strong=text
@@ -42,35 +42,52 @@ if config.mode === 'select'
             =location.name + (config.all ? " - Monthly" : "")
     input(type="submit" value="View")
 else
+  div(class=css["libcal-title"])
+    if config.title
+      if config.link && !config.mode
+        +link(config.link, config.title)
+      else
+        =config.title
+    else if config.mode === 'week'
+      ="This Week's Hours"
+    else
+      ="Today's Hours"
   each location in locations
     if config.location
       if location.lid === parseInt(config.location, 10)
         if config.mode === 'week'
-          div(class=css["libcal-title"]) This Week's Hours
           each day, name in location.weeks.shift()
             div(class=css['libcal-day'])
               =name
             div(class=css['libcal-time'])
               +times(day.times)
         else
-          div(class=css["libcal-title"]) Today's Hours
-          div
+          div(class=css['libcal-time'])
             +times(location.times)
+        if (!config.title || config.mode) && config.link
+          +link(
+            config.link, 
+            "More Hours", 
+            (config.title ? config.title + " - " : "") + 
+            "More " + location.name + " Hours"
+          )
     else if config.all || location.category === 'library' || location.desc
       div
-        div
-          if location.category === 'library'
+        if config.mode !== 'home' || location.category !== 'library'
+          div
             +link(
-              config.link || location.url,
-              "Today's " + location.name + " Building Hours"
+              location.url, 
+              location.name, 
+              (config.title 
+                ? config.title
+                : config.mode === 'week'
+                  ? "This Week's Hours"
+                  : "Today's Horus"
+              ) + " - " + location.name
             )
-          else
-            +link(location.url, location.name)
         +desc(location.desc)
-        div(class=css['libcal-time'])
-          +times(location.times)
-  if config.link
-    +link(
-      config.link,
-      config.location ? "More Hours" : "All Library Hours"
-    )
+        if location.times.status !== 'not-set'
+          div(class=css['libcal-time'])
+            +times(location.times)
+  if !config.location && (!config.title || config.mode) && config.link
+    +link(config.link, "All Library Hours")
