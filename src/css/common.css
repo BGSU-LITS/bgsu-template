@@ -32,7 +32,7 @@
         padding: 0 0 0 var(--widthSmall);
 
         & em {
-            background: var(--colorHighlight);
+            background: var(--colorYellow);
             color: var(--colorText);
             font-style: normal;
         }
@@ -69,6 +69,7 @@
     & h6,
     & legend {
         color: var(--colorTextDark);
+        font-family: inherit;
         font-weight: var(--fontWeightBold);
         line-height: var(--lineHeightSmall);
         margin: 0;
@@ -144,9 +145,9 @@
     }
 
     & :target {
-        background: var(--colorHighlight);
+        background: var(--colorYellow);
         border-radius: 1px;
-        box-shadow: 0 0 0 var(--widthSmall) var(--colorHighlight);
+        box-shadow: 0 0 0 var(--widthSmall) var(--colorYellow);
     }
 
     & .toggle-control[aria-controls] {
@@ -200,6 +201,11 @@
         &.alert-failure {
             background: var(--colorRedLight);
             border-color: var(--colorRed);
+        }
+
+        &.alert-warning {
+            background: var(--colorYellowLight);
+            border-color: var(--colorYellow);
         }
 
         &.alert-success {

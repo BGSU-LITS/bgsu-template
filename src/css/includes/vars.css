@@ -11,7 +11,6 @@
     --colorGrayLight: #f2f2f2;
     --colorGreen: #0c0;
     --colorGreenLight: #f2fff2;
-    --colorHighlight: #f9f6b8;
     --colorOrange: #ff7300;
     --colorOrangeBorder: #f26303;
     --colorOrangeDark: #ff5900;
@@ -27,7 +26,9 @@
     --colorTextDark: #333;
     --colorTextLight: #595959;
     --colorWhite: #fff;
-    --colorYellow: #ff0;
+    --colorYellow: #f9f6b8;
+    --colorYellowLight: #fffff2;
+    /* stylelint-disable value-keyword-case */
     --fontFamilyGeorgia:
         Georgia,
         Times,
@@ -49,6 +50,7 @@
     --fontFamilyVerb:
         Verb,
         var(--fontFamilyHelvetica);
+    /* stylelint-enable value-keyword-case */
     --fontSize: 16px;
     --fontSizeLarge: 1.25em;
     --fontSizeMedium: 0.875em;
