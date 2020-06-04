@@ -16,6 +16,14 @@ mixin link(item)
 mixin form(form)
     form(action=form.action method=form.method)
         div
+            if form.hidden
+                each value, name in form.hidden
+                    input(
+                        type="hidden"
+                        name=name
+                        value=value
+                    )
+
             input(
                 type="text"
                 name=form.name || "search"
