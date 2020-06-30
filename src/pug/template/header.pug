@@ -88,3 +88,8 @@ header(class=css.header)
 
                         if config.form
                             +form(config.form)
+
+    if config.note
+        div(class=css.note)
+            div(class=css.container)
+                !=config.note

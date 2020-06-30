@@ -259,6 +259,25 @@
         }
     }
 
+    .note {
+        background: var(--colorBrown);
+        color: var(--colorWhite);
+        font-size: var(--fontSizeMedium);
+        padding: var(--widthMedium) 0;
+
+        /* stylelint-disable no-descending-specificity */
+        & :any-link {
+            color: var(--colorOrange);
+            text-decoration: underline;
+
+            &:hover,
+            &:focus {
+                color: var(--colorOrangeLight);
+            }
+        }
+        /* stylelint-enable no-descending-specificity */
+    }
+
     .main {
         flex: 1 0 auto;
         margin: 0;
