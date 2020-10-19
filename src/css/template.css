@@ -285,7 +285,6 @@
 
         & > .container {
             margin: var(--widthMedium) auto;
-            padding: 0;
         }
     }
 
