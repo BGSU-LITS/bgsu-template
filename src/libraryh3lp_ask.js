@@ -1,5 +1,5 @@
 import jsonp from 'jsonp';
-import coreInput from '@nrk/core-input';
+import ariaAutocomplete from 'aria-autocomplete';
 
 import css from './css/libraryh3lp_ask.css';
 
@@ -51,48 +51,30 @@ export function setup(selector, name) {
     Array.prototype.forEach.call(
         document.querySelectorAll(selector),
         function(element) {
-            var debounce = function() {};
-            var results = document.createElement('div');
+            ariaAutocomplete(element, {
+                source: function(query, render) {
+                    jsonp(
+                        url + '/instant?q=' + query,
+                        function(err, data) {
+                            if (err) {
+                                render([]);
+                                return;
+                            }
 
-            results.setAttribute('hidden', '');
-            results.classList.add(css.libraryh3lp_ask_results);
-            results.id = css.libraryh3lp_ask_results;
-
-            element.parentNode.insertBefore(results, element.nextSibling);
-            element.setAttribute('aria-controls', css.libraryh3lp_ask_results);
-            coreInput(element);
-
-            document.addEventListener('input.filter', function(event) {
-                if (element !== event.target) {
-                    return;
-                }
-
-                event.preventDefault();
-                debounce();
-
-                var value = element.value.trim();
-
-                if (!value.length) {
-                    coreInput(element, '');
-                    return;
-                }
-
-                debounce = jsonp(
-                    url + '/instant?q=' + value,
-                    function(err, data) {
-                        if (err) {
-                            coreInput(element, '');
-                            return;
+                            render(data.map(function(item) {
+                                return {
+                                    value: url + '/questions/' + item.id,
+                                    label: item.question,
+                                };
+                            }));
                         }
-
-                        var items = data.map(function(item) {
-                            return '<a href="' + url + '/questions/' +
-                                item.id + '">' + item.html + '</a>';
-                        });
-
-                        coreInput(element, items.join(''));
-                    }
-                );
+                    );
+                },
+                onConfirm: function(selection) {
+                    document.location = selection.value;
+                },
+                cssNameSpace: css.libraryh3lp_ask,
+                wrapperClassName: css.libraryh3lp_ask,
             });
         }
     );

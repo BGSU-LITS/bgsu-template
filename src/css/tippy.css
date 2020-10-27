@@ -1,12 +1,12 @@
 @import "includes/vars.css";
 
 :global {
-    & .tippy-tooltip {
+    & .tippy-box {
         font-family: var(--fontFamilyVerb);
         font-size: var(--fontSizeMedium);
         line-height: var(--lineHeightSmall);
 
-        &.light-border-theme {
+        &[data-theme~="light-border"] {
             background: var(--colorWhite);
             color: var(--colorText);
         }

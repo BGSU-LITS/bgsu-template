@@ -1,7 +1,10 @@
 /* eslint-env node */
 const path = require('path');
 const webpack = require('webpack');
+const ESLintWebpackPlugin = require('eslint-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const ImageMinimizerWebpackPlugin = require('image-minimizer-webpack-plugin');
+const TerserWebpackPlugin = require('terser-webpack-plugin');
 
 module.exports = function(env, argv) {
     var entries = [
@@ -19,16 +22,14 @@ module.exports = function(env, argv) {
         'toggle'
     ];
 
-    var devtool = 'eval-source-map';
-    var sourceMap = true;
-    var outputPath = path.resolve(__dirname, 'dist');
-    var publicPath = '/';
+    var development = true;
+    var outputPath = path.resolve(__dirname, 'dist', 'dev');
+    var publicPath = './';
     var version = process.env.npm_package_version;
 
     if (argv.mode === 'production') {
-        devtool = 'source-map';
-        sourceMap = false;
-        outputPath = path.resolve(outputPath, version);
+        development = false;
+        outputPath = path.resolve(__dirname, 'dist', version);
         publicPath = 'https://lib.bgsu.edu/template/' + version + '/';
     }
 
@@ -36,10 +37,20 @@ module.exports = function(env, argv) {
         new webpack.BannerPlugin({
             banner: publicPath + 'docs/[name]/',
         }),
+        new ESLintWebpackPlugin({
+            files: 'src/',
+        }),
         new HtmlWebpackPlugin({
             inject: false,
             template: 'src/pug/index.pug',
             version: version,
+        }),
+        new ImageMinimizerWebpackPlugin({
+            minimizerOptions: {
+                plugins: [
+                    'svgo',
+                ],
+            },
         }),
     ];
 
@@ -59,7 +70,7 @@ module.exports = function(env, argv) {
     return {
         devServer: {},
 
-        devtool: devtool,
+        devtool: 'source-map',
 
         entry: entry,
 
@@ -78,13 +89,13 @@ module.exports = function(env, argv) {
                                     localIdentName:
                                         'bgsu_[local]_[hash:base64:5]',
                                 },
-                                sourceMap: sourceMap,
+                                sourceMap: development,
                             },
                         },
                         {
                             loader: 'postcss-loader',
                             options: {
-                                sourceMap: sourceMap,
+                                sourceMap: development,
                             },
                         },
                     ],
@@ -98,7 +109,7 @@ module.exports = function(env, argv) {
                         {
                             loader: 'css-loader',
                             options: {
-                                sourceMap: sourceMap,
+                                sourceMap: development,
                             },
                         },
                     ],
@@ -107,15 +118,17 @@ module.exports = function(env, argv) {
                 {
                     test: /\.js$/,
                     exclude: /node_modules/,
-                    use: [
-                        'babel-loader',
-                        'eslint-loader',
-                    ],
+                    loader: 'babel-loader',
                 },
 
                 {
                     test: /\.pug$/,
-                    loader: 'pug-loader',
+                    loader: 'pug3-loader',
+                },
+
+                {
+                    test: /\.svg$/,
+                    loader: 'svg-url-loader',
                 },
 
                 {
@@ -123,18 +136,22 @@ module.exports = function(env, argv) {
                     loader: 'file-loader',
                     options: {
                         name: '[name].[ext]',
-                        esModule: false,
                     },
                 },
+            ],
+        },
 
-                {
-                    test: /\.(gif|jpg|png|svg)$/,
-                    loader: 'url-loader',
-                    options: {
-                        limit: 8192,
-                        esModule: false,
+        optimization: {
+            minimize: !development,
+            minimizer: [
+                new TerserWebpackPlugin({
+                    extractComments: false,
+                    terserOptions: {
+                        compress: {
+                            passes: 2,
+                        },
                     },
-                },
+                })
             ],
         },
 
@@ -146,5 +163,11 @@ module.exports = function(env, argv) {
         },
 
         plugins: plugins,
+
+        resolve: {
+            fallback: {
+                path: false,
+            },
+        },
     };
 };
