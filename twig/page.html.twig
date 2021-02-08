@@ -1,40 +1,33 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-{{
-    helper.metas()
-    .add({charset: 'utf-8'})
-    .addName('viewport', 'width=device-width,initial-scale=1')
-    .addHttp('X-UA-Compatible', 'IE=edge')
-    |raw
-}}
-{{
-    helper.title(title)
-    .append(title and settings.template.site ? ' - ' : '')
-    .append(settings.template.site)
-    |raw
-}}
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>
+{{ title }}
+{{ title and settings.template.site ? ' - ' }}
+{{ settings.template.site }}
+{{ title or settings.template.site ? ' - ' }}
+BGSU University Libraries
+</title>
 {% block styles %}
 {% endblock %}
 </head>
 <body>
+{% block body %}
 <main id="content">
 {% block content %}
 {% if title %}
 <h1>{{ title }}</h1>
 {% endif %}
 {% for message in messages %}
-<div class="alert alert-{{message.level}}">{{message.message}}</div>
+<div class="alert alert-{{ message.level }}">{{ message.message }}</div>
 {% endfor %}
 {% endblock %}
 </main>
 {% block scripts %}
-{{
-    helper.scripts()
-    .add('https://lib.bgsu.edu/template/1.2.0/common.js')
-    .add('https://lib.bgsu.edu/template/1.2.0/template.js')
-    |raw
-}}
+<script src="https://lib.bgsu.edu/template/1.2.0/common.js"></script>
+<script src="https://lib.bgsu.edu/template/1.2.0/template.js"></script>
 <script>
 {% if not iframe %}
 bgsu_template.setup({
@@ -50,8 +43,8 @@ bgsu_template.setup({
 {% if settings.template.site %}
     site: {
         text: '{{ settings.template.site|raw }}',
-        href: '{{ base_url() }}',
-        heading: {{ is_current_path('') ? 'true' : 'false' }},
+        href: '{{ path_for('index') }}',
+        heading: {{ is_current_path('index') ? 'true' : 'false' }},
     },
 {% endif %}
 {% if settings.template.menu %}
@@ -67,6 +60,7 @@ bgsu_template.setup({
 
 bgsu_common.setup();
 </script>
+{% endblock %}
 {% endblock %}
 </body>
 </html>
