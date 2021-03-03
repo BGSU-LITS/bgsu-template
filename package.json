@@ -37,7 +37,7 @@
     "postcss-loader": "^5.0.0",
     "postcss-preset-env": "^6.7.0",
     "postcss-reporter": "^7.0.1",
-    "pug": "^3.0.0",
+    "pug": "^3.0.1",
     "pug3-loader": "^2.4.3",
     "style-loader": "^2.0.0",
     "stylelint": "^13.7.2",
