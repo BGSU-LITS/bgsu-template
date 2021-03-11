@@ -3,7 +3,6 @@ const path = require('path');
 const webpack = require('webpack');
 const ESLintWebpackPlugin = require('eslint-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const ImageMinimizerWebpackPlugin = require('image-minimizer-webpack-plugin');
 const TerserWebpackPlugin = require('terser-webpack-plugin');
 
 module.exports = function(env, argv) {
@@ -44,13 +43,6 @@ module.exports = function(env, argv) {
             inject: false,
             template: 'src/pug/index.pug',
             version: version,
-        }),
-        new ImageMinimizerWebpackPlugin({
-            minimizerOptions: {
-                plugins: [
-                    'svgo',
-                ],
-            },
         }),
     ];
 
@@ -128,7 +120,10 @@ module.exports = function(env, argv) {
 
                 {
                     test: /\.svg$/,
-                    loader: 'svg-url-loader',
+                    use: [
+                        'svg-url-loader',
+                        'svgo-loader',
+                    ],
                 },
 
                 {
