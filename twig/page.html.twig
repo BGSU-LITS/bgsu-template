@@ -10,6 +10,7 @@
 {{ title or settings.template.site ? ' - ' }}
 BGSU University Libraries
 </title>
+<script>(function(s){s.display='none';document.addEventListener('DOMContentLoaded',function(){s.display='block'})})(document.querySelector('html').style)</script>
 {% block styles %}
 {% endblock %}
 </head>
@@ -26,8 +27,8 @@ BGSU University Libraries
 {% endblock %}
 </main>
 {% block scripts %}
-<script src="/template/1.2.1/common.js"></script>
-<script src="/template/1.2.1/template.js"></script>
+<script src="/template/1.3.0/common.js"></script>
+<script src="/template/1.3.0/template.js"></script>
 <script>
 {% if not iframe %}
 bgsu_template.setup({
