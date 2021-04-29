@@ -8,7 +8,8 @@ mixin link(item)
             class="toggle-control"
         )= item.text
 
-        ul(id=item.toggle): each subitem in item.menu
+        ul(id=item.toggle): each subitem, index in item.menu
+            - subitem.toggle = item.toggle + "_" + index
             li: +link(subitem)
     else
         = item.text

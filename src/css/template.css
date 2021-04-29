@@ -418,11 +418,11 @@
                         box-shadow: 0 1px 2px 0 var(--colorShadow);
                         color: var(--colorBrownDark);
                         left: 0;
+                        margin-top: var(--widthSmall);
                         min-width: 200px;
                         padding: var(--widthSmall);
                         padding-left: var(--widthLarge);
                         position: absolute;
-                        top: var(--widthLarge);
                         width: 100%;
                         z-index: 2;
                     }

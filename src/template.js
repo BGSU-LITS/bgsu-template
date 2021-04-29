@@ -27,19 +27,25 @@ export function header(config, before) {
     }
 
     if (config.menu) {
-        for (var index = 0; index < config.menu.length; index++) {
-            if (config.menu[index].menu) {
-                toggle(
-                    '[data-toggle=' + css.menu + '_' + index + ']',
-                    {
-                        assignFocus: false,
-                        closeOnClickOutside: true,
-                        mediaQuery: '(min-width: 768px)',
-                        trapFocus: false,
-                    }
-                );
+        var toggleMenu = function(menu, prefix) {
+            for (var index = 0; index < menu.length; index++) {
+                if (menu[index].menu) {
+                    toggle(
+                        '[data-toggle=' + prefix + '_' + index + ']',
+                        {
+                            assignFocus: false,
+                            closeOnClickOutside: true,
+                            mediaQuery: '(min-width: 768px)',
+                            trapFocus: false,
+                        }
+                    );
+
+                    toggleMenu(menu[index].menu, prefix + '_' + index);
+                }
             }
-        }
+        };
+
+        toggleMenu(config.menu, css.menu);
     }
 }
 
