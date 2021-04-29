@@ -29,7 +29,7 @@ module.exports = function(env, argv) {
     if (argv.mode === 'production') {
         development = false;
         outputPath = path.resolve(__dirname, 'dist', version);
-        publicPath = '/template/' + version + '/';
+        publicPath = 'https://lib.bgsu.edu/template/' + version + '/';
     }
 
     var plugins = [
