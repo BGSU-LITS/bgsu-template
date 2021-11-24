@@ -65,7 +65,7 @@ header(class=css.header)
                     else
                         div(class=css.site): +link(config.site)
 
-                if config.menu || config.form
+                if config.menu || config.user || config.form
                     button(
                         aria-label="Toggle site navigation"
                         data-toggle=css.menu
