@@ -62,7 +62,7 @@ bgsu_template.setup({
             },
             {
                 text: 'Logout',
-                href: '{{ settings.auth.url }}logout?return={{ current_url(true)|url_encode }}',
+                href: '{{ settings.auth.url }}logout?return={{ current_path(true)|url_encode }}',
             },
         ],
     },
