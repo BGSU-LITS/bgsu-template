@@ -1,8 +1,9 @@
 /* eslint-env node */
 const path = require('path');
 const webpack = require('webpack');
-const ESLintWebpackPlugin = require('eslint-webpack-plugin');
+const EsLintWebpackPlugin = require('eslint-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniSvgDataUri = require('mini-svg-data-uri');
 const TerserWebpackPlugin = require('terser-webpack-plugin');
 
 module.exports = function(env, argv) {
@@ -36,7 +37,7 @@ module.exports = function(env, argv) {
         new webpack.BannerPlugin({
             banner: publicPath + 'docs/[name]/',
         }),
-        new ESLintWebpackPlugin({
+        new EsLintWebpackPlugin({
             files: 'src/',
         }),
         new HtmlWebpackPlugin({
@@ -120,18 +121,16 @@ module.exports = function(env, argv) {
 
                 {
                     test: /\.svg$/,
-                    use: [
-                        'svg-url-loader',
-                        'svgo-loader',
-                    ],
+                    loader: 'svgo-loader',
+                    type: 'asset/inline',
+                    generator: {
+                        dataUrl: content => MiniSvgDataUri(content.toString()),
+                    }
                 },
 
                 {
                     test: /\.(eot|ttf|woff|woff2)$/,
-                    loader: 'file-loader',
-                    options: {
-                        name: '[name].[ext]',
-                    },
+                    type: 'asset/resource',
                 },
             ],
         },
@@ -151,6 +150,7 @@ module.exports = function(env, argv) {
         },
 
         output: {
+            assetModuleFilename: '[base]',
             devtoolNamespace: 'bgsu-template',
             library: 'bgsu_[name]',
             path: outputPath,
