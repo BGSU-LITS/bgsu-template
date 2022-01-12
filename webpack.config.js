@@ -23,7 +23,7 @@ module.exports = function(env, argv) {
 
     var development = true;
     var outputPath = path.resolve(__dirname, 'dist', 'dev');
-    var publicPath = './';
+    var publicPath = '/';
     var version = process.env.npm_package_version;
 
     if (argv.mode === 'production') {
