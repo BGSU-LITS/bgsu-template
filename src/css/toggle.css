@@ -8,7 +8,7 @@
     background: transparent;
     border: 0;
     font: inherit;
-    line-height: var(--lineHeightMedium);
+    line-height: var(--line-height-medium);
     margin: 0;
     padding: 0;
     pointer-events: none;

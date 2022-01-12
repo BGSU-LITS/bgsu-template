@@ -1,45 +1,45 @@
 :root {
-    --colorBack: rgba(242, 242, 242, 0.85);
-    --colorBackHover: rgba(242, 242, 242, 0.95);
-    --colorBrighten: rgba(255, 255, 255, 0.1);
-    --colorBlack: #000;
-    --colorBrown: #4f2c1d;
-    --colorBrownDark: #2e271e;
-    --colorBrownLight: #7f3f2f;
-    --colorGray: #ddd;
-    --colorGrayDark: #ccc;
-    --colorGrayLight: #f2f2f2;
-    --colorGreen: #0c0;
-    --colorGreenLight: #f2fff2;
-    --colorOrange: #ff7300;
-    --colorOrangeBorder: #f26303;
-    --colorOrangeDark: #ff5900;
-    --colorOrangeLight: #ff9d4d;
-    --colorRed: #c00;
-    --colorRedLight: #fff2f2;
-    --colorShade: rgba(128, 128, 128, 0.1);
-    --colorShadeDark: rgba(128, 128, 128, 0.3);
-    --colorShadeLight: rgba(255, 255, 255, 0.1);
-    --colorShadow: rgba(0, 0, 0, 0.6);
-    --colorShadowLight: rgba(0, 0, 0, 0.3);
-    --colorText: #444;
-    --colorTextDark: #333;
-    --colorTextLight: #595959;
-    --colorWhite: #fff;
-    --colorYellow: #f9f6b8;
-    --colorYellowLight: #fffff2;
+    --color-back: rgb(242 242 242 / 85%);
+    --color-back-hover: rgb(242 242 242 / 95%);
+    --color-brighten: rgb(255 255 255 / 10%);
+    --color-black: #000;
+    --color-brown: #4f2c1d;
+    --color-brown-dark: #2e271e;
+    --color-brown-light: #7f3f2f;
+    --color-gray: #ddd;
+    --color-gray-dark: #ccc;
+    --color-gray-light: #f2f2f2;
+    --color-green: #0c0;
+    --color-green-light: #f2fff2;
+    --color-orange: #ff7300;
+    --color-orange-border: #f26303;
+    --color-orange-dark: #ff5900;
+    --color-orange-light: #ff9d4d;
+    --color-red: #c00;
+    --color-red-light: #fff2f2;
+    --color-shade: rgb(128 128 128 / 10%);
+    --color-shade-dark: rgb(128 128 128 / 30%);
+    --color-shade-light: rgb(255 255 255 / 10%);
+    --color-shadow: rgb(0 0 0 / 60%);
+    --color-shadow-light: rgb(0 0 0 / 30%);
+    --color-text: #444;
+    --color-text-dark: #333;
+    --color-text-light: #595959;
+    --color-white: #fff;
+    --color-yellow: #f9f6b8;
+    --color-yellow-light: #fffff2;
     /* stylelint-disable value-keyword-case */
-    --fontFamilyGeorgia:
+    --font-family-georgia:
         Georgia,
         Times,
         "Times New Roman",
         serif;
-    --fontFamilyHelvetica:
+    --font-family-helvetica:
         "Helvetica Neue",
         Helvetica,
         Arial,
         sans-serif;
-    --fontFamilyMonospace:
+    --font-family-monospace:
         SFMono-Regular,
         Menlo,
         Monaco,
@@ -47,30 +47,30 @@
         "Liberation Mono",
         "Courier New",
         monospace;
-    --fontFamilyVerb:
+    --font-family-verb:
         Verb,
-        var(--fontFamilyHelvetica);
+        var(--font-family-helvetica);
     /* stylelint-enable value-keyword-case */
-    --fontSize: 16px;
-    --fontSizeLarge: 1.25em;
-    --fontSizeMedium: 0.875em;
-    --fontSizeSite: 1.375em;
-    --fontSizeSmall: 0.75em;
-    --fontSizeUnit: 1.75em;
-    --fontWeight: 400;
-    --fontWeightBlack: 800;
-    --fontWeightBold: 700;
-    --fontWeightLight: 300;
-    --lineHeightLarge: 1.8;
-    --lineHeightMedium: 1.5;
-    --lineHeightSmall: 1.25;
-    --widthLarge: 32px;
-    --widthMedium: 20px;
-    --widthSmall: 4px;
+    --font-size: 16px;
+    --font-size-large: 1.25em;
+    --font-size-medium: 0.875em;
+    --font-size-site: 1.375em;
+    --font-size-small: 0.75em;
+    --font-size-unit: 1.75em;
+    --font-weight: 400;
+    --font-weight-black: 800;
+    --font-weight-bold: 700;
+    --font-weight-light: 300;
+    --line-height-large: 1.8;
+    --line-height-medium: 1.5;
+    --line-height-small: 1.25;
+    --width-large: 32px;
+    --width-medium: 20px;
+    --width-small: 4px;
 }
 
-@custom-media --breakpointLarge (width >= 1200px);
+@custom-media --breakpoint-large (width >= 1200px);
 
-@custom-media --breakpointMedium (width >= 980px);
+@custom-media --breakpoint-medium (width >= 980px);
 
-@custom-media --breakpointSmall (width >= 768px);
+@custom-media --breakpoint-small (width >= 768px);

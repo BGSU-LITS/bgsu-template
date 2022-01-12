@@ -2,11 +2,11 @@
 
 .common :global {
     box-sizing: border-box;
-    color: var(--colorText);
-    font-family: var(--fontFamilyVerb);
+    color: var(--color-text);
+    font-family: var(--font-family-verb);
     font-feature-settings: "tnum";
-    font-size: var(--fontSizeMedium);
-    line-height: var(--lineHeightLarge);
+    font-size: var(--font-size-medium);
+    line-height: var(--line-height-large);
 
     & *,
     & *::before,
@@ -15,32 +15,32 @@
     }
 
     & ::placeholder {
-        color: var(--colorTextLight);
+        color: var(--color-text-light);
     }
 
     & aside,
     & small {
-        font-size: var(--fontSizeMedium);
-        line-height: var(--lineHeightMedium);
+        font-size: var(--font-size-medium);
+        line-height: var(--line-height-medium);
     }
 
     & blockquote {
-        border-left: 1px solid var(--colorGrayDark);
-        color: var(--colorTextLight);
-        font-size: var(--fontSizeMedium);
-        margin: var(--widthSmall) var(--widthMedium);
-        padding: 0 0 0 var(--widthSmall);
+        border-left: 1px solid var(--color-gray-dark);
+        color: var(--color-text-light);
+        font-size: var(--font-size-medium);
+        margin: var(--width-small) var(--width-medium);
+        padding: 0 0 0 var(--width-small);
 
         & em {
-            background: var(--colorYellow);
-            color: var(--colorText);
+            background: var(--color-yellow);
+            color: var(--color-text);
             font-style: normal;
         }
     }
 
     & code {
-        font-family: var(--fontFamilyMonospace);
-        font-size: var(--fontSizeMedium);
+        font-family: var(--font-family-monospace);
+        font-size: var(--font-size-medium);
     }
 
     & fieldset {
@@ -50,14 +50,14 @@
         padding: 0;
 
         & fieldset {
-            margin: var(--widthSmall) 0;
+            margin: var(--width-small) 0;
         }
     }
 
     & p,
     & ol,
     & ul {
-        margin: 0 0 var(--widthMedium) 0;
+        margin: 0 0 var(--width-medium) 0;
         padding: 0;
     }
 
@@ -68,10 +68,10 @@
     & h5,
     & h6,
     & legend {
-        color: var(--colorTextDark);
+        color: var(--color-text-dark);
         font-family: inherit;
-        font-weight: var(--fontWeightBold);
-        line-height: var(--lineHeightSmall);
+        font-weight: var(--font-weight-bold);
+        line-height: var(--line-height-small);
         margin: 0;
         padding: 0;
         word-break: break-word;
@@ -80,12 +80,12 @@
 
     & h1 {
         font-size: 2.2em;
-        font-weight: var(--fontWeight);
+        font-weight: var(--font-weight);
     }
 
     & h2 {
         font-size: 2em;
-        font-weight: var(--fontWeight);
+        font-weight: var(--font-weight);
     }
 
     & h3,
@@ -124,8 +124,8 @@
     }
 
     & mark {
-        background: var(--colorYellow);
-        border-radius: var(--widthSmall);
+        background: var(--color-yellow);
+        border-radius: var(--width-small);
         color: inherit;
         padding: 0 1px;
     }
@@ -145,9 +145,9 @@
     }
 
     & :target {
-        background: var(--colorYellow);
+        background: var(--color-yellow);
         border-radius: 1px;
-        box-shadow: 0 0 0 var(--widthSmall) var(--colorYellow);
+        box-shadow: 0 0 0 var(--width-small) var(--color-yellow);
     }
 
     & .toggle-control[aria-controls] {
@@ -155,29 +155,29 @@
             border: 5px solid transparent;
             content: "";
             display: inline-block;
-            margin-right: var(--widthSmall);
+            margin-right: var(--width-small);
             position: relative;
         }
 
         &[aria-expanded="false"]::before {
-            border-left-color: var(--colorText);
+            border-left-color: var(--color-text);
             left: 3px;
         }
 
         &[aria-expanded="true"]::before {
-            border-top-color: var(--colorText);
+            border-top-color: var(--color-text);
             top: 3px;
         }
     }
 
     & :any-link,
     & .toggle-control {
-        color: var(--colorBrownLight);
+        color: var(--color-brown-light);
         text-decoration: underline;
 
         &:hover,
         &:focus {
-            color: var(--colorBrown);
+            color: var(--color-brown);
         }
 
         & h1,
@@ -191,45 +191,45 @@
     }
 
     & .alert {
-        background: var(--colorGrayLight);
-        border: 1px solid var(--colorGrayDark);
-        border-radius: var(--widthSmall);
-        line-height: var(--lineHeightMedium);
-        margin: 0 0 var(--widthMedium) 0;
-        padding: var(--widthSmall) calc(var(--widthSmall) * 2);
+        background: var(--color-gray-light);
+        border: 1px solid var(--color-gray-dark);
+        border-radius: var(--width-small);
+        line-height: var(--line-height-medium);
+        margin: 0 0 var(--width-medium) 0;
+        padding: var(--width-small) calc(var(--width-small) * 2);
 
         &.alert-failure {
-            background: var(--colorRedLight);
-            border-color: var(--colorRed);
+            background: var(--color-red-light);
+            border-color: var(--color-red);
         }
 
         &.alert-warning {
-            background: var(--colorYellowLight);
-            border-color: var(--colorYellow);
+            background: var(--color-yellow-light);
+            border-color: var(--color-yellow);
         }
 
         &.alert-success {
-            background: var(--colorGreenLight);
-            border-color: var(--colorGreen);
+            background: var(--color-green-light);
+            border-color: var(--color-green);
         }
     }
 
     & .button,
     & .field {
-        background: var(--colorWhite);
-        border: 1px solid var(--colorShadeDark);
-        border-radius: calc(var(--widthSmall) / 2);
+        background: var(--color-white);
+        border: 1px solid var(--color-shade-dark);
+        border-radius: calc(var(--width-small) / 2);
         box-shadow:
-            inset 1px 1px 0 var(--colorShadeLight),
-            -1px -1px 0 var(--colorShade);
-        color: var(--colorTextDark);
+            inset 1px 1px 0 var(--color-shade-light),
+            -1px -1px 0 var(--color-shade);
+        color: var(--color-text-dark);
         cursor: pointer;
         display: inline-block;
         font: inherit;
-        line-height: var(--widthLarge);
-        margin: var(--widthSmall) calc(var(--widthSmall) * 2);
+        line-height: var(--width-large);
+        margin: var(--width-small) calc(var(--width-small) * 2);
         margin-left: 0;
-        padding: 0 calc(var(--widthSmall) * 2);
+        padding: 0 calc(var(--width-small) * 2);
         text-align: left;
         text-decoration: none;
         text-indent: 0;
@@ -241,42 +241,42 @@
     }
 
     & .button {
-        background: var(--colorGray);
+        background: var(--color-gray);
         text-align: center;
 
         &:hover,
         &:focus {
-            background: var(--colorGrayDark);
-            border: 1px solid var(--colorShadowLight);
+            background: var(--color-gray-dark);
+            border: 1px solid var(--color-shadow-light);
             box-shadow:
-                inset 1px 1px 0 var(--colorShadeLight),
-                inset -1px -1px 0 var(--colorShade),
-                0 0 var(--widthSmall) var(--colorShadow);
-            color: var(--colorTextDark);
+                inset 1px 1px 0 var(--color-shade-light),
+                inset -1px -1px 0 var(--color-shade),
+                0 0 var(--width-small) var(--color-shadow);
+            color: var(--color-text-dark);
         }
 
         &.button-primary {
-            background: var(--colorBrownLight);
-            color: var(--colorWhite);
+            background: var(--color-brown-light);
+            color: var(--color-white);
 
             &:hover,
             &:focus {
-                background: var(--colorBrown);
-                color: var(--colorWhite);
+                background: var(--color-brown);
+                color: var(--color-white);
             }
         }
 
         &.button-medium {
-            line-height: calc(var(--widthSmall) * 6);
-            margin: 0 calc(var(--widthSmall) * 2) 0 0;
-            padding: 0 calc(var(--widthSmall) * 2);
+            line-height: calc(var(--width-small) * 6);
+            margin: 0 calc(var(--width-small) * 2) 0 0;
+            padding: 0 calc(var(--width-small) * 2);
         }
 
         &.button-small {
-            font-size: var(--fontSizeMedium);
-            line-height: var(--widthMedium);
-            margin: 0 var(--widthSmall) 0 0;
-            padding: 0 calc(var(--widthSmall) * 1.5);
+            font-size: var(--font-size-medium);
+            line-height: var(--width-medium);
+            margin: 0 var(--width-small) 0 0;
+            padding: 0 calc(var(--width-small) * 1.5);
             vertical-align: middle;
         }
     }
@@ -295,7 +295,7 @@
         }
 
         & label {
-            font-weight: var(--fontWeightBold);
+            font-weight: var(--font-weight-bold);
         }
     }
 
@@ -303,7 +303,7 @@
         align-items: baseline;
         display: flex;
         flex-wrap: wrap;
-        margin: var(--widthSmall) 0;
+        margin: var(--width-small) 0;
 
         & > * {
             flex: 0 0 100%;
@@ -312,7 +312,7 @@
         & > .form-item-row {
             & > * {
                 display: block;
-                margin: 0 var(--widthSmall) var(--widthSmall) 0;
+                margin: 0 var(--width-small) var(--width-small) 0;
 
                 &:last-child {
                     margin-right: 0;
@@ -327,47 +327,47 @@
 
         & > button,
         & > input {
-            background: var(--colorWhite);
-            border: 1px solid var(--colorBrown);
+            background: var(--color-white);
+            border: 1px solid var(--color-brown);
             color: inherit;
             flex: 1 0 auto;
             font: inherit;
-            margin: var(--widthSmall) 0;
-            padding: 0 var(--widthSmall);
+            margin: var(--width-small) 0;
+            padding: 0 var(--width-small);
         }
 
         & > button {
-            background: var(--colorBrown);
-            color: var(--colorWhite);
+            background: var(--color-brown);
+            color: var(--color-white);
             cursor: pointer;
             flex: 0 0 auto;
         }
     }
 
     & .has-failure {
-        color: var(--colorRed);
+        color: var(--color-red);
 
         & .field {
-            border-color: var(--colorRed);
+            border-color: var(--color-red);
         }
     }
 
     & .has-success {
-        color: var(--colorGreen);
+        color: var(--color-green);
 
         & .field {
-            border-color: var(--colorGreen);
+            border-color: var(--color-green);
         }
     }
 
     & .icon {
-        margin: 0 var(--widthSmall);
+        margin: 0 var(--width-small);
 
         &::before {
             display: inline-block;
-            font-size: var(--fontSizeLarge);
+            font-size: var(--font-size-large);
             font-style: normal;
-            font-weight: var(--fontWeightBold);
+            font-weight: var(--font-weight-bold);
             line-height: 0;
             text-align: center;
             vertical-align: middle;
@@ -375,19 +375,19 @@
 
         &.icon-info::before {
             border: 1px solid;
-            border-radius: calc(var(--lineHeightMedium) * 1em / 2);
+            border-radius: calc(var(--line-height-medium) * 1em / 2);
             content: "i";
-            font-family: var(--fontFamilyGeorgia);
-            font-size: calc(var(--lineHeightMedium) * 1em / 3);
+            font-family: var(--font-family-georgia);
+            font-size: calc(var(--line-height-medium) * 1em / 3);
             font-style: italic;
-            height: calc(var(--lineHeightMedium) * 1em);
-            line-height: var(--lineHeightMedium);
+            height: calc(var(--line-height-medium) * 1em);
+            line-height: var(--line-height-medium);
             margin-bottom: 2px;
-            width: calc(var(--lineHeightMedium) * 1em);
+            width: calc(var(--line-height-medium) * 1em);
         }
 
         &.icon-remove::before {
-            color: var(--colorRed);
+            color: var(--color-red);
             content: "×";
         }
 
@@ -400,11 +400,11 @@
     }
 
     & .img-thumb {
-        border: var(--widthSmall) solid;
-        border-radius: var(--widthSmall);
+        border: var(--width-small) solid;
+        border-radius: var(--width-small);
         height: 0;
         padding-top: 100%;
-        margin-bottom: var(--widthSmall);
+        margin-bottom: var(--width-small);
         overflow: hidden;
         position: relative;
         width: 100%;
@@ -419,21 +419,21 @@
     }
 
     & .link-block {
-        border: 1px solid var(--colorBrownLight);
-        border-radius: var(--widthSmall);
-        color: var(--colorText);
+        border: 1px solid var(--color-brown-light);
+        border-radius: var(--width-small);
+        color: var(--color-text);
         display: inline-block;
-        line-height: var(--lineHeightMedium);
-        margin: 0 0 var(--widthMedium) 0;
-        padding: var(--widthSmall) calc(var(--widthSmall) * 2);
+        line-height: var(--line-height-medium);
+        margin: 0 0 var(--width-medium) 0;
+        padding: var(--width-small) calc(var(--width-small) * 2);
         text-decoration: none;
         width: 100%;
 
         &:focus,
         &:hover {
-            background: var(--colorGray);
-            border-color: var(--colorOrange);
-            color: var(--colorTextDark);
+            background: var(--color-gray);
+            border-color: var(--color-orange);
+            color: var(--color-text-dark);
         }
     }
 
@@ -449,21 +449,21 @@
     }
 
     & .list-breadcrumb {
-        color: var(--colorTextLight);
-        font-size: var(--fontSizeMedium);
-        line-height: var(--lineHeightMedium);
-        margin: 0 0 var(--widthMedium) 0;
+        color: var(--color-text-light);
+        font-size: var(--font-size-medium);
+        line-height: var(--line-height-medium);
+        margin: 0 0 var(--width-medium) 0;
 
         & > li {
-            font-weight: var(--fontWeight);
+            font-weight: var(--font-weight);
             word-break: break-word;
 
             &::after {
                 border-left: 1px solid;
                 content: "";
                 float: right;
-                height: var(--fontSizeMedium);
-                margin: var(--widthSmall) calc(var(--widthSmall) * 2);
+                height: var(--font-size-medium);
+                margin: var(--width-small) calc(var(--width-small) * 2);
                 transform: rotate(15deg);
                 vertical-align: middle;
             }
@@ -475,25 +475,25 @@
     }
 
     & .list-inline > li + li {
-        padding-left: var(--widthSmall);
+        padding-left: var(--width-small);
     }
 
     & .list-item-toggle {
         list-style: none;
 
         & > .toggle-control[aria-controls]::before {
-            margin: 0 calc(var(--widthSmall) * 2) 0 -18px;
+            margin: 0 calc(var(--width-small) * 2) 0 -18px;
         }
     }
 
     & .nav-page {
-        background: var(--colorGrayLight);
-        border-radius: var(--widthSmall);
+        background: var(--color-gray-light);
+        border-radius: var(--width-small);
         clear: both;
         display: flex;
         flex-wrap: wrap;
-        line-height: calc(var(--widthLarge) - var(--widthSmall) * 2);
-        margin: 0 0 calc(var(--widthSmall) * 2) 0;
+        line-height: calc(var(--width-large) - var(--width-small) * 2);
+        margin: 0 0 calc(var(--width-small) * 2) 0;
         padding: 0;
 
         & > :first-child {
@@ -502,12 +502,12 @@
 
         & a {
             display: inline-block;
-            padding: var(--widthSmall);
+            padding: var(--width-small);
 
             &::before,
             &::after {
-                font-size: var(--fontSizeLarge);
-                font-weight: var(--fontWeightLight);
+                font-size: var(--font-size-large);
+                font-weight: var(--font-weight-light);
                 line-height: 1;
             }
         }
@@ -533,7 +533,7 @@
             background-size: cover;
             display: inline-block;
             height: 150px;
-            margin-top: var(--widthSmall);
+            margin-top: var(--width-small);
             vertical-align: bottom;
             width: 200px;
 
@@ -544,11 +544,11 @@
         }
 
         &.nav-page-large {
-            font-size: var(--fontSizeLarge);
-            padding: calc(var(--widthSmall) * 2);
+            font-size: var(--font-size-large);
+            padding: calc(var(--width-small) * 2);
 
             & .nav-page-image {
-                margin-top: calc(var(--widthSmall) * 2);
+                margin-top: calc(var(--width-small) * 2);
             }
         }
     }
@@ -557,25 +557,25 @@
         display: flex;
         flex-direction: column;
         margin: 0;
-        padding: calc(var(--widthMedium) / 2) 0;
+        padding: calc(var(--width-medium) / 2) 0;
 
         & a {
-            background: var(--colorGray);
-            border-left: 1px solid var(--colorWhite);
-            border-top: var(--widthSmall) solid var(--colorWhite);
-            color: var(--colorText);
+            background: var(--color-gray);
+            border-left: 1px solid var(--color-white);
+            border-top: var(--width-small) solid var(--color-white);
+            color: var(--color-text);
             cursor: pointer;
             flex: 1 0 auto;
-            font-weight: var(--fontWeightBold);
-            line-height: var(--lineHeightMedium);
-            padding: calc(var(--widthMedium) / 2) 0;
+            font-weight: var(--font-weight-bold);
+            line-height: var(--line-height-medium);
+            padding: calc(var(--width-medium) / 2) 0;
             text-align: center;
             text-decoration: none;
             z-index: 1;
 
             &:hover {
-                background: var(--colorGrayDark);
-                color: var(--colorTextDark);
+                background: var(--color-gray-dark);
+                color: var(--color-text-dark);
             }
 
             &:first-child {
@@ -584,17 +584,17 @@
         }
 
         & [aria-current="page"] {
-            background: var(--colorWhite);
+            background: var(--color-white);
             border-left: none;
-            border-top-color: var(--colorOrange);
+            border-top-color: var(--color-orange);
             box-shadow:
-                0 calc(var(--widthMedium) / 2) 0 0 var(--colorWhite),
-                0 calc(var(--widthMedium) / -2) 0 0 var(--colorWhite),
-                var(--widthSmall) 0 calc(var(--widthMedium) / 2)
-                calc(var(--widthSmall) * -1) var(--colorShadowLight),
-                calc(var(--widthSmall) * -1) 0 calc(var(--widthMedium) / 2)
-                calc(var(--widthSmall) * -1) var(--colorShadowLight);
-            color: var(--colorTextDark);
+                0 calc(var(--width-medium) / 2) 0 0 var(--color-white),
+                0 calc(var(--width-medium) / -2) 0 0 var(--color-white),
+                var(--width-small) 0 calc(var(--width-medium) / 2)
+                calc(var(--width-small) * -1) var(--color-shadow-light),
+                calc(var(--width-small) * -1) 0 calc(var(--width-medium) / 2)
+                calc(var(--width-small) * -1) var(--color-shadow-light);
+            color: var(--color-text-dark);
             cursor: default;
             z-index: 0;
 
@@ -607,11 +607,11 @@
     & .records .record a {
         display: block;
         margin: 0;
-        padding: 0 0 var(--widthMedium) 0;
+        padding: 0 0 var(--width-medium) 0;
         text-decoration: none;
 
         & .record-description {
-            color: var(--colorText);
+            color: var(--color-text);
         }
 
         & .record-title {
@@ -637,12 +637,12 @@
         }
 
         & blockquote p + p {
-            margin-top: var(--widthSmall);
+            margin-top: var(--width-small);
         }
     }
 
     & .records-gallery {
-        margin: 0 calc(var(--widthSmall) * -2);
+        margin: 0 calc(var(--width-small) * -2);
         overflow: auto;
 
         & .record {
@@ -651,46 +651,46 @@
             width: 100%;
 
             & a {
-                border: var(--widthSmall) solid var(--colorWhite);
+                border: var(--width-small) solid var(--color-white);
                 display: block;
-                margin: 0 var(--widthSmall);
-                margin-bottom: calc(var(--widthSmall) * 2);
-                min-height: calc(50px + (var(--widthSmall) * 2));
+                margin: 0 var(--width-small);
+                margin-bottom: calc(var(--width-small) * 2);
+                min-height: calc(50px + (var(--width-small) * 2));
                 padding: 0;
                 position: relative;
                 transition: all 1s;
 
                 & .record-details {
-                    background: var(--colorBack);
+                    background: var(--color-back);
                     bottom: 0;
                     left: 0;
                     margin: 0;
                     max-height: 100%;
                     min-height: 50px;
                     overflow: hidden;
-                    padding: var(--widthSmall);
+                    padding: var(--width-small);
                     position: absolute;
                     right: 0;
                     transition: all 1s;
                 }
 
                 & .record-description {
-                    color: var(--colorTextDark);
-                    line-height: var(--lineHeightMedium);
+                    color: var(--color-text-dark);
+                    line-height: var(--line-height-medium);
                     height: 0;
                     opacity: 0;
                     transition: all 1s;
                 }
 
                 & .record-title {
-                    color: var(--colorTextDark);
-                    font-size: var(--fontSizeLarge);
-                    font-weight: var(--fontWeightBold);
+                    color: var(--color-text-dark);
+                    font-size: var(--font-size-large);
+                    font-weight: var(--font-weight-bold);
                     text-decoration: none;
                 }
 
                 & .record-image {
-                    background-color: var(--colorGrayDark);
+                    background-color: var(--color-gray-dark);
                     background-position: 50% 25%;
                     background-size: cover;
                     height: 300px;
@@ -707,11 +707,11 @@
 
                 &:hover,
                 &:focus {
-                    border-color: var(--colorOrange);
+                    border-color: var(--color-orange);
                     outline: none;
 
                     & .record-details {
-                        background: var(--colorBackHover);
+                        background: var(--color-back-hover);
                         min-height: 100%;
                     }
 
@@ -763,17 +763,17 @@
         position: relative;
 
         & .sidebar-image {
-            margin: var(--widthSmall) 0;
+            margin: var(--width-small) 0;
             max-width: 100%;
         }
 
         & .sidebar-nav {
-            border-radius: var(--widthSmall);
-            margin: var(--widthSmall) 0;
-            padding: var(--widthSmall) 0;
+            border-radius: var(--width-small);
+            margin: var(--width-small) 0;
+            padding: var(--width-small) 0;
 
             &.sidebar-nav-background {
-                background: var(--colorBack);
+                background: var(--color-back);
             }
 
             & > ol,
@@ -783,18 +783,18 @@
         }
 
         & .sidebar-title {
-            font-size: var(--fontSizeLarge);
-            line-height: var(--lineHeightMedium);
-            font-weight: var(--fontWeightBold);
+            font-size: var(--font-size-large);
+            line-height: var(--line-height-medium);
+            font-weight: var(--font-weight-bold);
         }
 
         & .sidebar-left,
         & .sidebar-right {
-            background-color: var(--colorGrayLight);
-            border-radius: var(--widthSmall);
-            line-height: var(--lineHeightMedium);
-            margin: 0 0 calc(var(--widthSmall) * 2) 0;
-            padding: var(--widthSmall) calc(var(--widthSmall) * 2);
+            background-color: var(--color-gray-light);
+            border-radius: var(--width-small);
+            line-height: var(--line-height-medium);
+            margin: 0 0 calc(var(--width-small) * 2) 0;
+            padding: var(--width-small) calc(var(--width-small) * 2);
 
             & > :last-child {
                 margin-bottom: 0;
@@ -804,20 +804,20 @@
 
     & .table {
         border-collapse: collapse;
-        line-height: var(--lineHeightMedium);
-        margin: 0 0 calc(var(--widthSmall) * 2) 0;
+        line-height: var(--line-height-medium);
+        margin: 0 0 calc(var(--width-small) * 2) 0;
         padding: 0;
 
         & td,
         & th {
-            border-bottom: 1px solid var(--colorGrayLight);
+            border-bottom: 1px solid var(--color-gray-light);
             padding: 2px 1em 2px 0;
             text-align: left;
             vertical-align: top;
         }
 
         & th {
-            font-weight: var(--fontWeightBold);
+            font-weight: var(--font-weight-bold);
         }
 
         & td:last-child,
@@ -831,8 +831,8 @@
     }
 
     & .text-lead {
-        font-size: var(--fontSizeSite);
-        line-height: var(--lineHeightMedium);
+        font-size: var(--font-size-site);
+        line-height: var(--line-height-medium);
     }
 
     & .text-left {
@@ -840,7 +840,7 @@
     }
 
     & .text-muted {
-        color: var(--colorTextLight);
+        color: var(--color-text-light);
     }
 
     & .text-nowrap {
@@ -852,17 +852,17 @@
     }
 }
 
-@media screen and (--breakpointSmall) {
+@media screen and (--breakpoint-small) {
     .common :global {
         & .form-flex {
             display: flex;
 
             & > * {
                 flex: 1 1 0;
-                padding: calc(var(--widthMedium) / 2) 0;
+                padding: calc(var(--width-medium) / 2) 0;
 
                 & + * {
-                    padding-left: var(--widthMedium);
+                    padding-left: var(--width-medium);
                 }
             }
         }
@@ -877,7 +877,7 @@
             & > .form-item-before {
                 flex: 0 0 15%;
                 margin: 0;
-                padding-right: calc(var(--widthSmall) * 2);
+                padding-right: calc(var(--width-small) * 2);
                 text-align: right;
 
                 & + * {
@@ -897,7 +897,7 @@
             & > .form-item-after {
                 flex: 0 0 15%;
                 margin: 0;
-                padding-left: calc(var(--widthSmall) * 2);
+                padding-left: calc(var(--width-small) * 2);
                 text-align: left;
             }
         }
@@ -907,7 +907,7 @@
 
             & .record-details {
                 flex: 1 1 auto;
-                margin-right: var(--widthSmall);
+                margin-right: var(--width-small);
             }
 
             & .record-image {
@@ -928,7 +928,7 @@
     }
 }
 
-@media screen and (--breakpointMedium) {
+@media screen and (--breakpoint-medium) {
     .common :global {
         & .nav-page {
             flex-wrap: nowrap;
@@ -989,24 +989,24 @@
             }
 
             & > .sidebar-left {
-                margin-right: calc(var(--widthSmall) * 4);
+                margin-right: calc(var(--width-small) * 4);
                 order: 0;
             }
 
             & > .sidebar-right {
-                margin-left: calc(var(--widthSmall) * 4);
+                margin-left: calc(var(--width-small) * 4);
                 order: 2;
             }
 
             & .sidebar > .sidebar-left,
             & .sidebar > .sidebar-right {
-                flex: 0 0 calc(33% - calc(var(--widthSmall) * 2));
+                flex: 0 0 calc(33% - calc(var(--width-small) * 2));
             }
         }
     }
 }
 
-@media screen and (--breakpointLarge) {
+@media screen and (--breakpoint-large) {
     .common :global {
         & .records-gallery {
             & .record {
@@ -1027,7 +1027,7 @@
 
             & .sidebar > .sidebar-left,
             & .sidebar > .sidebar-right {
-                flex: 0 0 calc(25% - calc(var(--widthSmall) * 3));
+                flex: 0 0 calc(25% - calc(var(--width-small) * 3));
             }
         }
     }
@@ -1035,7 +1035,7 @@
 
 @media print {
     .common :global {
-        color: var(--colorBlack);
+        color: var(--color-black);
 
         & :any-link {
             color: inherit;

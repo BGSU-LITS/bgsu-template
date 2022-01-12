@@ -2,7 +2,7 @@
 
 :global {
     & .flickity-enabled {
-        padding: 0 calc(var(--widthMedium) * 2);
+        padding: 0 calc(var(--width-medium) * 2);
 
         & [aria-hidden="true"] {
             display: block;
@@ -11,8 +11,8 @@
 
     & .flickity-prev-next-button {
         background: transparent;
-        height: calc(var(--widthMedium) * 2);
-        width: calc(var(--widthMedium) * 2);
+        height: calc(var(--width-medium) * 2);
+        width: calc(var(--width-medium) * 2);
 
         &:focus {
             box-shadow: none;
@@ -25,11 +25,11 @@
         }
 
         &.previous {
-            left: var(--widthSmall);
+            left: var(--width-small);
         }
 
         &.next {
-            right: var(--widthSmall);
+            right: var(--width-small);
         }
 
         & .flickity-button-icon {
@@ -39,7 +39,7 @@
             width: 100%;
 
             & .arrow {
-                fill: var(--colorOrange);
+                fill: var(--color-orange);
             }
         }
     }

@@ -1,4 +1,5 @@
 .libcal-title {
+    /* stylelint-disable-next-line number-max-precision */
     font-size: 1.142857em;
     font-weight: 700;
     line-height: 1.6em;

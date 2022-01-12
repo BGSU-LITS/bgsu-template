@@ -1,20 +1,20 @@
 @import "includes/vars.css";
 
 .libraryh3lp {
-    background: var(--colorGray);
-    border-radius: var(--widthSmall);
-    bottom: var(--widthSmall);
+    background: var(--color-gray);
+    border-radius: var(--width-small);
+    bottom: var(--width-small);
     box-sizing: border-box;
-    box-shadow: 0 1px 2px 0 var(--colorShadow);
-    color: var(--colorTextDark);
-    font-family: var(--fontFamilyHelvetica);
-    font-size: calc(var(--fontSize) * 0.875);
-    min-height: calc(var(--widthLarge) * 5);
-    line-height: var(--lineHeightMedium);
-    padding: calc(var(--widthSmall) * 2);
+    box-shadow: 0 1px 2px 0 var(--color-shadow);
+    color: var(--color-text-dark);
+    font-family: var(--font-family-helvetica);
+    font-size: calc(var(--font-size) * 0.875);
+    min-height: calc(var(--width-large) * 5);
+    line-height: var(--line-height-medium);
+    padding: calc(var(--width-small) * 2);
     position: fixed;
-    right: var(--widthSmall);
-    width: calc(var(--widthLarge) * 10);
+    right: var(--width-small);
+    width: calc(var(--width-large) * 10);
     z-index: 999;
 
     & img {
@@ -22,47 +22,47 @@
     }
 
     & > .head {
-        font-weight: var(--fontWeightBold);
-        margin: 0 var(--widthMedium) 0 0;
+        font-weight: var(--font-weight-bold);
+        margin: 0 var(--width-medium) 0 0;
 
         & > .close {
-            color: var(--colorBrownLight);
+            color: var(--color-brown-light);
             font-size: 2em;
-            font-weight: var(--fontWeight);
+            font-weight: var(--font-weight);
             line-height: 1;
             position: absolute;
-            right: var(--widthSmall);
+            right: var(--width-small);
             text-decoration: none;
             top: 0;
 
             &:hover,
             &:focus {
-                color: var(--colorBrown);
+                color: var(--color-brown);
             }
         }
     }
 
     & > .body {
-        margin-bottom: var(--widthSmall);
+        margin-bottom: var(--width-small);
     }
 
     & > .foot {
         text-align: center;
 
         & > :any-link {
-            background: var(--colorTextLight);
-            border: 1px solid var(--colorShadeDark);
-            border-radius: calc(var(--widthSmall) / 2);
+            background: var(--color-text-light);
+            border: 1px solid var(--color-shade-dark);
+            border-radius: calc(var(--width-small) / 2);
             box-shadow:
-                inset 1px 1px 0 var(--colorShadeLight),
-                -1px -1px 0 var(--colorShade);
-            color: var(--colorWhite);
+                inset 1px 1px 0 var(--color-shade-light),
+                -1px -1px 0 var(--color-shade);
+            color: var(--color-white);
             cursor: pointer;
             display: inline-block;
             font: inherit;
-            line-height: var(--widthLarge);
-            margin: var(--widthSmall) calc(var(--widthSmall) * 2);
-            padding: 0 calc(var(--widthSmall) * 4);
+            line-height: var(--width-large);
+            margin: var(--width-small) calc(var(--width-small) * 2);
+            padding: 0 calc(var(--width-small) * 4);
             text-decoration: none;
             text-align: center;
             text-indent: 0;
@@ -70,13 +70,13 @@
 
             &:hover,
             &:focus {
-                background: var(--colorText);
-                border: 1px solid var(--colorShadowLight);
+                background: var(--color-text);
+                border: 1px solid var(--color-shadow-light);
                 box-shadow:
-                    inset 1px 1px 0 var(--colorShadeLight),
-                    inset -1px -1px 0 var(--colorShade),
-                    0 0 var(--widthSmall) var(--colorShadow);
-                color: var(--colorWhite);
+                    inset 1px 1px 0 var(--color-shade-light),
+                    inset -1px -1px 0 var(--color-shade),
+                    0 0 var(--width-small) var(--color-shadow);
+                color: var(--color-white);
             }
         }
     }

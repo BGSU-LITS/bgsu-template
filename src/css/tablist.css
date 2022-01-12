@@ -7,23 +7,23 @@
     display: flex;
     list-style: none;
     margin: 0;
-    padding: calc(var(--widthMedium) / 2) 0;
+    padding: calc(var(--width-medium) / 2) 0;
 
     & [role="tab"] {
-        background: var(--colorGrayLight);
-        border-left: 1px solid var(--colorWhite);
-        border-top: var(--widthSmall) solid var(--colorWhite);
-        color: var(--colorTextLight);
+        background: var(--color-gray-light);
+        border-left: 1px solid var(--color-white);
+        border-top: var(--width-small) solid var(--color-white);
+        color: var(--color-text-light);
         cursor: pointer;
         flex: 1 0 auto;
-        font-weight: var(--fontWeightBold);
-        line-height: var(--lineHeightMedium);
-        padding: calc(var(--widthMedium) / 2) 0;
+        font-weight: var(--font-weight-bold);
+        line-height: var(--line-height-medium);
+        padding: calc(var(--width-medium) / 2) 0;
         text-align: center;
 
         &:hover {
-            background: var(--colorGrayDark);
-            color: var(--colorTextLight);
+            background: var(--color-gray-dark);
+            color: var(--color-text-light);
         }
 
         &:first-child {
@@ -31,18 +31,18 @@
         }
 
         &[aria-selected="true"] {
-            background: var(--colorWhite);
+            background: var(--color-white);
             border-left: none;
-            border-top-color: var(--colorOrange);
-            color: var(--colorText);
+            border-top-color: var(--color-orange);
+            color: var(--color-text);
             cursor: default;
             box-shadow:
-                0 calc(var(--widthMedium) / 2) 0 0 var(--colorWhite),
-                0 calc(var(--widthMedium) / -2) 0 0 var(--colorWhite),
-                var(--widthSmall) 0 calc(var(--widthMedium) / 2)
-                calc(var(--widthSmall) * -1) var(--colorShadowLight),
-                calc(var(--widthSmall) * -1) 0 calc(var(--widthMedium) / 2)
-                calc(var(--widthSmall) * -1) var(--colorShadowLight);
+                0 calc(var(--width-medium) / 2) 0 0 var(--color-white),
+                0 calc(var(--width-medium) / -2) 0 0 var(--color-white),
+                var(--width-small) 0 calc(var(--width-medium) / 2)
+                calc(var(--width-small) * -1) var(--color-shadow-light),
+                calc(var(--width-small) * -1) 0 calc(var(--width-medium) / 2)
+                calc(var(--width-small) * -1) var(--color-shadow-light);
             z-index: 1;
 
             &:hover {

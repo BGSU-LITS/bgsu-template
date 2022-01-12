@@ -2,9 +2,10 @@
 
 :global {
     & .flatpickr-calendar {
-        font-family: var(--fontFamilyVerb);
+        font-family: var(--font-family-verb);
     }
 
+    /* stylelint-disable-next-line */
     & .flatpickr-current-month .numInputWrapper {
         width: 5ch;
     }
