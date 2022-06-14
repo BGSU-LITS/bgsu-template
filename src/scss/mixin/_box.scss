@@ -1,0 +1,44 @@
+@use 'sass:map';
+
+$mixin_box_background: #eee;
+$mixin_box_border: none;
+$mixin_box_border_radius: 12px;
+$mixin_box_color: #000;
+$mixin_box_margin_x: 0;
+$mixin_box_margin_y: 20px;
+$mixin_box_margin: $mixin_box_margin_y $mixin_box_margin_x;
+$mixin_box_padding_x: 0.75rem;
+$mixin_box_padding_y: 12px;
+$mixin_box_padding: $mixin_box_padding_y $mixin_box_padding_x;
+$mixin_box_shadows: (
+    'low': (
+        0 0.7px 0.7px rgb(0 0 0 / 9%),
+        0 1.1px 1.2px -1.4px rgb(0 0 0 / 8%),
+        0 2.5px 2.7px -2.9px rgb(0 0 0 / 8%),
+    ),
+    'medium': (
+        0 0.7px 0.7px rgb(0 0 0 / 10%),
+        0 2px 2.1px -1px rgb(0 0 0 / 9%),
+        0 5px 5.3px -1.9px rgb(0 0 0 / 8%),
+        0 12.5px 13.3px -2.9px rgb(0 0 0 / 8%),
+    ),
+    'high':  (
+        0 0.7px 0.7px rgb(0 0 0 / 10%),
+        0 3.3px 3.5px -0.5px rgb(0 0 0 / 10%),
+        0 6.5px 6.9px -1px rgb(0 0 0 / 9%),
+        0 11.7px 12.5px -1.4px rgb(0 0 0 / 9%),
+        -0.1px 20.5px 21.8px -1.9px rgb(0 0 0 / 9%),
+        -0.1px 34.4px 36.6px -2.4px rgb(0 0 0 / 8%),
+        -0.1px 54.9px 58.5px -2.9px rgb(0 0 0 / 8%),
+    ),
+);
+
+@mixin box($shadow: none) {
+    background: $mixin_box_background;
+    border: $mixin_box_border;
+    border-radius: $mixin_box_border_radius;
+    box-shadow: map.get($mixin_box_shadows, $shadow) or $shadow;
+    color: $mixin_box_color;
+    margin: $mixin_box_margin;
+    padding: $mixin_box_padding;
+}

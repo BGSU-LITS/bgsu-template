@@ -1,0 +1,28 @@
+@import 'link';
+@import 'scut';
+
+@mixin close($size: 1rem) {
+    @include scut-size($size);
+
+    &::before,
+    &::after {
+        @include scut-absolute(50% null null 50%);
+        @include scut-size($size * 0.167 $size);
+
+        background: $mixin_link_color;
+        content: '';
+        transform: translate(-50%, -50%) rotate(45deg);
+    }
+
+    &::after {
+        transform: translate(-50%, -50%) rotate(-45deg);
+    }
+
+    &:active,
+    &:hover {
+        &::before,
+        &::after {
+            background: $mixin_link_color_active;
+        }
+    }
+}

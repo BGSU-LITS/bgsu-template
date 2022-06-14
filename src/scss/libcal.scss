@@ -1,0 +1,63 @@
+@use 'sass:map';
+@import 'mixins';
+
+$libcal_line_height: 1.5rem;
+$libcal_time_x: 8rem;
+$libcal_time_y: 2rem;
+
+.libcal {
+    @include root;
+
+    font-variant-numeric: tabular-nums;
+    line-height: $libcal_line_height;
+    padding-bottom: $libcal_time_y;
+    position: relative;
+
+    &_head {
+        @include font(h3);
+
+        margin: $libcal_time_y - $libcal_line_height 0;
+    }
+
+    &_body > :first-child:not(&_date) {
+        @include font(lead);
+    }
+
+    &_date {
+        @include font(bold);
+
+        float: left;
+        min-width: $libcal_time_x;
+    }
+
+    &_time {
+        margin-bottom: $libcal_time_y - $libcal_line_height;
+        min-width: $libcal_time_x;
+        overflow: hidden;
+    }
+
+    &_desc {
+        float: right;
+        margin-left: $mixin_box_margin_y;
+    }
+
+    &_foot {
+        @include scut-absolute(null 0 0 null);
+    }
+}
+
+.libcal_select {
+    @include root;
+
+    label {
+        @include form_label;
+    }
+
+    select {
+        @include form_select;
+    }
+
+    input[type='submit'] {
+        display: none;
+    }
+}

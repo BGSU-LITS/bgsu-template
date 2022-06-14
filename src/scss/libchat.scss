@@ -1,0 +1,44 @@
+@import 'mixins';
+
+.libchat {
+    @include root;
+    @include box(medium);
+    @include scut-fixed(null 0 0 null);
+
+    margin: $mixin_box_padding;
+    transform: translateY(-100%);
+    transition: transform 1s ease;
+    width: 320px;
+    z-index: 998;
+
+    &_head {
+        @include font(h3);
+    }
+
+    &_body,
+    &_foot {
+        @include font(small);
+
+        text-align: center;
+    }
+
+    &_body {
+        padding: $mixin_box_padding;
+    }
+
+    &_foot {
+        display: flex;
+        justify-content: space-evenly;
+    }
+
+    &_button {
+        @include button;
+
+        &_close {
+            @include close;
+            @include scut-absolute(0 0 null null);
+
+            padding: 1rem;
+        }
+    }
+}

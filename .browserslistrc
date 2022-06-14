@@ -1,1 +1,4 @@
 defaults
+not and_qq <= 10.4
+not ie <= 11
+not op_mini all

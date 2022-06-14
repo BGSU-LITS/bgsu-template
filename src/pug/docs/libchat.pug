@@ -1,0 +1,15 @@
+- const path = webpackConfig.output.publicPath
+
+doctype html
+html(lang="en")
+    head
+        meta(charset="utf-8")
+        title libchat.js - Template Scripts v#{htmlWebpackPlugin.options.version}
+        include ../includes/fouc.pug
+    body
+        h1 libchat.js
+        nav(aria-label="breadcrumb")
+            ol.list-breadcrumb
+                li: a(href=path) Template Scripts v#{htmlWebpackPlugin.options.version}
+                li(aria-current="page") libchat.js
+        include ../includes/script.pug

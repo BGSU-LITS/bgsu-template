@@ -1,0 +1,12 @@
+form(class=css.libcal_select id=css.libcal_select)
+  label Select a Calendar
+    select(name="location")
+      if config.all
+        option(value="") All Locations - Weekly
+      each location in locations
+        option(
+          value=location.lid
+          selected=location.lid === parseInt(params.get('location'), 10)
+        )
+          =location.name + (config.all ? " - Monthly" : "")
+  input(type="submit" value="View")

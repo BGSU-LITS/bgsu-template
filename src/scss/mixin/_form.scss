@@ -1,0 +1,40 @@
+$mixin_form_background_size: 1em;
+$mixin_form_border: 1px solid WindowFrame;
+$mixin_form_border_radius: 0.25rem;
+$mixin_form_padding_x: 0.375em;
+$mixin_form_padding_y: 0.25em;
+$mixin_form_padding: $mixin_form_padding_y $mixin_form_padding_x;
+
+@mixin form_label() {
+    display: block;
+    margin: 0;
+    padding: 0;
+}
+
+@mixin form_input() {
+    background-color: #fff;
+    border: $mixin_form_border;
+    border-radius: $mixin_form_border_radius;
+    color: #000;
+    font: inherit;
+    letter-spacing: inherit;
+    margin: 0;
+    padding: $mixin_form_padding;
+    width: 100%;
+}
+
+@mixin form_select() {
+    @include form_input;
+
+    appearance: none;
+    background-image: url('../svg/form_select.svg');
+    background-position: right $mixin_form_padding_x center;
+    background-repeat: no-repeat;
+    background-size: $mixin_form_background_size;
+    padding-right: $mixin_form_background_size + ($mixin_form_padding_x * 2);
+
+    &[multiple] {
+        background-image: none;
+        padding-right: 0;
+    }
+}

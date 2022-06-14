@@ -1,0 +1,79 @@
+@use 'sass:list';
+@use 'sass:map';
+
+$mixin_font_family_europa: (
+    'europa',
+    'Avenir Next',
+    'Avenir',
+    'Helvetica',
+    sans-serif,
+);
+
+$mixin_font_family_kepler: (
+    'kepler-std-display',
+    'Century Schoolbook',
+    'New Century Schoolbook',
+    'Georgia',
+    'Palatino',
+    'Bookman',
+    serif,
+);
+
+$mixin_font_families: (
+    'body': $mixin_font_family_europa,
+    'h3': $mixin_font_family_kepler,
+);
+
+$mixin_font_sizes: (
+    'body': 1rem,
+    'h3': 1.5rem,
+    'lead': 1.25rem,
+    'small': 0.875rem,
+);
+
+$mixin_font_weights: (
+    'body': 300,
+    'bold': 400,
+    'button': 400,
+    'h3': 400,
+    'lead': 300,
+);
+
+$mixin_font_line_heights: (
+    'body': 1.65,
+    'button': 1.5,
+    'h3': 1,
+);
+
+@mixin font($font: body) {
+    @if list.index((bold button lead small), $font) {
+        @if map.has_key($mixin_font_families, $font) {
+            font-family: map.get($mixin_font_families, $font);
+        }
+
+        @if map.has_key($mixin_font_sizes, $font) {
+            font-size: map.get($mixin_font_sizes, $font);
+        }
+
+        @if map.has_key($mixin_font_weights, $font) {
+            font-weight: map.get($mixin_font_weights, $font);
+        }
+
+        @if map.has_key($mixin_font_line_heights, $font) {
+            line-height: map.get($mixin_font_line_heights, $font);
+        }
+    } @else {
+        /* stylelint-disable font-family-name-quotes */
+        font:
+            normal
+            normal
+            map.get($mixin_font_weights, $font)
+            #{map.get($mixin_font_sizes, $font)} /
+            #{map.get($mixin_font_line_heights, $font)}
+            map.get($mixin_font_families, $font);
+    }
+
+    @if list.index((h1 h2 h3 h4 h5 h6), $font) {
+        -webkit-font-smoothing: antialiased;
+    }
+}

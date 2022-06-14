@@ -1,11 +1,11 @@
 mixin desc(desc)
   if desc
-    div(class=css['libcal-desc'])
+    div(class=css.libcal_desc)
       =new DOMParser().parseFromString(desc, 'text/html').body.textContent
 
-mixin link(href, text, label)
+mixin link(href, text, prefix)
   if href
-    a(href=href aria-label=label)
+    a(href=href aria-label=`${prefix} - ${text}`)
       strong=text
   else
     strong=text
@@ -23,54 +23,40 @@ mixin times(times)
     default
       if times.hours
         each hours in times.hours
-          div=hours.from + " - " + hours.to
+          div=`${hours.from} - ${hours.to}`
   if times.note
     div
       em=times.note
 
-if config.mode === 'select'
-  form
-    label Select a Calendar
-      select(name="location")
-        if config.all
-          option(value="") All Locations - Weekly
-        each location in locations
-          option(
-            value=location.lid
-            selected=(location.lid == params.get('location'))
-          )
-            =location.name + (config.all ? " - Monthly" : "")
-    input(type="submit" value="View")
-else
-  div(class=css["libcal-title"])
+div(class=css.libcal)
+  div(class=css.libcal_head)
     if config.title
       if config.link && !config.mode
         +link(config.link, config.title)
       else
         =config.title
     else if config.mode === 'week'
-      ="This Week's Hours"
+      | This Week’s Hours
     else
-      ="Today's Hours"
-  div
+      | Today’s Hours
+  div(class=css.libcal_body)
     each location in locations
       if config.location
         if location.lid === parseInt(config.location, 10)
           if config.mode === 'week'
             each day, name in location.weeks.shift()
-              div(class=css['libcal-day'])
+              div(class=css.libcal_date)
                 =name
-              div(class=css['libcal-time'])
+              div(class=css.libcal_time)
                 +times(day.times)
           else
-            div(class=css['libcal-time'])
+            div(class=css.libcal_time)
               +times(location.times)
           if (!config.title || config.mode) && config.link
             +link(
               config.link,
-              "More Hours",
-              (config.title ? config.title + " - " : "") +
-              "More " + location.name + " Hours"
+              'More Hours',
+              `${config.title || ''} ${location.name}`.trim()
             )
       else if config.all || location.category === 'library' || location.desc
         div
@@ -82,13 +68,14 @@ else
                 (config.title
                   ? config.title
                   : config.mode === 'week'
-                    ? "This Week's Hours"
-                    : "Today's Horus"
-                ) + " - " + location.name
+                    ? 'This Week’s Hours'
+                    : 'Today’s Horus'
+                )
               )
           +desc(location.desc)
           if location.times.status !== 'not-set'
-            div(class=css['libcal-time'])
+            div(class=css.libcal_time)
               +times(location.times)
   if !config.location && (!config.title || config.mode) && config.link
-    +link(config.link, "All Library Hours")
+    div(class=css.libcal_foot)
+      +link(config.link, 'All Library Hours')

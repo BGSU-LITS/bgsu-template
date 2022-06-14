@@ -1,0 +1,36 @@
+@import 'color';
+@import 'font';
+
+$mixin_button_background: $mixin_color_bgsu_brown_light;
+$mixin_button_background_active: $mixin_color_bgsu_brown;
+$mixin_button_border: none;
+$mixin_button_border_radius: 500px;
+$mixin_button_color: #fff;
+$mixin_button_color_active: #fff;
+$mixin_button_margin: 2px 0;
+$mixin_button_padding: 5px 15px;
+$mixin_button_text_decoration: none;
+$mixin_button_transform: none;
+$mixin_button_transform_active: translateY(1px);
+$mixin_button_transition: transform 0.3s ease;
+
+@mixin button() {
+    @include font(button);
+
+    background: $mixin_button_background;
+    border: $mixin_button_border;
+    border-radius: $mixin_button_border_radius;
+    color: $mixin_button_color;
+    margin: $mixin_button_margin;
+    padding: $mixin_button_padding;
+    text-decoration: $mixin_button_text_decoration;
+    transition: $mixin_button_transition;
+    transform: $mixin_button_transform;
+
+    &:active,
+    &:hover {
+        background: $mixin_button_background_active;
+        color: $mixin_button_color_active;
+        transform: $mixin_button_transform_active;
+    }
+}

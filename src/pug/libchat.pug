@@ -1,0 +1,40 @@
+div(
+    class=css.libchat
+    id=css.libchat
+    role='region'
+    aria-labelledby=css.libchat_head
+)
+    div(class=css.libchat_head id=css.libchat_head)
+        =config.title || "Ask Us!"
+    a(
+        class=css.libchat_button_close
+        href="javascript:bgsu_libchat.close(true)"
+        aria-label="Close chat notifcation"
+    )
+    div(class=css.libchat_body)
+        if config.body
+            !=config.body
+        else
+            img(src=require("../svg/askus.svg") alt="" width=75)
+            br
+            if config.message
+                !=config.message
+            else
+                | Hi there. Let us know if we can help you find something!
+    div(class=css.libchat_foot)
+        a(
+            class=css.libchat_button
+            href=href
+            target="_blank"
+            onclick=(
+                "return bgsu_libchat.open(this.href,'" +
+                "width=" + (config.width || 400) + "," +
+                "height=" + (config.height || 500) + "')"
+            )
+        )
+            =config.accept || "Chat with us now"
+        a(
+            class=css.libchat_button
+            href="javascript:bgsu_libchat.close(true)"
+        )
+            =config.decline || "No thanks"
