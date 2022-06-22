@@ -1,6 +1,6 @@
 import cssLibcal from './scss/libcal.scss';
 import pugLibcal from './pug/libcal.pug';
-import pugLibcalSelect from './pug/libcal_select.pug';
+import pugLibcalSelect from './pug/libcal/select.pug';
 
 export function get(iid, lid, config, callback) {
     let url = `https://api3.libcal.com/api_hours_${
@@ -32,8 +32,16 @@ export function insert(locations, css, pug, selector, config) {
     });
 }
 
-export function jsonld(iid, lid) {
+export function jsonld(iid, lid, name = '') {
     get(iid, lid, { format: 'jsonld', mode: 'week' }, data => {
+        if (name) {
+            Object.assign(data, data.department.find(
+                department => department.name === name,
+            ));
+
+            delete data.department;
+        }
+
         const script = document.createElement('script');
 
         script.type = 'application/ld+json';
