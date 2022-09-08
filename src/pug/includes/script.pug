@@ -1,14 +1,14 @@
 - const path = webpackConfig.output.publicPath
 
-script(src=path + "common.js")
 script(src=path + "template.js")
+script(src=path + "common.js")
 script.
     bgsu_template.setup({
         meta: true,
-        body: true,
+        root: true,
         main: {
             id: 'content',
-            top: 'top'
+            top: 'top',
         },
         unit: {
             thin: 'University',
@@ -18,7 +18,7 @@ script.
         site: {
             text: 'Template Scripts v#{htmlWebpackPlugin.options.version}',
             href: '#{path}',
-            heading: #{heading || false}
+            heading: #{heading || false},
         },
         menu: [
             {
@@ -72,10 +72,10 @@ script.
             },
         ],
         help: {
-            heading: 'Contact Us',
-            text: 'libadmin@bgsu.edu',
-            href: 'mailto:libadmin@bgsu.edu'
-        }
+            heading: 'University Libraries',
+            text: 'Ask Us!',
+            href: 'https://www.bgsu.edu/library/ask-us/',
+        },
     });
 
     bgsu_common.setup();
