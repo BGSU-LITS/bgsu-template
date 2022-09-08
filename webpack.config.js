@@ -7,21 +7,19 @@ const MiniSvgDataUri = require('mini-svg-data-uri');
 const StylelintWebpackPlugin = require('stylelint-webpack-plugin');
 const TerserWebpackPlugin = require('terser-webpack-plugin');
 
-module.exports = function config(env, argv) {
+module.exports = function config(environment, argv) {
     const entries = [
         // 'addremove',
-        // 'common',
+        'common',
         // 'facets',
         // 'flatpickr',
         // 'flickity',
         'libcal',
         'libchat',
-        // 'libraryh3lp',
-        // 'libraryh3lp_ask',
         // 'tablist',
-        // 'template',
+        'template',
         // 'tippy',
-        // 'toggle',
+        'toggle',
     ];
 
     let development = true;
@@ -54,7 +52,7 @@ module.exports = function config(env, argv) {
 
     const entry = {};
 
-    entries.forEach(name => {
+    entries.forEach((name) => {
         entry[name] = `./src/${name}.js`;
 
         plugins.push(new HtmlWebpackPlugin({
@@ -105,7 +103,6 @@ module.exports = function config(env, argv) {
                         {
                             loader: 'css-loader',
                             options: {
-                                importLoaders: 1,
                                 modules: {
                                     localIdentName:
                                         'bgsu_[local]_[hash:base64:5]',
@@ -133,13 +130,10 @@ module.exports = function config(env, argv) {
                     loader: 'svgo-loader',
                     type: 'asset/inline',
                     generator: {
-                        dataUrl: content => MiniSvgDataUri(content.toString()),
+                        dataUrl: (content) => MiniSvgDataUri(
+                            content.toString(),
+                        ),
                     },
-                },
-
-                {
-                    test: /\.(eot|ttf|woff|woff2)$/,
-                    type: 'asset/resource',
                 },
             ],
         },
@@ -151,7 +145,7 @@ module.exports = function config(env, argv) {
                     extractComments: false,
                     terserOptions: {
                         compress: {
-                            passes: 2,
+                            passes: 3,
                         },
                     },
                 }),
@@ -167,11 +161,5 @@ module.exports = function config(env, argv) {
         },
 
         plugins,
-
-        resolve: {
-            fallback: {
-                path: false,
-            },
-        },
     };
 };
