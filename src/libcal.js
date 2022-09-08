@@ -14,16 +14,16 @@ export function get(iid, lid, config, callback) {
     }
 
     fetch(url)
-        .then(response => response.json())
-        .then(data => callback(data));
+        .then((response) => response.json())
+        .then((data) => callback(data));
 }
 
 export function insert(locations, css, pug, selector, config) {
-    const params = new URLSearchParams(window.location.search);
+    const search = new URLSearchParams(window.location.search);
 
-    document.querySelectorAll(selector).forEach(element => {
+    document.querySelectorAll(selector).forEach((element) => {
         element.innerHTML = pug({
-            locations, params, config, css,
+            locations, search, config, css,
         });
 
         if (config.callback) {
@@ -33,10 +33,10 @@ export function insert(locations, css, pug, selector, config) {
 }
 
 export function jsonld(iid, lid, name = '') {
-    get(iid, lid, { format: 'jsonld', mode: 'week' }, data => {
+    get(iid, lid, { format: 'jsonld', mode: 'week' }, (data) => {
         if (name) {
             Object.assign(data, data.department.find(
-                department => department.name === name,
+                (department) => department.name === name,
             ));
 
             delete data.department;
@@ -52,7 +52,7 @@ export function jsonld(iid, lid, name = '') {
 }
 
 export function select(selector, iid, lid, config = {}) {
-    get(iid, lid, config, data => {
+    get(iid, lid, config, (data) => {
         insert(
             data.locations,
             cssLibcal,
@@ -70,7 +70,7 @@ export function select(selector, iid, lid, config = {}) {
 }
 
 export function setup(selector, iid, lid, config = {}) {
-    get(iid, lid, { weeks: 1, ...config }, data => insert(
+    get(iid, lid, { weeks: 1, ...config }, (data) => insert(
         data.locations || Object.values(data),
         cssLibcal,
         pugLibcal,
