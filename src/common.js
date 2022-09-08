@@ -1,15 +1,9 @@
-import css from './css/common.css';
+import css from './scss/common.scss';
 
 export { css };
 
 export function setup(config = {}) {
-    var main;
-
-    if (config.id) {
-        main = document.getElementById(config.id);
-    } else {
-        main = document.querySelector('main');
-    }
+    const main = document.querySelector(config.id ? `#${config.id}` : 'main');
 
     if (main) {
         main.classList.add(css.common);

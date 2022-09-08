@@ -1,0 +1,47 @@
+@use 'sass:map';
+@import 'mixins';
+
+.common {
+    @include font;
+    @include root;
+    @include zero;
+
+    background: #fff;
+    color: #000;
+
+    a {
+        @include link;
+    }
+
+    h1, h2, h3, h4, h5, h6, p, ul {
+        @include zero($margin: 1rem 0);
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+        @include font(h1);
+    }
+
+    h2 {
+        font-size: map.get($font_sizes, h2);
+    }
+
+    h3 {
+        font-size: map.get($font_sizes, h3);
+    }
+
+    h4 {
+        font-size: map.get($font_sizes, h4);
+    }
+
+    h5 {
+        font-size: map.get($font_sizes, h5);
+    }
+
+    h6 {
+        font-size: map.get($font_sizes, h6);
+    }
+
+    ul {
+        @include list_unordered;
+    }
+}
