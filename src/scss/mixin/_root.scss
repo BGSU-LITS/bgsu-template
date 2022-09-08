@@ -1,13 +1,12 @@
 @mixin root() {
     box-sizing: border-box;
+    text-align: left;
 
-    *,
-    *::before,
-    *::after {
+    *, *::before, *::after {
         box-sizing: inherit;
     }
 
-    img {
+    img, svg {
         vertical-align: middle;
     }
 }

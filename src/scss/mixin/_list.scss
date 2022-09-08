@@ -1,0 +1,35 @@
+@use 'sass:map';
+@import 'color';
+@import 'font';
+@import 'zero';
+
+$list_bullet: '⚬';
+$list_bullet_offset: 12px;
+$list_bullet_width: 2rem;
+
+@mixin list_unordered() {
+    list-style: none;
+
+    & > li {
+        @include zero(list-item);
+
+        margin-left: $list_bullet_width;
+
+        &::before {
+            @include font(small);
+            @include zero(inline-block);
+
+            color: $color_bgsu_orange;
+            content: $list_bullet;
+            margin-left: calc(-1 * $list_bullet_width);
+            padding-right: $list_bullet_offset;
+            text-align: right;
+            width: $list_bullet_width;
+            vertical-align: top;
+        }
+    }
+
+    ul {
+        margin: 0;
+    }
+}

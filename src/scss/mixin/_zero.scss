@@ -1,0 +1,9 @@
+@mixin zero(
+    $display: block,
+    $margin: 0,
+    $padding: 0,
+) {
+    display: $display;
+    margin: $margin;
+    padding: $padding;
+}
