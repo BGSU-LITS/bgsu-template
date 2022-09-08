@@ -1,87 +1,90 @@
 mixin link(item)
-    if item.href && item.href !== '#'
-        a(href=item.href title=item.title)= item.text || item.href
+    if item.href && item.href !== "#"
+        a(href=item.href title=item.title)=item.text || item.href
     else if item.menu
-        button(
-            aria-label=item.title
-            data-toggle=item.toggle
-            class="toggle-control"
-        )= item.text
+        button(aria-label=item.title data-toggle=item.toggle)
+            =item.text
 
         ul(id=item.toggle): each subitem, index in item.menu
             - subitem.toggle = item.toggle + "_" + index
             li: +link(subitem)
     else
-        = item.text
+        =item.text
 
 mixin form(form)
     form(action=form.action method=form.method)
-        div
-            if form.hidden
-                each value, name in form.hidden
-                    input(
-                        type="hidden"
-                        name=name
-                        value=value
-                    )
+        if form.hidden
+            each value, name in form.hidden
+                input(type="hidden" name=name value=value)
 
-            input(
-                type="text"
-                name=form.name || "search"
-                value=form.value || ""
-                aria-label=form.text || "Search Site"
-                placeholder=form.text || "Search Site"
-            )
+        input(
+            type="text"
+            name=form.name || "search"
+            value=form.value || ""
+            aria-label=form.text || "Search Site"
+            placeholder=form.text || "Search Site"
+        )
 
-            button(type="submit"): span(
-                aria-label=form.button || "Search"
-            )
+        button(type="submit")
+            span(aria-label=form.button || "Search")
 
         if form.menu
             ul: each item, index in form.menu
                 li: +link(item)
 
-header(class=css.header)
-    if (config.main && config.main.id && config.main.top)
-        a(href="#" + config.main.id id=config.main.top class=css.skip)
-            = 'Skip to main content'
+header(class=css.template_header)
+    if config.main && config.main.id && config.main.top
+        a(
+            href="#" + config.main.id
+            id=config.main.top
+            class=css.template_header_skip
+        )
+            | Skip to main content
 
-    div(class=css.top): div(class=css.container)
-        a(href="https://www.bgsu.edu/" class=css.logo)
-            img(src=require("../../svg/bgsu.svg") alt="BGSU" width=60 height=18)
+    div(class=css.template_header_top)
+        div(class=css.template_container)
+            a(href="https://www.bgsu.edu/" class=css.template_header_top_logo)
+                include ../../svg/template_logo.svg
 
-        if config.unit && config.unit.text
-            a(href=config.unit.href class=css.unit)
-                if config.unit.thin
-                    span(class=css.thin)= config.unit.thin + " "
-                = config.unit.text
+            if config.unit && config.unit.text
+                a(href=config.unit.href class=css.template_header_top_unit)
+                    div
+                        if config.unit.thin
+                            span=config.unit.thin + " "
+                        =config.unit.text
 
-    if (config.site || config.menu || config.user || config.form)
-        nav(class=css.nav aria-label="Site navigation")
-            div(class=css.container)
+    if config.site || config.menu || config.user || config.form
+        nav(class=css.template_header_nav aria-label="Site navigation")
+            div(class=css.template_container)
                 if config.site
-                    if (config.site.heading)
-                        h1(class=css.site): +link(config.site)
+                    if config.site.heading
+                        h1(class=css.template_header_nav_site)
+                            +link(config.site)
                     else
-                        div(class=css.site): +link(config.site)
+                        div(class=css.template_header_nav_site)
+                            +link(config.site)
 
                 if config.menu || config.user || config.form
                     button(
                         aria-label="Toggle site navigation"
-                        data-toggle=css.menu
-                        class=css.toggle + " toggle-control"
+                        data-toggle=css.template_header_nav_menu
+                        class=css.template_header_nav_menu_toggle
                     ) ☰
 
-                    div(class=css.menu id=css.menu)
+                    div(
+                        class=css.template_header_nav_menu
+                        id=css.template_header_nav_menu
+                    )
                         if config.menu
                             ul: each item, index in config.menu
-                                - item.toggle = css.menu + "_" + index
+                                - item.toggle = css.template_header_nav_menu
+                                - item.toggle += "_" + index
                                 li(class=item.class): +link(item)
 
                         if config.user
-                            div(class=css.user)
+                            div(class=css.template_header_nav_menu_user)
                                 if config.user.text
-                                    div= config.user.text
+                                    span=config.user.text
 
                                 if config.user.menu
                                     ul: each item, index in config.user.menu
@@ -90,7 +93,7 @@ header(class=css.header)
                         if config.form
                             +form(config.form)
 
-    if config.note
-        div(class=css.note)
-            div(class=css.container)
-                !=config.note
+    if config.note && config.note.header
+        div(class=css.template_note)
+            div(class=css.template_container)
+                !=config.note.header

@@ -1,13 +1,56 @@
 import pugHeader from './pug/template/header.pug';
 import pugFooter from './pug/template/footer.pug';
 
-import css from './css/template.css';
-import { setup as toggle } from './toggle.js';
+import css from './scss/template.scss';
+import { setup as toggle } from './toggle';
+
+function setupMain(config) {
+    let main;
+    let from;
+
+    if (config.main.id) {
+        main = document.getElementById(config.main.id);
+        from = main;
+    }
+
+    if (!main) {
+        main = document.createElement('main');
+
+        if (config.main.id) {
+            main.id = config.main.id;
+        }
+
+        from = document.body;
+        from.append(main);
+    }
+
+    const container = document.createElement('div');
+    container.classList.add(css.template_container);
+
+    main.append(container);
+    main.classList.add(css.template_main);
+
+    let count = 0;
+
+    while (from.childNodes[count]) {
+        if (
+            from.childNodes[count] === main
+            || from.childNodes[count] === container
+            || from.childNodes[count].id === config.main.top
+        ) {
+            count += 1;
+        } else {
+            container.append(from.childNodes[count]);
+        }
+    }
+
+    return main;
+}
 
 export { css, toggle };
 
 export function header(config, before) {
-    var html = pugHeader({config: config, css: css});
+    const html = pugHeader({ config, css });
 
     if (before) {
         before.insertAdjacentHTML('beforebegin', html);
@@ -16,41 +59,29 @@ export function header(config, before) {
     }
 
     if (config.menu || config.form) {
-        toggle(
-            '[data-toggle=' + css.menu + ']',
-            {
-                assignFocus: false,
-                mediaQuery: '(max-width: 767px)',
-                trapFocus: false,
-            }
-        );
+        toggle(`[data-toggle=${css.template_header_nav_menu}]`, {
+            mediaQuery: '(max-width: 991px)',
+        });
     }
 
     if (config.menu) {
-        var toggleMenu = function(menu, prefix) {
-            for (var index = 0; index < menu.length; index++) {
-                if (menu[index].menu) {
-                    toggle(
-                        '[data-toggle=' + prefix + '_' + index + ']',
-                        {
-                            assignFocus: false,
-                            closeOnClickOutside: true,
-                            mediaQuery: '(min-width: 768px)',
-                            trapFocus: false,
-                        }
-                    );
+        const toggleMenu = (menu, prefix) => menu.forEach((item, index) => {
+            if (item.menu) {
+                toggle(`[data-toggle=${prefix}_${index}]`, {
+                    closeOnClickOutside: true,
+                    mediaQuery: '(min-width: 992px)',
+                });
 
-                    toggleMenu(menu[index].menu, prefix + '_' + index);
-                }
+                toggleMenu(item.menu, `${prefix}_${index}`);
             }
-        };
+        });
 
-        toggleMenu(config.menu, css.menu);
+        toggleMenu(config.menu, css.template_header_nav_menu);
     }
 }
 
 export function footer(config, after) {
-    var html = pugFooter({config: config, css: css});
+    const html = pugFooter({ config, css });
 
     if (after) {
         after.insertAdjacentHTML('afterend', html);
@@ -60,54 +91,25 @@ export function footer(config, after) {
 }
 
 export function setup(config = {}) {
-    var meta, from, main, container;
-
-    if (config.meta) {
-        meta = document.head.appendChild(document.createElement('meta'));
-        meta.name = 'viewport';
-        meta.content = 'width=device-width, initial-scale=1, shrink-to-fit=no';
-    }
-
-    if (config.body) {
-        document.body.classList.add(css.body);
-    }
+    let main;
 
     if (config.main) {
-        if (config.main.id) {
-            from = main = document.getElementById(config.main.id);
+        main = setupMain(config);
+
+        if (config.main.top && document.getElementById(config.main.top)) {
+            config.main.top = false;
         }
+    }
 
-        if (!main) {
-            from = document.body;
-            main = from.appendChild(document.createElement('main'));
+    if (config.meta) {
+        const meta = document.createElement('meta');
+        meta.name = 'viewport';
+        meta.content = 'width=device-width, initial-scale=1';
+        document.head.append(meta);
+    }
 
-            if (config.main.id) {
-                main.id = config.main.id;
-            }
-        }
-
-        main.classList.add(css.main);
-
-        container = main.appendChild(document.createElement('div'));
-        container.classList.add(css.container);
-
-        var count = 0;
-
-        while (from.childNodes[count]) {
-            if (from.childNodes[count] === main
-             || from.childNodes[count] === container) {
-                count++;
-                continue;
-            }
-
-            if (from.childNodes[count].id === config.main.top) {
-                config.main.top = false;
-                count++;
-                continue;
-            }
-
-            container.appendChild(from.childNodes[count]);
-        }
+    if (config.root) {
+        document.documentElement.classList.add(css.template);
     }
 
     header(config, main);

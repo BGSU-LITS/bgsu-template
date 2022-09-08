@@ -1,75 +1,104 @@
-mixin link(item)
-    if item.heading
-        strong= item.heading
-    p
-        if item.href
-            a(href=item.href title=item.title class=item.class)
-                = item.text || item.href
-        else
-            = item.text
+mixin link(href, text, label)
+    p: a(href=href aria-label=label)=text
 
-footer(class=css.footer)
-    if config.gray && config.gray.text
-        div(class=css.gray)
-            div(class=css.container)!= config.gray.text
-    div(class=css.container)
-        div
-            p: img(
-                src=require("../../svg/bgsu.svg")
-                alt="BGSU"
-                width=192
-                height=58
-            )
-            div(class=css.address)
-                div Bowling Green State University
-                div Bowling Green, Ohio
-                div 43403‑0001
-                div 419‑372‑2531
+footer(class=css.template_footer)
+    if config.note && config.note.footer
+        div(class=css.template_note)
+            div(class=css.template_container)
+                !=config.note.footer
+
+    div(class=css.template_footer_top)
+        div(class=css.template_container)
+            div
+                p
+                    include ../../svg/template_logo_use.svg
+                p
+                    strong Bowling Green State University
+                    | <br>Bowling Green, Ohio
+                    | <br>43403-0001
                 if config.help
-                    +link(config.help)
-        div(class=css.small)
-            +link({
-                heading: "Accessibility",
-                href: "https://www.bgsu.edu/accessibility/",
-                text: "Report an Issue",
-                class: css['link-accessibility']
-            })
-            strong Events
-            p.
-                To individuals with disabilities, please indicate if you need
-                special services, assistance or appropriate modifications to
-                fully participate in events by contacting
-                <a href="https://www.bgsu.edu/accessibility/">Accessibility</a>
-                Services, <a href="mailto:access@bgsu.edu">access@bgsu.edu</a>,
-                419‑372‑8495. Please notify us prior to the event.
-            strong Title IX Administrative Contact Information
-            p.
-                Complaints or notice of alleged policy violations, or inquiries
-                about or concerns regarding Title IX (sexual harassment) and
-                procedures, may be made internally to:
-                <a href="mailto:titleix@bgsu.edu">Lakeshia Dowlen</a>, Title IX
-                Coordinator, Office of Title IX, 207 Hayes Hall, Bowling Green,
-                Ohio 43402, 419‑372‑8476. Inquiries may be made externally to:
-                <a href="http://www.ed.gov/ocr">Office for Civil Rights
-                (OCR)</a>, U.S. Department of Education, 400 Maryland Ave SW,
-                Washington, D.C. 20202‑1100. Customer Service Hotline:
-                800‑421‑3481, <a href="mailto:OCR@ed.gov">OCR@ed.gov</a>.
-            +link({
-                href: "https://www.bgsu.edu" +
-                    "/equity-diversity-and-inclusion" +
-                    "/title-ix" +
-                    "/title-ix-administrative-contact-information.html",
-                text: "Title IX Deputy Coordinators",
-                class: css['link-coordinators']
-            })
-            strong See It. Hear It. Report It.
-            p.
-                Misconduct occurring on or off campus, Sexual assault or sexual
-                harassment or, a behavior of concern you would like to bring to
-                the attention of the Office of the Dean of Students.
-            +link({
-                href: "https://cm.maxient.com/reportingform.php" +
-                    "?BowlingGreenStateUniv",
-                text: "Report an Incident",
-                class: css['link-incident']
-            })
+                    div(class=css.template_footer_top_help)
+                        if config.help.heading
+                            strong=config.help.heading
+                        if config.help.href
+                            a(href=config.help.href)
+                                =config.help.text || config.help.href
+            div(class=css.template_footer_top_links)
+                - bgsu = 'https://www.bgsu.edu/'
+                +link(
+                    bgsu + "accessibility.html",
+                    "Accessibility including events"
+                )
+                +link(
+                    bgsu + "academics.html",
+                    "Academics",
+                    "BGSU Academics"
+                )
+                +link(
+                    bgsu + "a-z-links.html#A-Z",
+                    "A-Z Links"
+                )
+                +link(
+                    "https://services.bgsu.edu/directorySearch/search.htm",
+                    "Campus Directory"
+                )
+                +link(
+                    bgsu + "institutional-effectiveness/" +
+                        "institutional-effectiveness/" +
+                        "important-consumer-information.html",
+                    "Consumer Information"
+                )
+                +link(
+                    bgsu + "employment.html",
+                    "Employment",
+                    "BGSU Employment Resources"
+                )
+                +link(
+                    bgsu + "faculty-staff.html",
+                    "Faculty/Staff",
+                    "BGSU Faculty/Staff Resources"
+                )
+                +link(
+                    "https://www.firelands.bgsu.edu/",
+                    "Firelands",
+                    "BGSU Firelands"
+                )
+                +link(
+                    bgsu + "library.html",
+                    "Libraries"
+                )
+                +link(
+                    bgsu + "equity-diversity-and-inclusion/" +
+                        "e-o-compliance.html",
+                    "Nondiscrimination"
+                )
+                +link(
+                    bgsu + "families.html",
+                    "Parents and Families"
+                )
+                +link(
+                    bgsu + "students.html",
+                    "Students",
+                    "BGSU Students Resources"
+                )
+                +link(
+                    bgsu + "its.html",
+                    "Technology Support"
+                )
+                +link(
+                    bgsu + "equity-diversity-and-inclusion/title-ix.html",
+                    "Title IX Resources"
+                )
+
+    div(class=css.template_footer_report)
+        div(class=css.template_container)
+            div
+                div(class=css.template_footer_report_title)
+                    | See It. Hear It. Report It.
+                p
+                    | It is the responsibility of each person within the
+                    | university community to take action when an issue or
+                    | concern arises.
+            div
+                a(href="https://www.bgsu.edu/report-incident.html").
+                    Report concerns or information of alleged misconduct
