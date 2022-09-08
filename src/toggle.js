@@ -1,25 +1,20 @@
-import 'core-js/features/object/assign';
-import 'events-polyfill/src/constructors/Event.js';
-import Toggle from 'accessible-toggle';
-import css from './css/toggle.css';
+import AccessibleToggle from 'accessible-toggle';
+import css from './scss/toggle.scss';
 
-export function setup(selector = null, config = {}) {
-    selector = selector || '[data-toggle]';
+export function setup(selector = '[data-toggle]', config = {}) {
+    document.querySelectorAll(selector).forEach((toggleControls) => {
+        const toggle = document.getElementById(toggleControls.dataset.toggle);
 
-    config = Object.assign(
-        { assignFocus: false, trapFocus: false },
-        config
-    );
+        toggleControls.classList.add(css.toggle_controls);
+        toggle.classList.add(css.toggle);
 
-    document.body.classList.add(css.toggle);
-
-    Array.prototype.forEach.call(
-        document.querySelectorAll(selector),
-        function (element) {
-            new Toggle(
-                document.getElementById(element.dataset.toggle),
-                config
-            );
-        }
-    );
+        new AccessibleToggle( // eslint-disable-line no-new
+            toggle,
+            {
+                assignFocus: false,
+                trapFocus: false,
+                ...config,
+            },
+        );
+    });
 }

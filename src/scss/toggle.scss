@@ -1,0 +1,23 @@
+@import 'mixins';
+
+.toggle {
+    &[aria-hidden='true'] {
+        display: none;
+    }
+
+    &_controls {
+        @include zero(inline-block);
+
+        background: transparent;
+        border: 0;
+        color: inherit;
+        font: inherit;
+        pointer-events: none;
+        width: auto;
+
+        &[aria-controls] {
+            cursor: pointer;
+            pointer-events: auto;
+        }
+    }
+}
