@@ -1,28 +1,27 @@
 @use 'sass:map';
+@import 'color';
 
-$mixin_box_background: #eee;
-$mixin_box_border: none;
-$mixin_box_border_radius: 12px;
-$mixin_box_color: #000;
-$mixin_box_margin_x: 0;
-$mixin_box_margin_y: 20px;
-$mixin_box_margin: $mixin_box_margin_y $mixin_box_margin_x;
-$mixin_box_padding_x: 0.75rem;
-$mixin_box_padding_y: 12px;
-$mixin_box_padding: $mixin_box_padding_y $mixin_box_padding_x;
-$mixin_box_shadows: (
-    'low': (
+$box_background: $color_bgsu_gray_light;
+$box_border: 1px solid rgb(0 0 0 / 5%);
+$box_border_radius: 12px;
+$box_color: #000;
+$box_margin: 0;
+$box_padding_x: 0.75rem;
+$box_padding_y: 12px;
+$box_padding: $box_padding_y $box_padding_x;
+$box_shadows: (
+    low: (
         0 0.7px 0.7px rgb(0 0 0 / 9%),
         0 1.1px 1.2px -1.4px rgb(0 0 0 / 8%),
         0 2.5px 2.7px -2.9px rgb(0 0 0 / 8%),
     ),
-    'medium': (
+    medium: (
         0 0.7px 0.7px rgb(0 0 0 / 10%),
         0 2px 2.1px -1px rgb(0 0 0 / 9%),
         0 5px 5.3px -1.9px rgb(0 0 0 / 8%),
         0 12.5px 13.3px -2.9px rgb(0 0 0 / 8%),
     ),
-    'high':  (
+    high:  (
         0 0.7px 0.7px rgb(0 0 0 / 10%),
         0 3.3px 3.5px -0.5px rgb(0 0 0 / 10%),
         0 6.5px 6.9px -1px rgb(0 0 0 / 9%),
@@ -33,12 +32,36 @@ $mixin_box_shadows: (
     ),
 );
 
-@mixin box($shadow: none) {
-    background: $mixin_box_background;
-    border: $mixin_box_border;
-    border-radius: $mixin_box_border_radius;
-    box-shadow: map.get($mixin_box_shadows, $shadow) or $shadow;
-    color: $mixin_box_color;
-    margin: $mixin_box_margin;
-    padding: $mixin_box_padding;
+@mixin box($border: false, $radius: y y y y, $shadow: none) {
+    background: $box_background;
+    box-shadow: map.get($box_shadows, $shadow) or $shadow;
+    color: $box_color;
+    margin: $box_margin;
+    padding: $box_padding;
+
+    @if $border {
+        border: $box_border;
+    } @else {
+        border: none;
+    }
+
+    @if $radius == (y y y y) {
+        border-radius: $box_border_radius;
+    } @else {
+        @if nth($radius, 1) != n {
+            border-top-left-radius: $box_border_radius;
+        }
+
+        @if nth($radius, 2) != n {
+            border-top-right-radius: $box_border_radius;
+        }
+
+        @if nth($radius, 3) != n {
+            border-bottom-right-radius: $box_border_radius;
+        }
+
+        @if nth($radius, 4) != n {
+            border-bottom-left-radius: $box_border_radius;
+        }
+    }
 }

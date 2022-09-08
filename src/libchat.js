@@ -111,7 +111,7 @@ export function check(href, iid, rules = [], config = {}) {
     }`;
 
     // Request chat status for given iid and rules.
-    fetch(resource).then(response => {
+    fetch(resource).then((response) => {
         // Do nothing if the notification is being ignored.
         if (ignore) {
             return;
@@ -122,7 +122,7 @@ export function check(href, iid, rules = [], config = {}) {
             return;
         }
 
-        response.json().then(data => {
+        response.json().then((data) => {
             // Check that chat is online.
             if (data.u || data.d || data.c) {
                 // Check that a notification is not already added to the page.

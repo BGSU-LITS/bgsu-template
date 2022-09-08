@@ -1,4 +1,25 @@
 @import 'color';
+@import 'scut';
 
-$mixin_link_color: $mixin_color_bgsu_brown_light;
-$mixin_link_color_active: $mixin_color_bgsu_brown;
+$link_color: $color_bgsu_brown_light;
+$link_color_active: $color_bgsu_brown;
+$link_color_underline: $color_bgsu_gold;
+
+@mixin link {
+    @include font(bold);
+    @include link_underline;
+
+    color: $link_color;
+
+    @include scut-selected(true) {
+        color: $link_color_active;
+        text-decoration-thickness: 2px;
+    }
+}
+
+@mixin link_underline($thickness: 1px) {
+    text-decoration: underline;
+    text-decoration-color: $link_color_underline;
+    text-decoration-thickness: $thickness;
+    text-underline-offset: 2px;
+}

@@ -1,36 +1,108 @@
+@use 'sass:color';
+@use 'sass:map';
 @import 'color';
 @import 'font';
+@import 'scut';
 
-$mixin_button_background: $mixin_color_bgsu_brown_light;
-$mixin_button_background_active: $mixin_color_bgsu_brown;
-$mixin_button_border: none;
-$mixin_button_border_radius: 500px;
-$mixin_button_color: #fff;
-$mixin_button_color_active: #fff;
-$mixin_button_margin: 2px 0;
-$mixin_button_padding: 5px 15px;
-$mixin_button_text_decoration: none;
-$mixin_button_transform: none;
-$mixin_button_transform_active: translateY(1px);
-$mixin_button_transition: transform 0.3s ease;
+$button_border: none;
+$button_border_radius: 500px;
+$button_margin: 2px 5px 2px 0;
+$button_text_decoration: none;
+$button_transform: none;
+$button_transform_active: translateY(1px);
+$button_transition: all 0.3s ease;
 
-@mixin button() {
+$button_backgrounds: (
+    brown: $color_bgsu_brown_light,
+    orange: $color_bgsu_orange_dark,
+    teal: $color_bgsu_teal,
+);
+
+$button_colors: (
+    brown: #fff,
+    orange: #fff,
+    teal: #fff,
+);
+
+$button_paddings_x: (
+    small: 15px,
+    large: 30px,
+);
+
+$button_paddings_y: (
+    small: 5px,
+    large: 10px,
+);
+
+@mixin button(
+    $arrow: false,
+    $color: brown,
+    $display: inline-block,
+    $size: small
+) {
     @include font(button);
 
-    background: $mixin_button_background;
-    border: $mixin_button_border;
-    border-radius: $mixin_button_border_radius;
-    color: $mixin_button_color;
-    margin: $mixin_button_margin;
-    padding: $mixin_button_padding;
-    text-decoration: $mixin_button_text_decoration;
-    transition: $mixin_button_transition;
-    transform: $mixin_button_transform;
+    background: map.get($button_backgrounds, $color);
+    border: $button_border;
+    border-radius: $button_border_radius;
+    box-shadow: map.get($box_shadows, low);
+    color: map.get($button_colors, $color);
+    display: $display;
+    margin: $button_margin;
+    position: relative;
+    text-align: center;
+    text-decoration: $button_text_decoration;
+    transition: $button_transition;
+    transform: $button_transform;
 
-    &:active,
-    &:hover {
-        background: $mixin_button_background_active;
-        color: $mixin_button_color_active;
-        transform: $mixin_button_transform_active;
+    @include scut-selected(true) {
+        $dark: color.scale(
+            map.get($button_backgrounds, $color),
+            $lightness: -10%
+        );
+
+        background: $dark;
+        color: map.get($button_colors, $color);
+        text-decoration: $button_text_decoration;
+        transform: $button_transform_active;
     }
+
+    @if $arrow {
+        padding:
+            map.get($button_paddings_y, $size)
+            map.get($button_paddings_x, large);
+
+        &::after {
+            @include scut-absolute(50% 11px n n);
+
+            border: 6px solid transparent;
+            border-left-color: rgb(0 0 0 / 20%);
+            border-right-width: 0;
+            content: '';
+            transform: translateY(-50%);
+        }
+    } @else {
+        padding:
+            map.get($button_paddings_y, $size)
+            map.get($button_paddings_x, small);
+    }
+}
+
+@mixin button_search(
+    $color: teal,
+    $display: inline-block,
+    $size: small
+) {
+    @include scut-size(font_height());
+
+    background:
+        map.get($button_backgrounds, $color)
+        url('../svg/mixin_button_search.svg')
+        center
+        no-repeat;
+    border: $button_border;
+    border-radius: 0 $button_border_radius $button_border_radius 0;
+    box-shadow: map.get($box_shadows, low);
+    display: $display;
+    vertical-align: middle;
 }

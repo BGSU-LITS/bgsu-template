@@ -1,11 +1,25 @@
+@use 'sass:map';
 @import 'mixins';
+
+$box_padding_x: 13.5px;
+$box_padding: $box_padding_y $box_padding_x;
+$box_margin: $box_padding;
+
+$font_sizes: map.merge(
+    $font_sizes,
+    (
+        'h3': 1.5em,
+        'small': 0.875em,
+    )
+);
 
 .libchat {
     @include root;
-    @include box(medium);
+    @include box($shadow: medium);
+    @include font(body);
+    @include font(html);
     @include scut-fixed(null 0 0 null);
 
-    margin: $mixin_box_padding;
     transform: translateY(-100%);
     transition: transform 1s ease;
     width: 320px;
@@ -23,7 +37,7 @@
     }
 
     &_body {
-        padding: $mixin_box_padding;
+        padding: $box_padding;
     }
 
     &_foot {
@@ -35,10 +49,10 @@
         @include button;
 
         &_close {
-            @include close;
+            @include close(1em);
             @include scut-absolute(0 0 null null);
 
-            padding: 1rem;
+            padding: 1em;
         }
     }
 }

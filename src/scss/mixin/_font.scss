@@ -1,7 +1,7 @@
 @use 'sass:list';
 @use 'sass:map';
 
-$mixin_font_family_europa: (
+$font_family_europa: (
     'europa',
     'Avenir Next',
     'Avenir',
@@ -9,7 +9,7 @@ $mixin_font_family_europa: (
     sans-serif,
 );
 
-$mixin_font_family_kepler: (
+$font_family_kepler: (
     'kepler-std-display',
     'Century Schoolbook',
     'New Century Schoolbook',
@@ -19,61 +19,116 @@ $mixin_font_family_kepler: (
     serif,
 );
 
-$mixin_font_families: (
-    'body': $mixin_font_family_europa,
-    'h3': $mixin_font_family_kepler,
+$font_families: (
+    body: $font_family_europa,
+    h1: $font_family_kepler,
+    h2: $font_family_kepler,
+    h3: $font_family_kepler,
+    h4: $font_family_kepler,
+    h5: $font_family_kepler,
+    h6: $font_family_kepler,
+    unit: $font_family_kepler,
 );
 
-$mixin_font_sizes: (
-    'body': 1rem,
-    'h3': 1.5rem,
-    'lead': 1.25rem,
-    'small': 0.875rem,
+$font_sizes: (
+    body: 1rem,
+    h1: 2.5rem,
+    h2: 2rem,
+    h3: 1.5rem,
+    h4: 1.4rem,
+    h5: 1.3rem,
+    h6: 1.2rem,
+    html: 16px,
+    lead: 1.25rem,
+    small: 0.875rem,
+    title: 1.2rem,
+    unit: 1rem,
 );
 
-$mixin_font_weights: (
-    'body': 300,
-    'bold': 400,
-    'button': 400,
-    'h3': 400,
-    'lead': 300,
+$font_weights: (
+    black: 700,
+    body: 300,
+    bold: 400,
+    button: 400,
+    h1: 400,
+    h2: 400,
+    h3: 400,
+    h4: 400,
+    h5: 400,
+    h6: 400,
+    html: 300,
+    lead: 300,
+    title: 700,
+    unit: 600,
 );
 
-$mixin_font_line_heights: (
-    'body': 1.65,
-    'button': 1.5,
-    'h3': 1,
+$font_line_heights: (
+    body: 1.65,
+    button: 1.5,
+    h1: 1,
+    h2: 1,
+    h3: 1,
+    h4: 1,
+    h5: 1,
+    h6: 1,
+    html: 1.65,
+    title: 1,
+    unit: 1,
 );
 
 @mixin font($font: body) {
-    @if list.index((bold button lead small), $font) {
-        @if map.has_key($mixin_font_families, $font) {
-            font-family: map.get($mixin_font_families, $font);
-        }
-
-        @if map.has_key($mixin_font_sizes, $font) {
-            font-size: map.get($mixin_font_sizes, $font);
-        }
-
-        @if map.has_key($mixin_font_weights, $font) {
-            font-weight: map.get($mixin_font_weights, $font);
-        }
-
-        @if map.has_key($mixin_font_line_heights, $font) {
-            line-height: map.get($mixin_font_line_heights, $font);
-        }
-    } @else {
+    @if map.has_key($font_families, $font) {
         /* stylelint-disable font-family-name-quotes */
         font:
             normal
             normal
-            map.get($mixin_font_weights, $font)
-            #{map.get($mixin_font_sizes, $font)} /
-            #{map.get($mixin_font_line_heights, $font)}
-            map.get($mixin_font_families, $font);
+            map.get($font_weights, $font)
+            #{map.get($font_sizes, $font)} /
+            #{map.get($font_line_heights, $font)}
+            map.get($font_families, $font);
+    } @else {
+        @if map.has_key($font_sizes, $font) {
+            font-size: map.get($font_sizes, $font);
+        }
+
+        @if map.has_key($font_weights, $font) {
+            font-weight: map.get($font_weights, $font);
+        }
+
+        @if map.has_key($font_line_heights, $font) {
+            line-height: map.get($font_line_heights, $font);
+        }
     }
 
-    @if list.index((h1 h2 h3 h4 h5 h6), $font) {
+    @if list.index((h1 h2 h3 h4 h5 h6 unit), $font) {
         -webkit-font-smoothing: antialiased;
     }
+
+    @if list.index((html), $font) {
+        text-size-adjust: 100%;
+
+        @media screen and (min-width: 576px) {
+            font-size: 17px;
+        }
+
+        @media screen and (min-width: 768px) {
+            font-size: 18px;
+        }
+    }
+}
+
+@function font_height($font: body, $negate: false) {
+    $result: map.get($font_sizes, $font);
+
+    @if map.has_key($font_line_heights, $font) {
+        $result: $result * map.get($font_line_heights, $font);
+    } @else {
+        $result: $result * map.get($font_line_heights, body);
+    }
+
+    @if $negate {
+        $result: -1 * $result;
+    }
+
+    @return $result;
 }

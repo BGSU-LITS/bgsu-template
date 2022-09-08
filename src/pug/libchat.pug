@@ -26,11 +26,11 @@ div(
             class=css.libchat_button
             href=href
             target="_blank"
-            onclick=(
-                "return bgsu_libchat.open(this.href,'" +
-                "width=" + (config.width || 400) + "," +
-                "height=" + (config.height || 500) + "')"
-            )
+            onclick=`return bgsu_libchat.open(this.href,'width=${
+                config.width || 400
+            },height=${
+                config.height || 500
+            }')`
         )
             =config.accept || "Chat with us now"
         a(
