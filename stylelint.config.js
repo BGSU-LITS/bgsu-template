@@ -23,7 +23,7 @@ module.exports = {
         }],
         'selector-list-comma-newline-after': 'always-multi-line',
         'selector-pseudo-class-no-unknown': [true, {
-            ignorePseudoClasses: 'global',
+            ignorePseudoClasses: ['global', 'local'],
         }],
         'string-quotes': 'single',
         'scss/at-function-pattern': [pattern, {

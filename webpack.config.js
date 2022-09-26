@@ -12,7 +12,7 @@ module.exports = function config(environment, argv) {
         // 'addremove',
         'common',
         // 'facets',
-        // 'flatpickr',
+        'flatpickr',
         // 'flickity',
         'libcal',
         'libchat',
