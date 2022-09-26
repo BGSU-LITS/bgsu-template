@@ -1,8 +1,10 @@
+@use 'sass:color';
 @use 'sass:map';
 @import 'color';
 
-$box_background: $color_bgsu_gray_light;
-$box_border: 1px solid rgb(0 0 0 / 5%);
+$box_background: $color_gray_light;
+$box_border_color: color.scale($color_gray_light, $lightness: -5%);
+$box_border: 1px solid $box_border_color;
 $box_border_radius: 12px;
 $box_color: #000;
 $box_margin: 0;

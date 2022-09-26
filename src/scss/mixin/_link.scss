@@ -1,15 +1,16 @@
 @import 'color';
 @import 'scut';
 
-$link_color: $color_bgsu_brown_light;
-$link_color_active: $color_bgsu_brown;
-$link_color_underline: $color_bgsu_gold;
+$link_color: $color_brown_light;
+$link_color_active: $color_brown;
+$link_color_underline: $color_gold;
 
 @mixin link {
     @include font(bold);
     @include link_underline;
 
     color: $link_color;
+    cursor: pointer;
 
     @include scut-selected(true) {
         color: $link_color_active;

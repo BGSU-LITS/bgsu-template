@@ -50,10 +50,11 @@ $libcal_time_y: 2rem;
     @include root;
 
     label {
-        @include form_label;
+        @include zero;
     }
 
     select {
+        @include form_input;
         @include form_select;
     }
 

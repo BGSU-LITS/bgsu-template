@@ -4,7 +4,7 @@
 
 $template_footer_corner: 50px;
 $template_footer_top_background: (
-    $color_bgsu_brown_light
+    $color_brown_light
     url('../jpg/template_footer.jpg')
 );
 
@@ -27,7 +27,7 @@ $template_footer_top_background: (
         }
 
         &_note {
-            background: $color_bgsu_tan_light;
+            background: $color_tan_light;
             color: #000;
         }
 
@@ -77,7 +77,7 @@ $template_footer_top_background: (
 
         &_top {
             @media screen {
-                background: $color_bgsu_orange;
+                background: $color_orange;
                 box-shadow: map.get($box_shadows, low);
             }
 
@@ -146,7 +146,7 @@ $template_footer_top_background: (
                     @include zero;
 
                     @include container_breakpoint_lg {
-                        border-left: 1px solid $color_bgsu_orange_light;
+                        border-left: 1px solid $color_orange_light;
                         font-size: map.get($font_sizes, h2);
                         padding: 0 $box_padding_x;
                     }
@@ -178,8 +178,6 @@ $template_footer_top_background: (
 
             &_site, &_menu {
                 @include zero;
-
-                margin-bottom: $box_padding_y;
             }
 
             &_site {
@@ -189,6 +187,8 @@ $template_footer_top_background: (
             }
 
             &_menu {
+                margin-bottom: $box_padding_y;
+
                 @media print {
                     display: none;
                 }
@@ -327,7 +327,7 @@ $template_footer_top_background: (
             @include scut-selected(true) {
                 @include link_underline(2px);
 
-                color: $color_bgsu_orange_light;
+                color: $color_orange_light;
             }
         }
 
@@ -429,7 +429,7 @@ $template_footer_top_background: (
         }
 
         &_report {
-            background: $color_bgsu_brown;
+            background: $color_brown;
             padding: 28px 0;
 
             @include container_breakpoint_md {

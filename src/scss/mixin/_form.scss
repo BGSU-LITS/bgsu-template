@@ -1,26 +1,37 @@
-$form_background_size: 1em;
-$form_border: 1px solid WindowFrame;
+$form_background: #fff;
+$form_background_disabled: #e9ecef;
+$form_border: 1px solid #ced4da;
+$form_border_focus: 1px solid #86b7fe;
 $form_border_radius: 0.25rem;
-$form_padding_x: 0.375em;
-$form_padding_y: 0.25em;
+$form_color: #212529;
+$form_margin: 0;
+$form_padding_x: 0.375rem;
+$form_padding_y: 0.25rem;
 $form_padding: $form_padding_y $form_padding_x;
 
-@mixin form_label() {
-    display: block;
-    margin: 0;
-    padding: 0;
-}
-
 @mixin form_input() {
-    background-color: #fff;
+    background-color: $form_background;
     border: $form_border;
     border-radius: $form_border_radius;
-    color: #000;
+    color: $form_color;
     font: inherit;
     letter-spacing: inherit;
-    margin: 0;
+    margin: $form_margin;
     padding: $form_padding;
-    width: 100%;
+
+    &[disabled] {
+        background-color: $form_background_disabled;
+        opacity: 1;
+    }
+}
+
+@mixin form_input_check() {
+    @include scut-size(1rem);
+}
+
+@mixin form_input_range() {
+    border: none;
+    padding: 0;
 }
 
 @mixin form_search() {
@@ -33,21 +44,18 @@ $form_padding: $form_padding_y $form_padding_x;
     margin: 0;
     padding: 0 $box_padding_x;
     vertical-align: middle;
-    width: auto;
 }
 
 @mixin form_select() {
-    @include form_input;
-
     appearance: none;
     background-image: url('../svg/mixin_form_select.svg');
     background-position: right $form_padding_x center;
     background-repeat: no-repeat;
-    background-size: $form_background_size;
-    padding-right: $form_background_size + ($form_padding_x * 2);
+    background-size: 1rem;
+    padding-right: 1rem + ($form_padding_x * 2);
 
     &[multiple] {
         background-image: none;
-        padding-right: 0;
+        padding-right: $form_padding_x;
     }
 }

@@ -46,7 +46,7 @@ $font_sizes: map.merge(
     }
 
     &_button {
-        @include button;
+        @include button($color: brown);
 
         &_close {
             @include close(1em);

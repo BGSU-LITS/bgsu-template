@@ -19,6 +19,18 @@ $font_family_kepler: (
     serif,
 );
 
+$font_family_mono: (
+    ui-monospace,
+    'Menlo',
+    'Consolas',
+    'Roboto Mono',
+    'Ubuntu Monospace',
+    'Noto Mono',
+    'Oxygen Mono',
+    'Liberation Mono',
+    monospace,
+);
+
 $font_families: (
     body: $font_family_europa,
     h1: $font_family_kepler,
@@ -27,11 +39,14 @@ $font_families: (
     h4: $font_family_kepler,
     h5: $font_family_kepler,
     h6: $font_family_kepler,
+    mono: $font_family_mono,
+    title: $font_family_europa,
     unit: $font_family_kepler,
 );
 
 $font_sizes: (
     body: 1rem,
+    button: 1rem,
     h1: 2.5rem,
     h2: 2rem,
     h3: 1.5rem,
@@ -40,6 +55,7 @@ $font_sizes: (
     h6: 1.2rem,
     html: 16px,
     lead: 1.25rem,
+    mono: 0.875rem,
     small: 0.875rem,
     title: 1.2rem,
     unit: 1rem,
@@ -58,6 +74,7 @@ $font_weights: (
     h6: 400,
     html: 300,
     lead: 300,
+    mono: 300,
     title: 700,
     unit: 600,
 );
@@ -72,6 +89,7 @@ $font_line_heights: (
     h5: 1,
     h6: 1,
     html: 1.65,
+    mono: 1.5,
     title: 1,
     unit: 1,
 );

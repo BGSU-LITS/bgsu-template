@@ -1,14 +1,24 @@
-@import 'link';
+@use 'sass:map';
 @import 'scut';
 
-@mixin close($size: 1rem) {
+$close_colors: (
+    brown: $color_brown_light,
+    red: $color_red_light,
+);
+
+$close_colors_active: (
+    brown: $color_brown,
+    red: $color_red,
+);
+
+@mixin close($color: brown, $size: 1rem) {
+    @include close_set_color($color);
     @include scut-size($size);
 
     &::before, &::after {
         @include scut-absolute(50% null null 50%);
         @include scut-size($size * 0.167 $size);
 
-        background: $link_color;
         content: '';
         transform: translate(-50%, -50%) rotate(45deg);
     }
@@ -16,11 +26,16 @@
     &::after {
         transform: translate(-50%, -50%) rotate(-45deg);
     }
+}
+
+@mixin close_set_color($color: brown) {
+    &::before, &::after {
+        background: map.get($close_colors, $color);
+    }
 
     @include scut-selected(true) {
-        &::before,
-        &::after {
-            background: $link_color_active;
+        &::before, &::after {
+            background: map.get($close_colors_active, $color);
         }
     }
 }

@@ -4,7 +4,6 @@
 @import 'font';
 @import 'scut';
 
-$button_border: none;
 $button_border_radius: 500px;
 $button_margin: 2px 5px 2px 0;
 $button_text_decoration: none;
@@ -13,15 +12,41 @@ $button_transform_active: translateY(1px);
 $button_transition: all 0.3s ease;
 
 $button_backgrounds: (
-    brown: $color_bgsu_brown_light,
-    orange: $color_bgsu_orange_dark,
-    teal: $color_bgsu_teal,
+    brown: $color_brown_light,
+    gold: $color_gold,
+    gray: $color_gray,
+    orange: $color_orange_dark,
+    red: $color_red,
+    teal: $color_teal,
+    white: #fff,
+);
+
+$button_backgrounds_active: (
+    white: $color_brown,
+);
+
+$button_borders: (
+    brown: none,
+    gold: none,
+    gray: none,
+    orange: none,
+    red: none,
+    teal: none,
+    white: 1px solid,
 );
 
 $button_colors: (
     brown: #fff,
+    gold: #000,
+    gray: #fff,
     orange: #fff,
+    red: #fff,
     teal: #fff,
+    white: $color_brown_light,
+);
+
+$button_colors_active: (
+    white: #fff,
 );
 
 $button_paddings_x: (
@@ -36,17 +61,16 @@ $button_paddings_y: (
 
 @mixin button(
     $arrow: false,
-    $color: brown,
+    $color: white,
     $display: inline-block,
     $size: small
 ) {
+    @include button_set_color($color);
     @include font(button);
 
-    background: map.get($button_backgrounds, $color);
-    border: $button_border;
     border-radius: $button_border_radius;
     box-shadow: map.get($box_shadows, low);
-    color: map.get($button_colors, $color);
+    cursor: pointer;
     display: $display;
     margin: $button_margin;
     position: relative;
@@ -55,36 +79,24 @@ $button_paddings_y: (
     transition: $button_transition;
     transform: $button_transform;
 
-    @include scut-selected(true) {
-        $dark: color.scale(
-            map.get($button_backgrounds, $color),
-            $lightness: -10%
-        );
+    &:disabled, &:is(a):not([href]) {
+        opacity: 0.65;
+        pointer-events: none;
+    }
 
-        background: $dark;
-        color: map.get($button_colors, $color);
+    &[hidden] {
+        display: none;
+    }
+
+    @include scut-selected(true) {
         text-decoration: $button_text_decoration;
         transform: $button_transform_active;
     }
 
     @if $arrow {
-        padding:
-            map.get($button_paddings_y, $size)
-            map.get($button_paddings_x, large);
-
-        &::after {
-            @include scut-absolute(50% 11px n n);
-
-            border: 6px solid transparent;
-            border-left-color: rgb(0 0 0 / 20%);
-            border-right-width: 0;
-            content: '';
-            transform: translateY(-50%);
-        }
+        @include button_set_arrow($size);
     } @else {
-        padding:
-            map.get($button_paddings_y, $size)
-            map.get($button_paddings_x, small);
+        @include button_set_size($size);
     }
 }
 
@@ -100,9 +112,56 @@ $button_paddings_y: (
         url('../svg/mixin_button_search.svg')
         center
         no-repeat;
-    border: $button_border;
+    border: none;
     border-radius: 0 $button_border_radius $button_border_radius 0;
     box-shadow: map.get($box_shadows, low);
     display: $display;
     vertical-align: middle;
+}
+
+@mixin button_set_arrow($size: small) {
+    padding:
+        map.get($button_paddings_y, $size)
+        map.get($button_paddings_x, large);
+
+    &::after {
+        @include scut-absolute(50% 11px n n);
+
+        border: 6px solid transparent;
+        border-left-color: rgb(0 0 0 / 20%);
+        border-right-width: 0;
+        content: '';
+        transform: translateY(-50%);
+    }
+}
+
+@mixin button_set_color($color: white) {
+    background: map.get($button_backgrounds, $color);
+    border: map.get($button_borders, $color);
+    color: map.get($button_colors, $color);
+
+    @include scut-selected(true) {
+        @if map.has_key($button_backgrounds_active, $color) {
+            background: map.get($button_backgrounds_active, $color);
+        } @else {
+            $dark: color.scale(
+                map.get($button_backgrounds, $color),
+                $lightness: -10%
+            );
+
+            background: $dark;
+        }
+
+        @if map.has_key($button_colors_active, $color) {
+            color: map.get($button_colors_active, $color);
+        } @else {
+            color: map.get($button_colors, $color);
+        }
+    }
+}
+
+@mixin button_set_size($size: small) {
+    padding:
+        map.get($button_paddings_y, $size)
+        map.get($button_paddings_x, $size);
 }

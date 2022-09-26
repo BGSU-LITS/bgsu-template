@@ -19,7 +19,7 @@ $list_bullet_width: 2rem;
             @include font(small);
             @include zero(inline-block);
 
-            color: $color_bgsu_orange;
+            color: $color_orange;
             content: $list_bullet;
             margin-left: calc(-1 * $list_bullet_width);
             padding-right: $list_bullet_offset;

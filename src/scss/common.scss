@@ -1,6 +1,9 @@
 @use 'sass:map';
 @import 'mixins';
 
+$common_gap: 1rem;
+$common_margin: $common_gap 0;
+
 .common {
     @include font;
     @include root;
@@ -13,8 +16,16 @@
         @include link;
     }
 
+    b, strong {
+        @include font(bold);
+    }
+
+    code, kbd, samp, pre {
+        @include font(mono);
+    }
+
     h1, h2, h3, h4, h5, h6, p, ul {
-        @include zero($margin: 1rem 0);
+        @include zero($margin: $common_margin);
     }
 
     h1, h2, h3, h4, h5, h6 {
@@ -41,7 +52,314 @@
         font-size: map.get($font_sizes, h6);
     }
 
+    input, select, textarea {
+        @include form_input;
+    }
+
+    input[type='checkbox'], input[type='radio'] {
+        @include form_input_check;
+    }
+
+    input[type='color'], input[type='range'] {
+        @include form_input_range;
+    }
+
+    select {
+        @include form_select;
+    }
+
     ul {
         @include list_unordered;
+    }
+
+    :global .bgsu_common {
+        &_alert {
+            @include box($shadow: low);
+
+            margin: $common_gap 0;
+
+            &__failure {
+                background: $color_red;
+                color: #fff;
+            }
+
+            &__warning {
+                background: $color_gold;
+                color: #000;
+            }
+
+            &__success {
+                background: $color_teal;
+                color: #fff;
+            }
+        }
+
+        &_button {
+            @include button;
+
+            &__arrow {
+                @include button_set_arrow;
+            }
+
+            &__large {
+                @include button_set_size(large);
+
+                &.bgsu_common_button_arrow {
+                    @include button_set_arrow(large);
+                }
+            }
+
+            &__primary {
+                @include button_set_color(brown);
+            }
+
+            &__failure {
+                @include button_set_color(red);
+            }
+
+            &__warning {
+                @include button_set_color(gold);
+            }
+
+            &__success {
+                @include button_set_color(teal);
+            }
+        }
+
+        &_form {
+            &_group {
+                @include zero($margin: $common_margin);
+
+                & > * {
+                    @include zero(flex);
+
+                    align-items: center;
+                    gap: 0 $form_padding_x;
+                    position: relative;
+                }
+
+                input, output, select, textarea {
+                    width: 100%;
+                }
+
+                input[type='checkbox'], input[type='radio'] {
+                    @include form_input_check;
+                }
+            }
+        }
+
+        &_icon {
+            position: relative;
+
+            &__close, &__remove {
+                @include close;
+            }
+
+            &__remove {
+                @include close_set_color(red);
+            }
+
+            &__right {
+                position: absolute;
+                right: $form_padding_x;
+            }
+        }
+
+        &_list {
+            &_breadcrumb, &_comma, &_inline {
+                @include zero;
+
+                & > li {
+                    @include zero(inline);
+
+                    &::before {
+                        all: revert;
+                    }
+                }
+            }
+
+            &_breadcrumb {
+                @include font(bold);
+
+                color: $color_gray;
+                font-size: 0.7rem;
+                line-height: 1;
+                list-style: none;
+                margin: -0.7rem 0 $common_gap;
+
+                & > li + li::before {
+                    content: ' / ';
+                }
+            }
+
+            &_comma {
+                & > li {
+                    &::after {
+                        content: ', ';
+                    }
+
+                    &:last-child::after {
+                        display: none;
+                    }
+                }
+            }
+        }
+
+        &_records {
+            @include zero($margin: $common_margin);
+
+            &_item {
+                @include zero($margin: $common_margin);
+
+                color: inherit;
+                font-weight: inherit;
+                text-decoration: none;
+
+                @include scut-selected(true) {
+                    color: inherit;
+
+                    .bgsu_common_records_item_title {
+                        color: $link_color_active;
+                        text-decoration-thickness: 2px;
+                    }
+                }
+
+                &_image {
+                    background-repeat: no-repeat;
+                    background-size: contain;
+                    margin: 1rem 0;
+                    padding-top: 8rem;
+
+                    & img {
+                        object-fit: contain;
+                        width: 100%;
+                        height: 100%;
+                    }
+                }
+
+                &_title {
+                    @include link_underline;
+
+                    color: $link_color;
+                    margin-top: 0;
+                }
+
+                @include container_breakpoint_lg {
+                    display: flex;
+
+                    &_image {
+                        background-position: top right;
+                        flex: 0 0 25%;
+                        margin: 0 0 0 $common_gap;
+                        padding-top: calc(25% * (3 / 4));
+                        text-align: right;
+                    }
+                }
+
+                @include container_breakpoint_xl {
+                    &_image {
+                        flex: 0 0 20%;
+                        padding-top: calc(20% * (3 / 4));
+                    }
+                }
+            }
+        }
+
+        &_sidebar {
+            @include zero($display: flex, $margin: $common_margin);
+
+            flex-direction: column;
+
+            &_title {
+                @include zero;
+            }
+
+            &_left, &_right {
+                @include box;
+            }
+
+            @include container_breakpoint_lg {
+                flex-direction: row;
+
+                & > * {
+                    flex: 1 0 0%;
+                    order: 1;
+                }
+
+                &_left, &_right {
+                    flex: 0 0 25%;
+                }
+
+                &_left {
+                    margin-right: $common_gap;
+                    order: 0;
+                }
+
+                &_right {
+                    margin-left: $common_gap;
+                    order: 2;
+                }
+
+                .bgsu_common_sidebar .bgsu_common_sidebar_left,
+                .bgsu_common_sidebar .bgsu_common_sidebar_right,
+                .bgsu_common_records_item_image {
+                    flex: 0 0 calc((100% + $common_gap) / 3);
+                }
+
+                .bgsu_common_records_item_image {
+                    padding-top: calc(((100% + $common_gap) / 3) * (3 / 4));
+                }
+            }
+
+            @include container_breakpoint_xl {
+                &_left, &_right {
+                    flex: 0 0 20%;
+                }
+
+                .bgsu_common_sidebar .bgsu_common_sidebar_left,
+                .bgsu_common_sidebar .bgsu_common_sidebar_right,
+                .bgsu_common_records_item_image {
+                    flex: 0 0 calc((100% + $common_gap) / 4);
+                }
+
+                .bgsu_common_records_item_image {
+                    padding-top: calc(((100% + $common_gap) / 4) * (3 / 4));
+                }
+            }
+        }
+
+        &__bold {
+            @include font(bold);
+        }
+
+        &__closer {
+            margin-top: calc(-1 * $common_gap);
+        }
+
+        &__left {
+            float: left;
+            margin-right: $common_gap;
+        }
+
+        &__lead {
+            @include font(lead);
+        }
+
+        &__nowrap {
+            white-space: nowrap;
+        }
+
+        &__right {
+            float: right;
+            margin-left: $common_gap;
+        }
+
+        &__small {
+            @include font(small);
+        }
+
+        &__title {
+            @include font(title);
+        }
     }
 }
