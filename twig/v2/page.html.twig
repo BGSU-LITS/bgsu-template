@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>
+{{ title -}}
+{{- title and settings.template.site ? ' - ' -}}
+{{- settings.template.site -}}
+{{- title or settings.template.site ? ' - ' -}}
+BGSU University Libraries
+</title>
+{% block styles %}
+{% endblock %}
+</head>
+<body>
+{% block body %}
+<script>(s=>{s.display='none';document.addEventListener('DOMContentLoaded',()=>s.display='block')})(document.documentElement.style)</script>
+<main id="content">
+{% block content %}
+{% if title %}
+<h1>{{ title }}</h1>
+{% endif %}
+{% block breadcrumb %}
+{% endblock %}
+{% for message in messages %}
+<div class="bgsu_common_alert bgsu_common_alert__{{ message.level }}">{{ message.message }}</div>
+{% endfor %}
+{% endblock %}
+</main>
+{% block scripts %}
+<script src="/template/2.0.0-b5/template.js"></script>
+<script src="/template/2.0.0-b5/common.js"></script>
+<script>
+{% if not iframe %}
+bgsu_template.setup({
+    main: {
+        id: 'content',
+        top: 'top',
+    },
+    unit: {
+        thin: 'University',
+        text: 'Libraries',
+        href: 'https://www.bgsu.edu/library/',
+    },
+{% if settings.template.site %}
+    site: {
+        text: '{{ settings.template.site|raw }}',
+        href: '{{ path_for('index') }}',
+        heading: {{ is_current_path('index') ? 'true' : 'false' }},
+    },
+{% endif %}
+{% if settings.template.menu %}
+    menu: {{ settings.template.menu|json_encode()|raw }},
+{% endif %}
+{% if auth.isLoggedIn %}
+    user: {
+        text: '{{ auth.user.username }} ({{ auth.user.getAuthRole(auth.context)|title }})',
+        menu: [
+            {
+                text: 'Manage',
+                href: '{{ settings.auth.url }}',
+            },
+            {
+                text: 'Logout',
+                href: '{{ settings.auth.url }}logout?return={{ current_path(true)|url_encode }}',
+            },
+        ],
+    },
+{% endif %}
+    help: {
+        heading: 'University Libraries',
+        text: 'Ask Us!',
+        href: 'https://www.bgsu.edu/library/ask-us/',
+    },
+});
+{% endif %}
+
+bgsu_common.setup();
+</script>
+{% endblock %}
+{% endblock %}
+</body>
+</html>
