@@ -1,11 +1,12 @@
 /**
- * LibChat Proactive Chat Notification
+ * Adds a proactive notification box to webpages for LibChat.
  * @modules libchat
  */
 
 import css from './scss/libchat.scss';
 import pug from './pug/libchat.pug';
 
+// Load existing cookie to ignore notification.
 let ignore = document.cookie.match(
     /(^|;)\s*bgsu-libchat-dismiss\s*=\s*true($|;)/,
 );
