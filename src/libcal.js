@@ -126,7 +126,14 @@ export function select(selector, iid, lid, config = {}) {
         const form = document.getElementById(cssLibcal.libcal_select);
 
         form.querySelector('select').addEventListener('change', () => {
-            form.requestSubmit();
+            const submit = document.createElement('input');
+
+            submit.type = 'submit';
+            submit.hidden = true;
+
+            form.append(submit);
+            submit.click();
+            submit.remove();
         });
     });
 }
