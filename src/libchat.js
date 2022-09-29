@@ -82,8 +82,15 @@ export function open(href, features) {
     // Prevent the notification from reappearing on current page.
     ignore = true;
 
+    // Add referer information to the href as final URL.
+    const url = `${href}${href.includes('?') ? '&' : '?'}referer=${
+        encodeURIComponent(window.location.href)
+    }&referer_title=${
+        encodeURIComponent(document.title)
+    }`;
+
     // Open the URL in a popup window if possible, returning true on failure.
-    return !window.open(href, 'libchat', features);
+    return !window.open(url, 'libchat', features);
 }
 
 /**
