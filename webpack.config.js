@@ -18,7 +18,7 @@ module.exports = function config(environment, argv) {
         'libchat',
         // 'tablist',
         'template',
-        // 'tippy',
+        'tippy',
         'toggle',
     ];
 

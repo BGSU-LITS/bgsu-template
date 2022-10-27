@@ -1,0 +1,14 @@
+/* stylelint-disable selector-class-pattern */
+
+@import 'mixins';
+
+.tippy :global {
+    .tippy-box {
+        @include font;
+
+        &[data-theme~='light-border'] {
+            background: #fff;
+            color: #000;
+        }
+    }
+}
