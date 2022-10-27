@@ -29,6 +29,13 @@ $form_padding: $form_padding_y $form_padding_x;
     @include scut-size(1rem);
 }
 
+@mixin form_input_color() {
+    @include scut-size(3rem calc((1px + $form_padding_y) * 2 + 1.65rem));
+
+    background: ButtonFace;
+    cursor: pointer;
+}
+
 @mixin form_input_range() {
     border: none;
     padding: 0;

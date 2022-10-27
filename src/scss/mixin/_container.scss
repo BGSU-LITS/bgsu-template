@@ -1,28 +1,28 @@
-@mixin container_breakpoint_sm {
+@mixin container_breakpoint_small {
     @media screen and (min-width: 576px) {
         @content;
     }
 }
 
-@mixin container_breakpoint_md {
+@mixin container_breakpoint_medium {
     @media screen and (min-width: 768px) {
         @content;
     }
 }
 
-@mixin container_breakpoint_lg {
+@mixin container_breakpoint_large {
     @media screen and (min-width: 992px) {
         @content;
     }
 }
 
-@mixin container_breakpoint_xl {
+@mixin container_breakpoint_huge {
     @media screen and (min-width: 1200px) {
         @content;
     }
 }
 
-@mixin container_breakpoint_xxl {
+@mixin container_breakpoint_giant {
     @media screen and (min-width: 1400px) {
         @content;
     }
@@ -35,23 +35,23 @@
         width: 100%;
     }
 
-    @include container_breakpoint_sm {
+    @include container_breakpoint_small {
         max-width: 540px;
     }
 
-    @include container_breakpoint_md {
+    @include container_breakpoint_medium {
         max-width: 45pc;
     }
 
-    @include container_breakpoint_lg {
+    @include container_breakpoint_large {
         max-width: 60pc;
     }
 
-    @include container_breakpoint_xl {
+    @include container_breakpoint_huge {
         max-width: 855pt;
     }
 
-    @include container_breakpoint_xxl {
+    @include container_breakpoint_giant {
         max-width: 990pt;
     }
 }

@@ -4,6 +4,7 @@
 @import 'zero';
 
 $list_bullet: '⚬';
+$list_bullet_current: $scut-rstri;
 $list_bullet_offset: 12px;
 $list_bullet_width: 2rem;
 
@@ -17,15 +18,22 @@ $list_bullet_width: 2rem;
 
         &::before {
             @include font(small);
-            @include zero(inline-block);
+            @include zero;
 
-            color: $color_orange;
             content: $list_bullet;
+            float: left;
             margin-left: calc(-1 * $list_bullet_width);
             padding-right: $list_bullet_offset;
             text-align: right;
             width: $list_bullet_width;
-            vertical-align: top;
+
+            @media screen {
+                color: $color_orange;
+            }
+        }
+
+        &[aria-current='true']::before {
+            content: $list_bullet_current;
         }
     }
 

@@ -1,8 +1,10 @@
+@use 'sass:color';
 @use 'sass:map';
 @import 'mixins';
 
 $common_gap: 1rem;
 $common_margin: $common_gap 0;
+$common_table_border: #dee2e6;
 
 .common {
     @include font;
@@ -12,23 +14,33 @@ $common_margin: $common_gap 0;
     background: #fff;
     color: #000;
 
-    a {
+    :any-link {
         @include link;
+
+        @media print {
+            color: #000;
+            font-weight: map.get($font_weights, body);
+            text-decoration-color: #000;
+        }
     }
 
-    b, strong {
+    :is(a[aria-current='true'], [aria-current='true'] > a) {
+        font-weight: map.get($font_weights, black);
+    }
+
+    :is(b, strong) {
         @include font(bold);
     }
 
-    code, kbd, samp, pre {
+    :is(code, kbd, samp, pre) {
         @include font(mono);
     }
 
-    h1, h2, h3, h4, h5, h6, p, ul {
+    :is(h1, h2, h3, h4, h5, h6, nav, p, ul) {
         @include zero($margin: $common_margin);
     }
 
-    h1, h2, h3, h4, h5, h6 {
+    :is(h1, h2, h3, h4, h5, h6) {
         @include font(h1);
     }
 
@@ -52,20 +64,30 @@ $common_margin: $common_gap 0;
         font-size: map.get($font_sizes, h6);
     }
 
-    input, select, textarea {
+    :is(input, select, textarea) {
         @include form_input;
     }
 
-    input[type='checkbox'], input[type='radio'] {
+    :is(input[type='checkbox'], input[type='radio']) {
         @include form_input_check;
     }
 
-    input[type='color'], input[type='range'] {
+    input[type='color'] {
+        @include form_input_color;
+    }
+
+    input[type='range'] {
         @include form_input_range;
     }
 
     select {
         @include form_select;
+    }
+
+    table {
+        border-collapse: collapse;
+        border-color: currentcolor;
+        text-indent: 0;
     }
 
     ul {
@@ -74,23 +96,23 @@ $common_margin: $common_gap 0;
 
     :global .bgsu_common {
         &_alert {
-            @include box($shadow: low);
+            @include box($border: true);
 
             margin: $common_gap 0;
 
             &__failure {
-                background: $color_red;
-                color: #fff;
+                background: color.scale($color_rose, $lightness: 80%);
+                border: 1px solid $color_rose;
             }
 
             &__warning {
-                background: $color_gold;
-                color: #000;
+                background: color.scale($color_gold, $lightness: 80%);
+                border: 1px solid $color_gold;
             }
 
             &__success {
-                background: $color_teal;
-                color: #fff;
+                background: color.scale($color_seafoam, $lightness: 80%);
+                border: 1px solid $color_seafoam;
             }
         }
 
@@ -101,11 +123,11 @@ $common_margin: $common_gap 0;
                 @include button_set_arrow;
             }
 
-            &__large {
-                @include button_set_size(large);
+            &__small {
+                @include button_set_size(small);
 
-                &.bgsu_common_button_arrow {
-                    @include button_set_arrow(large);
+                &.bgsu_common_button__arrow {
+                    @include button_set_arrow(small);
                 }
             }
 
@@ -114,7 +136,7 @@ $common_margin: $common_gap 0;
             }
 
             &__failure {
-                @include button_set_color(red);
+                @include button_set_color(rose);
             }
 
             &__warning {
@@ -122,11 +144,13 @@ $common_margin: $common_gap 0;
             }
 
             &__success {
-                @include button_set_color(teal);
+                @include button_set_color(seafoam);
             }
         }
 
         &_form {
+            @include zero;
+
             &_group {
                 @include zero($margin: $common_margin);
 
@@ -138,12 +162,34 @@ $common_margin: $common_gap 0;
                     position: relative;
                 }
 
-                input, output, select, textarea {
+                :is(input, output, select, textarea) {
                     width: 100%;
                 }
 
-                input[type='checkbox'], input[type='radio'] {
+                :is(input[type='checkbox'], input[type='radio']) {
                     @include form_input_check;
+                }
+            }
+
+            &_table {
+                @include zero($display: table, $margin: $common_margin);
+
+                & > * {
+                    @include zero(table-row);
+
+                    & > * {
+                        @include zero(table-cell);
+
+                        vertical-align: middle;
+
+                        & + * {
+                            padding-left: $common_gap;
+                        }
+                    }
+
+                    & + * > * {
+                        padding-top: calc($common_gap / 2);
+                    }
                 }
             }
         }
@@ -215,22 +261,13 @@ $common_margin: $common_gap 0;
                 font-weight: inherit;
                 text-decoration: none;
 
-                @include scut-selected(true) {
-                    color: inherit;
-
-                    .bgsu_common_records_item_title {
-                        color: $link_color_active;
-                        text-decoration-thickness: 2px;
-                    }
-                }
-
                 &_image {
                     background-repeat: no-repeat;
                     background-size: contain;
                     margin: 1rem 0;
                     padding-top: 8rem;
 
-                    & img {
+                    img {
                         object-fit: contain;
                         width: 100%;
                         height: 100%;
@@ -244,7 +281,16 @@ $common_margin: $common_gap 0;
                     margin-top: 0;
                 }
 
-                @include container_breakpoint_lg {
+                &:is(:active, :focus, :hover) {
+                    color: inherit;
+
+                    .bgsu_common_records_item_title {
+                        color: $link_color_active;
+                        text-decoration-thickness: 2px;
+                    }
+                }
+
+                @include container_breakpoint_large {
                     display: flex;
 
                     &_image {
@@ -256,7 +302,7 @@ $common_margin: $common_gap 0;
                     }
                 }
 
-                @include container_breakpoint_xl {
+                @include container_breakpoint_huge {
                     &_image {
                         flex: 0 0 20%;
                         padding-top: calc(20% * (3 / 4));
@@ -265,20 +311,63 @@ $common_margin: $common_gap 0;
             }
         }
 
-        &_sidebar {
-            @include zero($display: flex, $margin: $common_margin);
+        &_pagination {
+            align-items: center;
+            font-variant-numeric: tabular-nums;
 
-            flex-direction: column;
+            &_buttons {
+                @include zero(flex);
+
+                width: 26rem;
+
+                & > * {
+                    flex: 1 1 0;
+                }
+            }
+
+            &_current {
+                @include zero;
+
+                flex: 1 1 auto;
+            }
+
+            @include container_breakpoint_huge {
+                display: flex;
+                text-align: right;
+
+                &_current {
+                    padding: 0 $common_gap;
+                }
+            }
+        }
+
+        &_sidebar {
+            @include zero;
+
+            & > * {
+                page-break-inside: avoid;
+                padding-top: 1px;
+            }
 
             &_title {
                 @include zero;
             }
 
-            &_left, &_right {
-                @include box;
+            @media screen {
+                @include zero($display: flex, $margin: $common_margin);
+
+                flex-direction: column;
+
+                & > * {
+                    padding: 0;
+                }
+
+                &_left, &_right {
+                    @include box;
+                }
             }
 
-            @include container_breakpoint_lg {
+            @include container_breakpoint_large {
                 flex-direction: row;
 
                 & > * {
@@ -311,7 +400,7 @@ $common_margin: $common_gap 0;
                 }
             }
 
-            @include container_breakpoint_xl {
+            @include container_breakpoint_huge {
                 &_left, &_right {
                     flex: 0 0 20%;
                 }
@@ -328,12 +417,82 @@ $common_margin: $common_gap 0;
             }
         }
 
+        &_table {
+            @include font(table);
+
+            font-variant-numeric: tabular-nums;
+            margin: $common_margin;
+            padding: 0;
+            vertical-align: top;
+
+            & > tbody {
+                border-top: 2px solid;
+                vertical-align: inherit;
+            }
+
+            & > tfoot {
+                border-top: 2px solid;
+                border-bottom: 2px solid;
+            }
+
+            & > thead {
+                vertical-align: bottom;
+            }
+
+            & > :is(tbody, tfoot, thead) > tr > :is(td, th) {
+                border: 0 solid $common_table_border;
+                border-bottom-width: 1px;
+                padding: calc($common_gap / 2);
+            }
+
+            &__small > :is(tbody, tfoot, thead) > tr > :is(td, th) {
+                padding: calc($common_gap / 4);
+            }
+        }
+
+        &__arrow_first::before {
+            content: $scut-laquo + $scut-nbsp;
+        }
+
+        &__arrow_previous::before {
+            content: $scut-lsaquo + $scut-nbsp;
+        }
+
+        &__arrow_next::after {
+            content: $scut-nbsp + $scut-rsaquo;
+        }
+
+        &__arrow_last::after {
+            content: $scut-nbsp + $scut-raquo;
+        }
+
         &__bold {
             @include font(bold);
         }
 
+        &__center {
+            text-align: center;
+        }
+
         &__closer {
             margin-top: calc(-1 * $common_gap);
+        }
+
+        &__figure {
+            font-variant-numeric: tabular-nums;
+            text-align: right;
+        }
+
+        &__flex {
+            display: flex;
+
+            & > * {
+                flex: 1 1 0;
+            }
+        }
+
+        &__full {
+            min-width: 100%;
         }
 
         &__left {
@@ -345,13 +504,35 @@ $common_margin: $common_gap 0;
             @include font(lead);
         }
 
+        &__narrow {
+            @include zero(inline-block);
+        }
+
         &__nowrap {
             white-space: nowrap;
+        }
+
+        &__print {
+            @media screen {
+                display: none;
+            }
         }
 
         &__right {
             float: right;
             margin-left: $common_gap;
+        }
+
+        &__rotate {
+            transform: rotate(180deg);
+            white-space: nowrap;
+            writing-mode: vertical-rl;
+        }
+
+        &__screen {
+            @media print {
+                display: none;
+            }
         }
 
         &__small {
@@ -360,6 +541,10 @@ $common_margin: $common_gap 0;
 
         &__title {
             @include font(title);
+        }
+
+        &_pagination + .bgsu_common_table {
+            margin-top: calc(-1 * $common_gap);
         }
     }
 }

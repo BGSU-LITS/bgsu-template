@@ -8,6 +8,7 @@ $box_margin: $box_padding;
 $font_sizes: map.merge(
     $font_sizes,
     (
+        'button': 1em,
         'h3': 1.5em,
         'small': 0.875em,
     )
@@ -29,8 +30,7 @@ $font_sizes: map.merge(
         @include font(h3);
     }
 
-    &_body,
-    &_foot {
+    &_body, &_foot {
         @include font(small);
 
         text-align: center;
@@ -46,7 +46,7 @@ $font_sizes: map.merge(
     }
 
     &_button {
-        @include button($color: brown);
+        @include button($color: brown, $size: small);
 
         &_close {
             @include close(1em);

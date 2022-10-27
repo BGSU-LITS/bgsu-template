@@ -33,6 +33,7 @@ $font_family_mono: (
 
 $font_families: (
     body: $font_family_europa,
+    button: $font_family_europa,
     h1: $font_family_kepler,
     h2: $font_family_kepler,
     h3: $font_family_kepler,
@@ -90,6 +91,7 @@ $font_line_heights: (
     h6: 1,
     html: 1.65,
     mono: 1.5,
+    table: 1.5,
     title: 1,
     unit: 1,
 );

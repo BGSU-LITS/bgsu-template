@@ -6,7 +6,7 @@
         box-sizing: inherit;
     }
 
-    img, svg {
+    :is(img, svg) {
         vertical-align: middle;
     }
 }

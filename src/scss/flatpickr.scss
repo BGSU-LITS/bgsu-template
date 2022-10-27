@@ -65,7 +65,7 @@ $flatpickr_day: 2rem;
         }
     }
 
-    &.arrowRight, &.rightMost {
+    &:is(.arrowRight, .rightMost) {
         &::before, &::after {
             left: auto;
             right: calc($box_border_radius + $box_padding_x);
@@ -86,7 +86,7 @@ $flatpickr_day: 2rem;
         }
     }
 
-    &.inline, &.open {
+    &:is(.inline, .open) {
         display: block;
         opacity: 1;
         visibility: visible;
@@ -114,10 +114,36 @@ $flatpickr_day: 2rem;
         }
     }
 
-    .flatpickr-current-month, .flatpickr-time {
+    .flatpickr-time {
+        .flatpickr-am-pm {
+            cursor: default;
+            padding: 0 0.5rem;
+        }
+
+        .flatpickr-time-separator {
+            cursor: default;
+            display: inline-block;
+            font-size: 1.5rem;
+            width: 1rem;
+        }
+    }
+
+    .numInputWrapper {
+        display: inline;
+
+        input {
+            width: 4rem;
+        }
+    }
+
+    :is(.flatpickr-current-month, .flatpickr-time) {
         @include font(title);
 
-        input, select, .flatpickr-am-pm {
+        select {
+            @include form_select;
+        }
+
+        :is(input, select, .flatpickr-am-pm) {
             background: transparent;
             border: none;
             border-radius: 0;
@@ -131,20 +157,16 @@ $flatpickr_day: 2rem;
             text-align: right;
             width: auto;
 
-            @include scut-selected(true) {
+            &:is(:active, :focus, :hover) {
                 background-color: $color_gray_light;
             }
         }
 
-        input[type='number']:not(:focus,:hover) {
+        input[type='number']:not(:focus, :hover) {
             &::-webkit-inner-spin-button,
             &::-webkit-outer-spin-button {
                 opacity: 0;
             }
-        }
-
-        select {
-            @include form_select;
         }
     }
 
@@ -177,7 +199,7 @@ $flatpickr_day: 2rem;
         .flatpickr-day {
             @include link;
 
-            &.flatpickr-disabled, &.notAllowed {
+            &:is(.flatpickr-disabled, .notAllowed) {
                 color: $color_gray;
                 cursor: not-allowed;
                 text-decoration: none;
@@ -187,7 +209,7 @@ $flatpickr_day: 2rem;
                 visibility: hidden;
             }
 
-            &.prevMonthDay, &.nextMonthDay {
+            &:is(.prevMonthDay, .nextMonthDay) {
                 font-weight: map.get($font_weights, body);
             }
 
@@ -195,7 +217,7 @@ $flatpickr_day: 2rem;
                 background: $color_gray_light;
             }
 
-            &.startRange, &.inRange, &.endRange, &.selected {
+            &:is(.startRange, .inRange, .endRange, .selected) {
                 background: $color_tan_light;
             }
 
@@ -229,7 +251,7 @@ $flatpickr_day: 2rem;
             }
         }
 
-        .flatpickr-prev-month, .flatpickr-next-month {
+        :is(.flatpickr-prev-month, .flatpickr-next-month) {
             @include link;
 
             z-index: 2;
@@ -263,24 +285,10 @@ $flatpickr_day: 2rem;
         }
     }
 
-    .flatpickr-time {
-        .flatpickr-am-pm {
-            cursor: default;
-            padding: 0 0.5rem;
-        }
-
-        .flatpickr-time-separator {
-            cursor: default;
-            display: inline-block;
-            font-size: 1.5rem;
-            width: 1rem;
-        }
-    }
-
     .flatpickr-innerContainer {
         display: flex;
 
-        + .flatpickr-time {
+        & + .flatpickr-time {
             margin-top: $box_padding_y;
         }
     }
@@ -306,14 +314,6 @@ $flatpickr_day: 2rem;
     .flatpickr-weekwrapper {
         border-right: 1px solid $color_gray;
         color: $color_gray;
-    }
-
-    .numInputWrapper {
-        display: inline;
-
-        input {
-            width: 4rem;
-        }
     }
 }
 

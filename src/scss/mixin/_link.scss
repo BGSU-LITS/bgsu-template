@@ -12,7 +12,7 @@ $link_color_underline: $color_gold;
     color: $link_color;
     cursor: pointer;
 
-    @include scut-selected(true) {
+    &:is(:active, :focus, :hover) {
         color: $link_color_active;
         text-decoration-thickness: 2px;
     }

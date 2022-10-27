@@ -16,7 +16,8 @@ $button_backgrounds: (
     gold: $color_gold,
     gray: $color_gray,
     orange: $color_orange_dark,
-    red: $color_red,
+    rose: $color_rose,
+    seafoam: $color_seafoam,
     teal: $color_teal,
     white: #fff,
 );
@@ -30,7 +31,8 @@ $button_borders: (
     gold: none,
     gray: none,
     orange: none,
-    red: none,
+    rose: none,
+    seafoam: none,
     teal: none,
     white: 1px solid,
 );
@@ -40,7 +42,8 @@ $button_colors: (
     gold: #000,
     gray: #fff,
     orange: #fff,
-    red: #fff,
+    rose: #000,
+    seafoam: #000,
     teal: #fff,
     white: $color_brown_light,
 );
@@ -63,7 +66,7 @@ $button_paddings_y: (
     $arrow: false,
     $color: white,
     $display: inline-block,
-    $size: small
+    $size: large
 ) {
     @include button_set_color($color);
     @include font(button);
@@ -79,18 +82,27 @@ $button_paddings_y: (
     transition: $button_transition;
     transform: $button_transform;
 
-    &:disabled, &:is(a):not([href]) {
-        opacity: 0.8;
+    &:last-child {
+        margin-right: 0;
+    }
+
+    &:is(:active, :focus, :hover) {
+        text-decoration: $button_text_decoration;
+        transform: $button_transform_active;
+    }
+
+    &:is(:disabled, a:not(:any-link)) {
+        @if $color == white {
+            color: $color_gray;
+        } @else {
+            opacity: 0.8;
+        }
+
         pointer-events: none;
     }
 
     &[hidden] {
         display: none;
-    }
-
-    @include scut-selected(true) {
-        text-decoration: $button_text_decoration;
-        transform: $button_transform_active;
     }
 
     @if $arrow {
@@ -103,7 +115,7 @@ $button_paddings_y: (
 @mixin button_search(
     $color: teal,
     $display: inline-block,
-    $size: small
+    $size: large
 ) {
     @include scut-size(font_height());
 
@@ -115,11 +127,12 @@ $button_paddings_y: (
     border: none;
     border-radius: 0 $button_border_radius $button_border_radius 0;
     box-shadow: map.get($box_shadows, low);
+    cursor: pointer;
     display: $display;
     vertical-align: middle;
 }
 
-@mixin button_set_arrow($size: small) {
+@mixin button_set_arrow($size: large) {
     padding:
         map.get($button_paddings_y, $size)
         map.get($button_paddings_x, large);
@@ -128,7 +141,7 @@ $button_paddings_y: (
         @include scut-absolute(50% 11px n n);
 
         border: 6px solid transparent;
-        border-left-color: rgb(0 0 0 / 20%);
+        border-left-color: rgb(0 0 0 / 25%);
         border-right-width: 0;
         content: '';
         transform: translateY(-50%);
@@ -140,7 +153,7 @@ $button_paddings_y: (
     border: map.get($button_borders, $color);
     color: map.get($button_colors, $color);
 
-    @include scut-selected(true) {
+    &:is(:active, :focus, :hover) {
         @if map.has_key($button_backgrounds_active, $color) {
             background: map.get($button_backgrounds_active, $color);
         } @else {
@@ -160,7 +173,7 @@ $button_paddings_y: (
     }
 }
 
-@mixin button_set_size($size: small) {
+@mixin button_set_size($size: large) {
     padding:
         map.get($button_paddings_y, $size)
         map.get($button_paddings_x, $size);

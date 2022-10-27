@@ -61,13 +61,13 @@ $template_footer_top_background: (
             transition: top 1s ease-out;
             z-index: 3;
 
-            @media print {
-                display: none;
-            }
-
             &:focus {
                 top: 0;
                 transition: top 0.1s ease-in;
+            }
+
+            @media print {
+                display: none;
             }
         }
 
@@ -81,7 +81,7 @@ $template_footer_top_background: (
                 box-shadow: map.get($box_shadows, low);
             }
 
-            @include container_breakpoint_lg {
+            @include container_breakpoint_large {
                 padding: 1rem 0;
             }
 
@@ -100,7 +100,7 @@ $template_footer_top_background: (
                 padding: 0 $box_padding_x;
                 width: 5rem;
 
-                @include container_breakpoint_lg {
+                @include container_breakpoint_large {
                     width: calc(100% * 2 / 12);
                 }
 
@@ -119,17 +119,15 @@ $template_footer_top_background: (
                     }
                 }
 
-                @include scut-selected(true) {
-                    & > svg {
-                        fill: $link_color_active;
-                    }
+                &:is(:active, :focus, :hover) > svg {
+                    fill: $link_color_active;
                 }
             }
 
             &_unit {
                 color: #fff;
 
-                @include container_breakpoint_lg {
+                @include container_breakpoint_large {
                     padding: 0 $box_padding_x;
                 }
 
@@ -137,7 +135,7 @@ $template_footer_top_background: (
                     color: #000;
                 }
 
-                @include scut-selected(true) {
+                &:is(:active, :focus, :hover) {
                     color: $link_color_active;
                 }
 
@@ -145,7 +143,7 @@ $template_footer_top_background: (
                     @include font(unit);
                     @include zero;
 
-                    @include container_breakpoint_lg {
+                    @include container_breakpoint_large {
                         border-left: 1px solid $color_orange_light;
                         font-size: map.get($font_sizes, h2);
                         padding: 0 $box_padding_x;
@@ -160,16 +158,15 @@ $template_footer_top_background: (
 
         &_nav {
             & > .template_container {
-                padding-bottom: 0;
                 position: relative;
             }
 
-            a:any-link, button {
+            :is(:any-link, button) {
                 color: inherit;
                 text-decoration: none;
                 white-space: nowrap;
 
-                @include scut-selected(true) {
+                &:is(:active, :focus, :hover) {
                     @include link_underline(2px);
 
                     color: $link_color_active;
@@ -184,11 +181,13 @@ $template_footer_top_background: (
                 @include font(h2);
 
                 padding-right: 2rem;
+
+                :any-link {
+                    white-space: normal;
+                }
             }
 
             &_menu {
-                margin-bottom: $box_padding_y;
-
                 @media print {
                     display: none;
                 }
@@ -211,7 +210,7 @@ $template_footer_top_background: (
                     font-size: map.get($font_sizes, h3);
                     line-height: map.get($font_line_heights, h3);
 
-                    @include container_breakpoint_lg {
+                    @include container_breakpoint_large {
                         display: none;
                     }
 
@@ -219,7 +218,7 @@ $template_footer_top_background: (
                         display: none;
                     }
 
-                    @include scut-selected(true) {
+                    &:is(:active, :focus, :hover) {
                         text-decoration: none;
                     }
                 }
@@ -234,11 +233,11 @@ $template_footer_top_background: (
                     }
 
                     button {
-                        @include button_search;
+                        @include button_search($size: small);
                     }
                 }
 
-                @include container_breakpoint_lg {
+                @include container_breakpoint_large {
                     align-items: flex-end;
                     display: flex;
                     height: font_height();
@@ -264,7 +263,7 @@ $template_footer_top_background: (
                         flex: 1 0 auto;
                     }
 
-                    &, &_user, & > form {
+                    :is(&, &_user, & > form) {
                         & > ul {
                             margin: 0;
 
@@ -281,15 +280,13 @@ $template_footer_top_background: (
                                 }
                             }
 
-                            & ul {
+                            ul {
                                 @include box($border: true, $shadow: medium);
 
+                                padding-left: 0;
+                                padding-right: 1rem;
                                 position: absolute;
                                 z-index: 2;
-
-                                & > li::before {
-                                    width: auto;
-                                }
                             }
                         }
                     }
@@ -316,15 +313,15 @@ $template_footer_top_background: (
             }
         }
 
-        a:any-link, strong {
+        :is(:any-link, strong) {
             @include font(bold);
         }
 
-        a:any-link {
+        :any-link {
             color: inherit;
             text-decoration: none;
 
-            @include scut-selected(true) {
+            &:is(:active, :focus, :hover) {
                 @include link_underline(2px);
 
                 color: $color_orange_light;
@@ -335,7 +332,7 @@ $template_footer_top_background: (
             padding-top: 20px;
         }
 
-        svg {
+        svg { /* stylelint-disable-line no-descending-specificity */
             fill: #fff;
             max-width: 270px;
 
@@ -373,7 +370,7 @@ $template_footer_top_background: (
                     }
                 }
 
-                @include container_breakpoint_lg {
+                @include container_breakpoint_large {
                     display: flex;
 
                     & > div {
@@ -392,12 +389,13 @@ $template_footer_top_background: (
             &_help {
                 width: max-content;
 
-                a:any-link {
+                :any-link {
                     @media screen {
                         @include button(
                             $arrow: true,
                             $color: orange,
-                            $display: block
+                            $display: block,
+                            $size: small
                         );
                     }
 
@@ -418,7 +416,7 @@ $template_footer_top_background: (
                 columns: 2;
                 line-height: map.get($font_line_heights, body);
 
-                @include container_breakpoint_md {
+                @include container_breakpoint_medium {
                     columns: 3;
                 }
 
@@ -432,7 +430,7 @@ $template_footer_top_background: (
             background: $color_brown;
             padding: 28px 0;
 
-            @include container_breakpoint_md {
+            @include container_breakpoint_medium {
                 .template_container {
                     align-items: center;
                     display: flex;
@@ -452,11 +450,10 @@ $template_footer_top_background: (
                 display: none;
             }
 
-            a:any-link {
+            :any-link {
                 @include button(
                     $arrow: true,
-                    $color: orange,
-                    $size: large
+                    $color: orange
                 );
             }
 

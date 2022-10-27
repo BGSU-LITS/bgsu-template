@@ -33,7 +33,7 @@ $close_colors_active: (
         background: map.get($close_colors, $color);
     }
 
-    @include scut-selected(true) {
+    &:is(:active, :focus, :hover) {
         &::before, &::after {
             background: map.get($close_colors_active, $color);
         }
