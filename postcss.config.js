@@ -1,7 +1,6 @@
 module.exports = {
     plugins: {
-        'postcss-preset-env': { preserve: false },
-        cssnano: {},
+        autoprefixer: {},
         'postcss-reporter': { clearReportedMessages: true },
     },
 };
