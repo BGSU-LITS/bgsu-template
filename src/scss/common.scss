@@ -20,7 +20,7 @@ $common_table_border: #dee2e6;
         @media print {
             color: #000;
             font-weight: map.get($font_weights, body);
-            text-decoration-color: #000;
+            text-decoration-color: $color_gray_light;
         }
     }
 
@@ -335,8 +335,12 @@ $common_table_border: #dee2e6;
                 display: flex;
                 text-align: right;
 
-                &_current {
-                    padding: 0 $common_gap;
+                & > * {
+                    padding-right: $common_gap;
+
+                    &:last-child {
+                        padding-right: 0;
+                    }
                 }
             }
         }
@@ -443,6 +447,29 @@ $common_table_border: #dee2e6;
                 border: 0 solid $common_table_border;
                 border-bottom-width: 1px;
                 padding: calc($common_gap / 2);
+
+                &.bgsu_common__join {
+                    padding-right: 0;
+
+                    & + :is(td, th) {
+                        padding-left: 0;
+                    }
+                }
+            }
+
+            & > thead > tr:first-of-type > :is(td, th) {
+                padding-top: 0;
+            }
+
+            &__separate {
+                border-collapse: separate;
+                border-spacing: calc($common_gap / 2) 0;
+                margin: $common_gap calc(-1 * ($common_gap / 2));
+                white-space: nowrap;
+
+                & > thead > tr > :is(td, th) {
+                    border-bottom: 2px solid;
+                }
             }
 
             &__small > :is(tbody, tfoot, thead) > tr > :is(td, th) {
@@ -516,6 +543,14 @@ $common_table_border: #dee2e6;
             @media screen {
                 display: none;
             }
+
+            &_avoid {
+                page-break-inside: avoid;
+            }
+
+            &_break {
+                page-break-before: always;
+            }
         }
 
         &__right {
@@ -541,10 +576,6 @@ $common_table_border: #dee2e6;
 
         &__title {
             @include font(title);
-        }
-
-        &_pagination + .bgsu_common_table {
-            margin-top: calc(-1 * $common_gap);
         }
     }
 }
