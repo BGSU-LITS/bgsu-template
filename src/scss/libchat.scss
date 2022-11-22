@@ -26,26 +26,26 @@ $font_sizes: map.merge(
     width: 320px;
     z-index: 998;
 
-    &_head {
+    & > &_head {
         @include font(h3);
     }
 
-    &_body, &_foot {
+    & > &_body, & > &_foot {
         @include font(small);
 
         text-align: center;
     }
 
-    &_body {
+    & > &_body {
         padding: $box_padding;
     }
 
-    &_foot {
+    & > &_foot {
         display: flex;
         justify-content: space-evenly;
     }
 
-    &_button {
+    & &_button {
         @include button($color: brown, $size: small);
 
         &_close {
