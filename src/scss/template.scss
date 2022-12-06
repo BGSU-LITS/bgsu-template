@@ -241,6 +241,7 @@ $template_footer_top_background: (
                     align-items: flex-end;
                     display: flex;
                     height: font_height();
+                    justify-content: flex-end;
 
                     [data-toggle] {
                         &::after {

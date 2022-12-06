@@ -76,6 +76,25 @@ $common_table_border: #dee2e6;
         @include form_input_color;
     }
 
+    input[type='file'] {
+        cursor: pointer;
+
+        &::file-selector-button {
+            background: #e9ecef;
+            border: none;
+            border-left: $form_border;
+            cursor: pointer;
+            float: right;
+            font: inherit;
+            margin: calc(-1 * $form_padding_y) calc(-1 * $form_padding_x);
+            padding: $form_padding;
+        }
+
+        &:hover::file-selector-button {
+            background: #dde0e3;
+        }
+    }
+
     input[type='range'] {
         @include form_input_range;
     }
