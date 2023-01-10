@@ -6,7 +6,7 @@
         box-sizing: inherit;
     }
 
-    :is(img, svg) {
+    :is(audio, canvas, iframe, img, svg, video) {
         vertical-align: middle;
     }
 }
