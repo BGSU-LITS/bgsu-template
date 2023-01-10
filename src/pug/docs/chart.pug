@@ -1,0 +1,15 @@
+- const path = webpackConfig.output.publicPath
+
+doctype html
+html(lang="en")
+    head
+        meta(charset="utf-8")
+        title chart.js - Template Scripts v#{htmlWebpackPlugin.options.version}
+        include ../includes/fouc.pug
+    body
+        h1 chart.js
+        nav(aria-label="breadcrumb")
+            ol.list-breadcrumb
+                li: a(href=path) Template Scripts v#{htmlWebpackPlugin.options.version}
+                li(aria-current="page") chart.js
+        include ../includes/script.pug

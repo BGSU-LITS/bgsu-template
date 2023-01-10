@@ -1,0 +1,15 @@
+@import 'mixins';
+
+.chart {
+    .canvas {
+        margin: 1rem 0;
+    }
+
+    .fill {
+        min-width: 1rem;
+    }
+
+    table > :is(tbody,tfoot,thead) > tr > .fill {
+        padding: 0;
+    }
+}

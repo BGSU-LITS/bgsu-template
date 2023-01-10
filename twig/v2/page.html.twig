@@ -1,3 +1,4 @@
+{% set bgsu_template_path = '/template/2.0.0-b10/' %}
 <!doctype html>
 <html lang="en">
 <head>
@@ -29,8 +30,8 @@ BGSU University Libraries
 {% endblock %}
 </main>
 {% block scripts %}
-<script src="/template/2.0.0-b9/template.js"></script>
-<script src="/template/2.0.0-b9/common.js"></script>
+<script src="{{ bgsu_template_path }}template.js"></script>
+<script src="{{ bgsu_template_path }}common.js"></script>
 <script>
 {% if not iframe %}
 bgsu_template.setup({
