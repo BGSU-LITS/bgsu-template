@@ -20,4 +20,6 @@ export function setup(element, config = {}) {
     });
 
     fp.calendarContainer.classList.add(css.flatpickr);
+
+    return fp;
 }
