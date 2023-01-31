@@ -27,6 +27,10 @@ $form_padding: $form_padding_y $form_padding_x;
 
 @mixin form_input_check() {
     @include scut-size(1rem);
+
+    &, & + label {
+        vertical-align: middle;
+    }
 }
 
 @mixin form_input_color() {

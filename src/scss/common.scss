@@ -36,8 +36,21 @@ $common_table_border: #dee2e6;
         @include font(mono);
     }
 
-    :is(h1, h2, h3, h4, h5, h6, nav, p, ul) {
+    :is(fieldset, h1, h2, h3, h4, h5, h6, nav, p, ul) {
         @include zero($margin: $common_margin);
+    }
+
+    fieldset {
+        border: 1px solid $common_table_border;
+        border-radius: $form_border_radius;
+        padding: $common_gap;
+
+        & > legend {
+            @include zero(
+                $margin: 0 0 calc(-1 * $common_gap) calc(-1 * $form_padding_x),
+                $padding: 0 $form_padding_x
+            );
+        }
     }
 
     :is(h1, h2, h3, h4, h5, h6) {
