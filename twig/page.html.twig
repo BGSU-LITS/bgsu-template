@@ -10,6 +10,9 @@
 {{ title or settings.template.site ? ' - ' }}
 BGSU University Libraries
 </title>
+{% block analytics %}
+{{ settings.template.analytics|raw }}
+{% endblock %}
 {% block styles %}
 {% endblock %}
 </head>
