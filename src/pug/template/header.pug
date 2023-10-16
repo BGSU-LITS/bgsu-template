@@ -43,7 +43,11 @@ header(class=css.template_header)
 
     div(class=css.template_header_top)
         div(class=css.template_container)
-            a(href="https://www.bgsu.edu/" class=css.template_header_top_logo)
+            a(
+                aria-label="BGSU"
+                href="https://www.bgsu.edu/"
+                class=css.template_header_top_logo
+            )
                 include ../../svg/template_logo.svg
 
             if config.unit && config.unit.text
@@ -68,6 +72,7 @@ header(class=css.template_header)
                     button(
                         aria-label="Toggle site navigation"
                         data-toggle=css.template_header_nav_menu
+                        type="button"
                         class=css.template_header_nav_menu_toggle
                     ) ☰
 

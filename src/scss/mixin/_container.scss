@@ -1,29 +1,29 @@
 @mixin container_breakpoint_small {
-    @media screen and (min-width: 576px) {
+    @media screen and (width >= 576px) {
         @content;
     }
 }
 
 @mixin container_breakpoint_medium {
-    @media screen and (min-width: 768px) {
+    @media screen and (width >= 768px) {
         @content;
     }
 }
 
 @mixin container_breakpoint_large {
-    @media screen and (min-width: 992px) {
+    @media screen and (width >= 992px) {
         @content;
     }
 }
 
 @mixin container_breakpoint_huge {
-    @media screen and (min-width: 1200px) {
+    @media screen and (width >= 1200px) {
         @content;
     }
 }
 
 @mixin container_breakpoint_giant {
-    @media screen and (min-width: 1400px) {
+    @media screen and (width >= 1400px) {
         @content;
     }
 }

@@ -2,6 +2,9 @@ const pattern = '^([a-z][a-z0-9]*)(__?[a-z0-9]+)*$';
 
 module.exports = {
     extends: 'stylelint-config-standard-scss',
+    plugins: [
+        'stylelint-stylistic',
+    ],
     rules: {
         'custom-media-pattern': [pattern, {
             message: 'Expected custom media query name to be snake_case',
@@ -10,22 +13,18 @@ module.exports = {
             message: 'Expected custom property name to be snake_case',
         }],
         'declaration-no-important': true,
-        indentation: 4,
         'keyframes-name-pattern': [pattern, {
             message: 'Expected keyframe name to be snake_case',
         }],
-        'max-line-length': 80,
         'selector-class-pattern': [pattern, {
             message: 'Expected class selector to be snake_case',
         }],
         'selector-id-pattern': [pattern, {
             message: 'Expected id selector to be snake_case',
         }],
-        'selector-list-comma-newline-after': 'always-multi-line',
         'selector-pseudo-class-no-unknown': [true, {
             ignorePseudoClasses: ['global', 'local'],
         }],
-        'string-quotes': 'single',
         'scss/at-function-pattern': [pattern, {
             message: 'Expected function name to be snake_case',
         }],
@@ -39,5 +38,9 @@ module.exports = {
         'scss/dollar-variable-pattern': [pattern, {
             message: 'Expected variable to be snake_case',
         }],
+        'stylistic/indentation': 4,
+        'stylistic/max-line-length': 80,
+        'stylistic/selector-list-comma-newline-after': 'always-multi-line',
+        'stylistic/string-quotes': 'single',
     },
 };

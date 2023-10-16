@@ -18,6 +18,7 @@ $form_padding: $form_padding_y $form_padding_x;
     letter-spacing: inherit;
     margin: $form_margin;
     padding: $form_padding;
+    vertical-align: middle;
 
     &[disabled] {
         background-color: $form_background_disabled;

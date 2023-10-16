@@ -36,7 +36,7 @@ $common_table_border: #dee2e6;
         @include font(mono);
     }
 
-    :is(fieldset, h1, h2, h3, h4, h5, h6, nav, p, ul) {
+    :is(fieldset, h1, h2, h3, h4, h5, h6, hr, nav, p) {
         @include zero($margin: $common_margin);
     }
 
@@ -75,6 +75,13 @@ $common_table_border: #dee2e6;
 
     h6 {
         font-size: map.get($font_sizes, h6);
+    }
+
+    hr {
+        border: 0;
+        border-top: 1px solid;
+        color: inherit;
+        opacity: 0.25;
     }
 
     :is(input, select, textarea) {
@@ -122,8 +129,14 @@ $common_table_border: #dee2e6;
         text-indent: 0;
     }
 
-    ul {
-        @include list_unordered;
+    :is(.common_list, & :global(.bgsu_common_list)) {
+        :is(ol, ul) {
+            @include zero($margin: $common_margin);
+        }
+
+        ul {
+            @include list_unordered;
+        }
     }
 
     :global .bgsu_common {
@@ -146,6 +159,14 @@ $common_table_border: #dee2e6;
                 background: color.scale($color_seafoam, $lightness: 80%);
                 border: 1px solid $color_seafoam;
             }
+        }
+
+        &_badge {
+            @include font(small);
+
+            border: $form_border;
+            border-radius: $form_border_radius;
+            padding: 0 $form_border_radius;
         }
 
         &_button {
@@ -180,6 +201,20 @@ $common_table_border: #dee2e6;
             }
         }
 
+        &_color {
+            &__failure {
+                color: $color_rose;
+            }
+
+            &__warning {
+                color: $color_gold;
+            }
+
+            &__success {
+                color: $color_seafoam;
+            }
+        }
+
         &_form {
             @include zero;
 
@@ -204,29 +239,60 @@ $common_table_border: #dee2e6;
             }
 
             &_table {
-                @include zero($display: table, $margin: $common_margin);
+                @include zero($margin: $common_margin);
 
                 & > * {
-                    @include zero(table-row);
+                    @include zero;
 
                     & > * {
-                        @include zero(table-cell);
+                        @include zero;
 
                         vertical-align: middle;
+                    }
 
-                        & + * {
+                    & > label {
+                        margin-top: $common_gap;
+                    }
+                }
+
+                @include container_breakpoint_medium {
+                    @include scut-relative(
+                        calc(-1 * $common_gap / 2)
+                        null
+                        null
+                        calc(-1 * $common_gap)
+                    );
+
+                    display: table;
+                    margin-bottom: 0;
+
+                    & > * {
+                        display: table-row;
+
+                        & > * {
+                            display: table-cell;
                             padding-left: $common_gap;
+                            padding-top: calc($common_gap / 2);
                         }
                     }
 
-                    & + * > * {
-                        padding-top: calc($common_gap / 2);
+                    &__fixed {
+                        label {
+                            width: 9rem;
+                            height: 3rem;
+                            line-height: 1.25;
+                        }
+
+                        :is(input, output, select, textarea) {
+                            width: 100%;
+                        }
                     }
                 }
             }
         }
 
         &_icon {
+            display: inline-block;
             position: relative;
 
             &__close, &__remove {
@@ -344,6 +410,8 @@ $common_table_border: #dee2e6;
         }
 
         &_pagination {
+            @include zero;
+
             align-items: center;
             font-variant-numeric: tabular-nums;
 
@@ -621,6 +689,10 @@ $common_table_border: #dee2e6;
             @include font(lead);
         }
 
+        &__middle {
+            vertical-align: middle;
+        }
+
         &__narrow {
             @include zero(inline-block);
 
@@ -675,6 +747,10 @@ $common_table_border: #dee2e6;
 
         &__title {
             @include font(title);
+        }
+
+        &__top {
+            vertical-align: top;
         }
     }
 }

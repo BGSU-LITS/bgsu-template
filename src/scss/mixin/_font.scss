@@ -127,11 +127,11 @@ $font_line_heights: (
     @if list.index((html), $font) {
         text-size-adjust: 100%;
 
-        @media screen and (min-width: 576px) {
+        @media screen and (width >= 576px) {
             font-size: 17px;
         }
 
-        @media screen and (min-width: 768px) {
+        @media screen and (width >= 768px) {
             font-size: 18px;
         }
     }

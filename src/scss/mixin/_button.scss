@@ -81,6 +81,7 @@ $button_paddings_y: (
     text-decoration: $button_text_decoration;
     transition: $button_transition;
     transform: $button_transform;
+    vertical-align: middle;
 
     &:last-child {
         margin-right: 0;

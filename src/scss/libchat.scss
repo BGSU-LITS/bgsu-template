@@ -49,7 +49,7 @@ $font_sizes: map.merge(
         @include button($color: brown, $size: small);
 
         &_close {
-            @include close(1em);
+            @include close($size: 1em);
             @include scut-absolute(0 0 null null);
 
             padding: 1em;

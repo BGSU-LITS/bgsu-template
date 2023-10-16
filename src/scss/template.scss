@@ -85,6 +85,18 @@ $template_footer_top_background: (
                 padding: 1rem 0;
             }
 
+            :any-link {
+                color: #fff;
+
+                @media print {
+                    color: #000;
+                }
+
+                &:is(:active, :focus, :hover) {
+                    color: $link_color_active;
+                }
+            }
+
             & > .template_container {
                 padding: 0;
             }
@@ -125,18 +137,8 @@ $template_footer_top_background: (
             }
 
             &_unit {
-                color: #fff;
-
                 @include container_breakpoint_large {
                     padding: 0 $box_padding_x;
-                }
-
-                @media print {
-                    color: #000;
-                }
-
-                &:is(:active, :focus, :hover) {
-                    color: $link_color_active;
                 }
 
                 & > div {
@@ -180,6 +182,7 @@ $template_footer_top_background: (
             &_site {
                 @include font(h2);
 
+                color: inherit;
                 padding-right: 2rem;
 
                 :any-link {
