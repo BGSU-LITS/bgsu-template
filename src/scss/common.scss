@@ -24,7 +24,13 @@ $common_table_border: #dee2e6;
         }
     }
 
-    :is(a[aria-current='true'], [aria-current='true'] > a) {
+    :target {
+        background: $color_gold_light;
+        border-radius: calc($common_gap / 4);
+        box-shadow: 0 0 0 calc($common_gap / 4) $color_gold_light;
+    }
+
+    :is(a[aria-current], [aria-current] > a) {
         font-weight: map.get($font_weights, black);
     }
 
@@ -129,9 +135,13 @@ $common_table_border: #dee2e6;
         text-indent: 0;
     }
 
-    :is(.common_list, & :global(.bgsu_common_list)) {
+    :where(.common_list, & :global(.bgsu_common_list)) {
         :is(ol, ul) {
             @include zero($margin: $common_margin);
+        }
+
+        ol {
+            @include list_ordered;
         }
 
         ul {
@@ -310,7 +320,7 @@ $common_table_border: #dee2e6;
         }
 
         &_list {
-            &_breadcrumb, &_comma, &_inline {
+            &_breadcrumb, &_comma, &_inline, &_tabs {
                 @include zero;
 
                 & > li {
@@ -327,9 +337,9 @@ $common_table_border: #dee2e6;
 
                 color: $color_gray;
                 font-size: 0.7rem;
-                line-height: 1;
+                line-height: 1.5;
                 list-style: none;
-                margin: -0.7rem 0 $common_gap;
+                margin: calc(-1 * $common_gap) 0 $common_gap;
 
                 & > li + li::before {
                     content: ' / ';
@@ -347,6 +357,29 @@ $common_table_border: #dee2e6;
                     }
                 }
             }
+
+            &_tabs {
+                border-bottom: $box_border;
+                display: flex;
+
+                & > li > a {
+                    background: $box_background;
+                    border: $box_border;
+                    border-top-left-radius: $box_border_radius;
+                    border-top-right-radius: $box_border_radius;
+                    display: block;
+                    line-height: 1;
+                    margin: 0 0 -1px -1px;
+                    padding: $box_padding;
+
+                    &[aria-current] {
+                        background: #fff;
+                        border-bottom-color: #fff;
+                        color: inherit;
+                        text-decoration: none;
+                    }
+                }
+            }
         }
 
         &_records {
@@ -360,15 +393,29 @@ $common_table_border: #dee2e6;
                 text-decoration: none;
 
                 &_image {
+                    background-color: $box_background;
+                    background-position: center;
                     background-repeat: no-repeat;
-                    background-size: contain;
+                    background-size: cover;
                     margin: 1rem 0;
+                    order: 2;
+                    overflow: hidden;
                     padding-top: 8rem;
+                    position: relative;
+                    text-align: center;
 
-                    img {
-                        object-fit: contain;
+                    & > * {
+                        position: absolute;
+                        right: 0;
+                        top: 50%;
+                        transform: translateY(-50%);
                         width: 100%;
+                    }
+
+                    & > img {
                         height: 100%;
+                        object-fit: cover;
+                        object-position: center;
                     }
                 }
 
@@ -391,12 +438,14 @@ $common_table_border: #dee2e6;
                 @include container_breakpoint_large {
                     display: flex;
 
+                    & > * {
+                        flex: 1 1 0;
+                    }
+
                     &_image {
-                        background-position: top right;
                         flex: 0 0 25%;
                         margin: 0 0 0 $common_gap;
                         padding-top: calc(25% * (3 / 4));
-                        text-align: right;
                     }
                 }
 
@@ -404,6 +453,56 @@ $common_table_border: #dee2e6;
                     &_image {
                         flex: 0 0 20%;
                         padding-top: calc(20% * (3 / 4));
+                    }
+                }
+            }
+
+            &__card {
+                display: flex;
+                flex-wrap: wrap;
+                gap: $common_gap;
+
+                @include container_breakpoint_small {
+                    flex-wrap: nowrap;
+                }
+
+                & > .bgsu_common_records_item {
+                    @include box($border: true, $shadow: low);
+
+                    background: #fff;
+                    flex: 0 1 100%;
+                    flex-direction: column;
+                    overflow: hidden;
+                    transition: box-shadow 0.3s ease;
+
+                    @include container_breakpoint_small {
+                        flex: 0 1 50%;
+                    }
+
+                    @include container_breakpoint_medium {
+                        flex: 0 1 33%;
+                    }
+
+                    @include container_breakpoint_huge {
+                        flex: 0 1 25%;
+                    }
+
+                    &:is(:active, :focus, :hover) {
+                        box-shadow: map.get($box_shadows, medium);
+                    }
+
+                    & > .bgsu_common_records_item_image {
+                        display: block;
+                        margin:
+                            calc(-1 * $box_padding_y)
+                            calc(-1 * $box_padding_x)
+                            0;
+                        order: 0;
+                        padding-top: calc(100% * (3 / 4));
+                    }
+
+                    & > .bgsu_common_records_item_title {
+                        margin: $box_padding_y 0 0;
                     }
                 }
             }
@@ -597,6 +696,12 @@ $common_table_border: #dee2e6;
             @include font(bold);
         }
 
+        &__break {
+            clear: both;
+            display: block;
+            margin-top: $common_gap;
+        }
+
         &__center {
             text-align: center;
         }
@@ -610,66 +715,64 @@ $common_table_border: #dee2e6;
             text-align: right;
         }
 
-        &__flex {
+        &__flex,
+        &__flex_column {
             display: flex;
+        }
 
-            & > * {
-                flex: 1 1 0;
-            }
+        &__flex_column {
+            flex-direction: column;
         }
 
         @include container_breakpoint_small {
             &__flex_small {
                 display: flex;
-
-                & > * {
-                    flex: 1 1 0;
-                }
             }
         }
 
         @include container_breakpoint_medium {
             &__flex_medium {
                 display: flex;
-
-                & > * {
-                    flex: 1 1 0;
-                }
             }
         }
 
         @include container_breakpoint_large {
             &__flex_large {
                 display: flex;
-
-                & > * {
-                    flex: 1 1 0;
-                }
             }
         }
 
         @include container_breakpoint_huge {
             &__flex_huge {
                 display: flex;
-
-                & > * {
-                    flex: 1 1 0;
-                }
             }
         }
 
         @include container_breakpoint_giant {
             &__flex_giant {
                 display: flex;
-
-                & > * {
-                    flex: 1 1 0;
-                }
             }
         }
 
         &__full {
             min-width: 100%;
+        }
+
+        &__flex,
+        &__flex_column,
+        &__flex_small,
+        &__flex_medium,
+        &__flex_large,
+        &__flex_huge,
+        &__flex_giant {
+            & > * {
+                flex: 1 1 0;
+            }
+
+            & > .bgsu_common__full {
+                flex: 1 1 100%;
+                min-width: 0;
+            }
         }
 
         &__gap > * {
@@ -739,6 +842,11 @@ $common_table_border: #dee2e6;
             @media print {
                 display: none;
             }
+        }
+
+        &__sticky {
+            position: sticky;
+            top: $common_gap;
         }
 
         &__small {

@@ -8,6 +8,18 @@ $list_bullet_current: $scut-rstri;
 $list_bullet_offset: 12px;
 $list_bullet_width: 2rem;
 
+@mixin list_ordered() {
+    & > li {
+        @include zero(list-item);
+
+        margin-left: $list_bullet_width;
+    }
+
+    :is(ol, ul) {
+        margin: 0;
+    }
+}
+
 @mixin list_unordered() {
     list-style: none;
 
@@ -32,12 +44,12 @@ $list_bullet_width: 2rem;
             }
         }
 
-        &[aria-current='true']::before {
+        &[aria-current]::before {
             content: $list_bullet_current;
         }
     }
 
-    ul {
+    :is(ol, ul) {
         margin: 0;
     }
 }

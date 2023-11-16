@@ -15,6 +15,8 @@ $close_colors_active: (
     @include close_set_color($color);
     @include scut-size($size);
 
+    vertical-align: middle;
+
     &::before, &::after {
         @include scut-absolute(50% null null 50%);
         @include scut-size($size * 0.167 $size);
