@@ -113,6 +113,7 @@ $common_table_border: #dee2e6;
             float: right;
             font: inherit;
             margin: calc(-1 * $form_padding_y) calc(-1 * $form_padding_x);
+            margin-left: $form_padding_x;
             padding: $form_padding;
         }
 
@@ -397,7 +398,7 @@ $common_table_border: #dee2e6;
                     background-position: center;
                     background-repeat: no-repeat;
                     background-size: cover;
-                    margin: 1rem 0;
+                    margin: $common_gap 0;
                     order: 2;
                     overflow: hidden;
                     padding-top: 8rem;
@@ -836,6 +837,7 @@ $common_table_border: #dee2e6;
             transform: rotate(180deg);
             white-space: nowrap;
             writing-mode: vertical-rl;
+            min-width: $common_gap;
         }
 
         &__screen {
