@@ -18,7 +18,6 @@ $form_padding: $form_padding_y $form_padding_x;
     letter-spacing: inherit;
     margin: $form_margin;
     padding: $form_padding;
-    vertical-align: middle;
 
     &[disabled] {
         background-color: $form_background_disabled;
@@ -28,10 +27,6 @@ $form_padding: $form_padding_y $form_padding_x;
 
 @mixin form_input_check() {
     @include scut-size(1rem);
-
-    &, & + label {
-        vertical-align: middle;
-    }
 }
 
 @mixin form_input_color() {

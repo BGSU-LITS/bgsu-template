@@ -1,0 +1,15 @@
+@import 'mixins';
+
+.addremove {
+    .addremove_add {
+        @include button_set_color(seafoam);
+    }
+
+    .addremove_remove {
+        @include button_set_color(rose);
+    }
+
+    :first-child .addremove_remove {
+        visibility: hidden;
+    }
+}

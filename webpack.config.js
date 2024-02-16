@@ -9,7 +9,7 @@ const TerserWebpackPlugin = require('terser-webpack-plugin');
 
 module.exports = function config(environment, argv) {
     const entries = [
-        // 'addremove',
+        'addremove',
         'chart',
         'common',
         // 'facets',

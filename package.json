@@ -1,6 +1,6 @@
 {
   "name": "bgsu-template",
-  "version": "2.0.0-b14",
+  "version": "2.0.0-b15",
   "license": "MIT",
   "description": "BGSU template javascript for third-party systems.",
   "repository": {

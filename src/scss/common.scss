@@ -34,7 +34,7 @@ $common_table_border: #dee2e6;
         font-weight: map.get($font_weights, black);
     }
 
-    :is(b, strong) {
+    :is(b, strong, th) {
         @include font(bold);
     }
 
@@ -56,6 +56,10 @@ $common_table_border: #dee2e6;
                 $margin: 0 0 calc(-1 * $common_gap) calc(-1 * $form_padding_x),
                 $padding: 0 $form_padding_x
             );
+
+            & > * {
+                margin: 0;
+            }
         }
     }
 
@@ -246,6 +250,27 @@ $common_table_border: #dee2e6;
 
                 :is(input[type='checkbox'], input[type='radio']) {
                     @include form_input_check;
+                }
+
+                &__question > div {
+                    align-items: start;
+                    flex-wrap: wrap;
+                    gap: 0;
+
+                    & > div {
+                        flex: 0 1 100%;
+                    }
+
+                    @include container_breakpoint_large {
+                        & > div:nth-child(odd) {
+                            flex: 0 1 40%;
+                        }
+
+                        & > div:nth-child(even) {
+                            flex: 0 1 60%;
+                            padding-left: $common_gap;
+                        }
+                    }
                 }
             }
 
@@ -655,6 +680,10 @@ $common_table_border: #dee2e6;
                         padding-left: 0;
                     }
                 }
+
+                &.bgsu_common__zero {
+                    width: 0;
+                }
             }
 
             & > thead > tr:first-of-type > :is(td, th) {
@@ -756,7 +785,7 @@ $common_table_border: #dee2e6;
         }
 
         &__full {
-            min-width: 100%;
+            width: 100%;
         }
 
         &__flex,
@@ -795,6 +824,10 @@ $common_table_border: #dee2e6;
 
         &__middle {
             vertical-align: middle;
+        }
+
+        &__muted {
+            font-weight: map.get($font_weights, body);
         }
 
         &__narrow {
