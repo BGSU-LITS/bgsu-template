@@ -155,7 +155,6 @@ $flatpickr_day: 2rem;
             margin: 0;
             padding: 0;
             text-align: right;
-            width: auto;
 
             &:is(:active, :focus, :hover) {
                 background-color: $color_gray_light;

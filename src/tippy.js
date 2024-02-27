@@ -9,6 +9,32 @@ import 'tippy.js/themes/light-border.css';
 import css from './scss/tippy.scss';
 
 /**
+ * Sets up a tooltip for selected elements' first children.
+ * @param {string} selector Selector used to identify elements. The elements
+ *    should have a child element.
+ * @param {Object} [config] Additional configuration values, see:
+ *    https://atomiks.github.io/tippyjs/v6/all-props/
+ */
+export function setupChild(selector, config = {}) {
+    document.querySelectorAll(selector).forEach((element) => {
+        if (!element.firstElementChild) {
+            return;
+        }
+
+        const instance = tippy(element, {
+            allowHTML: true,
+            arrow: true,
+            content: element.firstElementChild,
+            placement: 'right',
+            theme: 'light-border',
+            ...config,
+        });
+
+        instance.popper.classList.add(css.tippy);
+    });
+}
+
+/**
  * Sets up a tooltip for selected elements' titles.
  * @param {string} selector Selector used to identify elements. The elements
  *    should have a title attribute with the content for the tooltip.

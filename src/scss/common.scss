@@ -556,6 +556,17 @@ $common_table_border: #dee2e6;
                 flex: 1 1 auto;
             }
 
+            &_date {
+                position: relative;
+
+                & > input {
+                    height: 100%;
+                    position: absolute;
+                    visibility: hidden;
+                    width: 100%;
+                }
+            }
+
             @include container_breakpoint_huge {
                 display: flex;
                 text-align: right;
@@ -684,10 +695,21 @@ $common_table_border: #dee2e6;
                 &.bgsu_common__zero {
                     width: 0;
                 }
+
+                &:has(> .bgsu_common__rotate) {
+                    padding-left: 0;
+                    padding-right: 0;
+                }
             }
 
             & > thead > tr:first-of-type > :is(td, th) {
                 padding-top: 0;
+            }
+
+            &__bordered {
+                & > tbody > tr > :is(td, th) {
+                    border-width: 1px;
+                }
             }
 
             &__separate {
