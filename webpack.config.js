@@ -80,6 +80,10 @@ module.exports = function config(environment, argv) {
                         {
                             loader: 'css-loader',
                             options: {
+                                modules: {
+                                    exportLocalsConvention: 'as-is',
+                                    namedExport: false,
+                                },
                                 sourceMap: development,
                             },
                         },
@@ -105,8 +109,10 @@ module.exports = function config(environment, argv) {
                             loader: 'css-loader',
                             options: {
                                 modules: {
+                                    exportLocalsConvention: 'as-is',
                                     localIdentName:
                                         'bgsu_[local]_[hash:base64:5]',
+                                    namedExport: false,
                                 },
                                 sourceMap: development,
                             },

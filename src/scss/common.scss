@@ -567,7 +567,7 @@ $common_table_border: #dee2e6;
                 }
             }
 
-            @include container_breakpoint_huge {
+            @include container_breakpoint_medium {
                 display: flex;
                 text-align: right;
 
