@@ -37,7 +37,7 @@ $font_sizes: map.merge(
     }
 
     & > &_body {
-        padding: $box_padding;
+        padding: $box_padding_y 0;
     }
 
     & > &_foot {
