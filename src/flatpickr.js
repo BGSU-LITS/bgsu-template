@@ -4,7 +4,7 @@
  */
 
 import flatpickr from 'flatpickr';
-import LabelPlugin from 'flatpickr/dist/plugins/labelPlugin/labelPlugin';
+import LabelPlugin from 'flatpickr/dist/plugins/labelPlugin/labelPlugin.js';
 import css from './scss/flatpickr.scss';
 
 /**

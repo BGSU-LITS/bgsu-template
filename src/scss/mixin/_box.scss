@@ -1,4 +1,5 @@
 @use 'sass:color';
+@use 'sass:list';
 @use 'sass:map';
 @import 'color';
 
@@ -50,19 +51,19 @@ $box_shadows: (
     @if $radius == (y y y y) {
         border-radius: $box_border_radius;
     } @else {
-        @if nth($radius, 1) != n {
+        @if list.nth($radius, 1) != n {
             border-top-left-radius: $box_border_radius;
         }
 
-        @if nth($radius, 2) != n {
+        @if list.nth($radius, 2) != n {
             border-top-right-radius: $box_border_radius;
         }
 
-        @if nth($radius, 3) != n {
+        @if list.nth($radius, 3) != n {
             border-bottom-right-radius: $box_border_radius;
         }
 
-        @if nth($radius, 4) != n {
+        @if list.nth($radius, 4) != n {
             border-bottom-left-radius: $box_border_radius;
         }
     }

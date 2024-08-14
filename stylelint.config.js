@@ -1,9 +1,9 @@
 const pattern = '^([a-z][a-z0-9]*)(__?[a-z0-9]+)*$';
 
-module.exports = {
-    extends: 'stylelint-config-standard-scss',
-    plugins: [
-        'stylelint-stylistic',
+export default {
+    extends: [
+        'stylelint-config-standard-scss',
+        '@stylistic/stylelint-config',
     ],
     rules: {
         'custom-media-pattern': [pattern, {
@@ -38,9 +38,12 @@ module.exports = {
         'scss/dollar-variable-pattern': [pattern, {
             message: 'Expected variable to be snake_case',
         }],
-        'stylistic/indentation': 4,
-        'stylistic/max-line-length': 80,
-        'stylistic/selector-list-comma-newline-after': 'always-multi-line',
-        'stylistic/string-quotes': 'single',
+        '@stylistic/block-closing-brace-newline-after': ['always', {
+            ignoreAtRules: ['if', 'else'],
+        }],
+        '@stylistic/indentation': 4,
+        '@stylistic/max-line-length': 80,
+        '@stylistic/selector-list-comma-newline-after': 'always-multi-line',
+        '@stylistic/string-quotes': 'single',
     },
 };

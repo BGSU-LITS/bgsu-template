@@ -4,7 +4,7 @@ import { draw as patternDraw } from 'patternomaly';
 import css from './scss/chart.scss';
 
 export function fill(selector, style) {
-    document.querySelectorAll(selector).forEach((element) => {
+    for (const element of document.querySelectorAll(selector)) {
         let canvas = element.querySelector('canvas');
 
         if (!canvas) {
@@ -20,7 +20,7 @@ export function fill(selector, style) {
         const context = canvas.getContext('2d');
         context.fillStyle = style;
         context.fillRect(0, 0, canvas.width, canvas.height);
-    });
+    }
 }
 
 export function pattern(shape, background, config = {}) {

@@ -1,13 +1,14 @@
-/* eslint-env node */
-const path = require('path');
-const webpack = require('webpack');
-const EsLintWebpackPlugin = require('eslint-webpack-plugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const MiniSvgDataUri = require('mini-svg-data-uri');
-const StylelintWebpackPlugin = require('stylelint-webpack-plugin');
-const TerserWebpackPlugin = require('terser-webpack-plugin');
+import { path as configPath, version } from './dist/config.js';
+import miniSvgDataUri from 'mini-svg-data-uri';
+import path from 'node:path';
+import webpack from 'webpack';
 
-module.exports = function config(environment, argv) {
+import EslintWebpackPlugin from 'eslint-webpack-plugin';
+import HtmlWebpackPlugin from 'html-webpack-plugin';
+import StylelintWebpackPlugin from 'stylelint-webpack-plugin';
+import TerserWebpackPlugin from 'terser-webpack-plugin';
+
+export default function config(environment, argv) {
     const entries = [
         'addremove',
         'chart',
@@ -24,21 +25,21 @@ module.exports = function config(environment, argv) {
     ];
 
     let development = true;
-    let outputPath = path.resolve(__dirname, 'dist', 'dev');
+    let outputPath = path.resolve(import.meta.dirname, 'dist', 'dev');
     let publicPath = '/';
-    const version = process.env.npm_package_version;
 
     if (argv.mode === 'production') {
         development = false;
-        outputPath = path.resolve(__dirname, 'dist', version);
-        publicPath = `https://lib.bgsu.edu/template/${version}/`;
+        outputPath = path.resolve(import.meta.dirname, 'dist', version);
+        publicPath = configPath;
     }
 
     const plugins = [
         new webpack.BannerPlugin({
             banner: `${publicPath}docs/[name]/`,
         }),
-        new EsLintWebpackPlugin({
+        new EslintWebpackPlugin({
+            configType: 'flat',
             files: 'src/',
         }),
         new HtmlWebpackPlugin({
@@ -53,7 +54,7 @@ module.exports = function config(environment, argv) {
 
     const entry = {};
 
-    entries.forEach((name) => {
+    for (const name of entries) {
         entry[name] = `./src/${name}.js`;
 
         plugins.push(new HtmlWebpackPlugin({
@@ -62,7 +63,7 @@ module.exports = function config(environment, argv) {
             template: `src/pug/docs/${name}.pug`,
             version,
         }));
-    });
+    }
 
     return {
         devServer: {},
@@ -80,10 +81,6 @@ module.exports = function config(environment, argv) {
                         {
                             loader: 'css-loader',
                             options: {
-                                modules: {
-                                    exportLocalsConvention: 'as-is',
-                                    namedExport: false,
-                                },
                                 sourceMap: development,
                             },
                         },
@@ -127,6 +124,9 @@ module.exports = function config(environment, argv) {
                             loader: 'sass-loader',
                             options: {
                                 sourceMap: development,
+                                sassOptions: {
+                                    silenceDeprecations: ['mixed-decls'],
+                                },
                             },
                         },
                     ],
@@ -137,7 +137,7 @@ module.exports = function config(environment, argv) {
                     loader: 'svgo-loader',
                     type: 'asset/inline',
                     generator: {
-                        dataUrl: (content) => MiniSvgDataUri(
+                        dataUrl: (content) => miniSvgDataUri(
                             content.toString(),
                         ),
                     },
@@ -150,11 +150,6 @@ module.exports = function config(environment, argv) {
             minimizer: [
                 new TerserWebpackPlugin({
                     extractComments: false,
-                    terserOptions: {
-                        compress: {
-                            passes: 3,
-                        },
-                    },
                 }),
             ],
         },

@@ -62,7 +62,7 @@ export function get(iid, lid, config, callback) {
 export function insert(locations, css, pug, selector, config) {
     const search = new URLSearchParams(window.location.search);
 
-    document.querySelectorAll(selector).forEach((element) => {
+    for (const element of document.querySelectorAll(selector)) {
         element.innerHTML = pug({
             locations, search, config, css,
         });
@@ -70,7 +70,7 @@ export function insert(locations, css, pug, selector, config) {
         if (config.callback) {
             config.callback(element, css);
         }
-    });
+    }
 }
 
 /**

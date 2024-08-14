@@ -16,7 +16,7 @@ import css from './scss/tippy.scss';
  *    https://atomiks.github.io/tippyjs/v6/all-props/
  */
 export function setupChild(selector, config = {}) {
-    document.querySelectorAll(selector).forEach((element) => {
+    for (const element of document.querySelectorAll(selector)) {
         if (!element.firstElementChild) {
             return;
         }
@@ -31,7 +31,7 @@ export function setupChild(selector, config = {}) {
         });
 
         instance.popper.classList.add(css.tippy);
-    });
+    }
 }
 
 /**
@@ -42,7 +42,7 @@ export function setupChild(selector, config = {}) {
  *    https://atomiks.github.io/tippyjs/v6/all-props/
  */
 export function setup(selector = '[title]', config = {}) {
-    document.querySelectorAll(selector).forEach((element) => {
+    for (const element of document.querySelectorAll(selector)) {
         const instance = tippy(element, {
             arrow: true,
             content: element.getAttribute('title'),
@@ -53,5 +53,5 @@ export function setup(selector = '[title]', config = {}) {
 
         instance.popper.classList.add(css.tippy);
         element.setAttribute('title', '');
-    });
+    }
 }

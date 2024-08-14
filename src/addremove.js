@@ -1,18 +1,18 @@
 import css from './scss/addremove.scss';
 
 export function setup(selector = '[data-addremove]') {
-    document.querySelectorAll(selector).forEach((addremove) => {
+    for (const addremove of document.querySelectorAll(selector)) {
         if (addremove.dataset.addremove === 'add') {
             addremove.classList.add(css.addremove_add);
             addremove.removeAttribute('disabled');
 
-            return;
+            continue;
         }
 
         if (addremove.dataset.addremove === 'remove') {
             addremove.classList.add(css.addremove_remove);
 
-            return;
+            continue;
         }
 
         addremove.classList.add(css.addremove);
@@ -22,7 +22,7 @@ export function setup(selector = '[data-addremove]') {
                 .getElementsByClassName(css.addremove_remove),
             (element) => element.setAttribute('disabled', ''),
         );
-    });
+    }
 
     document.addEventListener('click', (event) => {
         if (event.target.classList.contains(css.addremove_add)) {
@@ -34,11 +34,11 @@ export function setup(selector = '[data-addremove]') {
                 (element) => element.removeAttribute('disabled'),
             );
 
-            clone.querySelectorAll('input[name]').forEach((input) => {
+            for (const input of clone.querySelectorAll('input[name]')) {
                 input.name = input.name.replace(/\d+/, (n) => +n + 1);
                 input.title = input.title.replace(/\d+/, (n) => +n + 1);
                 input.value = '';
-            });
+            }
 
             final.parentNode.insertBefore(clone, final);
             clone.querySelector('input').focus();

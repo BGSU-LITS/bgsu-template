@@ -16,7 +16,7 @@ import css from './scss/toggle.scss';
  */
 export function setup(selector = '[data-toggle]', config = {}) {
     // Loop through all controlling elements.
-    document.querySelectorAll(selector).forEach((toggleControls) => {
+    for (const toggleControls of document.querySelectorAll(selector)) {
         // Get matching element to toggle.
         const toggle = document.getElementById(toggleControls.dataset.toggle);
 
@@ -25,7 +25,7 @@ export function setup(selector = '[data-toggle]', config = {}) {
         toggle.classList.add(css.toggle);
 
         // Set up toggle.
-        new AccessibleToggle( // eslint-disable-line no-new
+        new AccessibleToggle(
             toggle,
             {
                 assignFocus: false,
@@ -33,5 +33,5 @@ export function setup(selector = '[data-toggle]', config = {}) {
                 ...config,
             },
         );
-    });
+    }
 }

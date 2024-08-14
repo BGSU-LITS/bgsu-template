@@ -1,4 +1,9 @@
-{% set bgsu_template_path = 'https://lib.bgsu.edu/template/2.0.0-b17/' %}
+{% macro path() %}
+{% apply trim %}
+{% include('path.txt') %}
+{% endapply %}
+{% endmacro %}
+{% set bgsu_template_path = _self.path() %}
 <!doctype html>
 <html lang="en">
 <head>

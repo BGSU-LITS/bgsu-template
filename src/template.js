@@ -7,7 +7,7 @@ import pugHeader from './pug/template/header.pug';
 import pugFooter from './pug/template/footer.pug';
 
 import css from './scss/template.scss';
-import { setup as toggle } from './toggle';
+import { setup as toggle } from './toggle.js';
 
 /**
  * Setup the main element with the contents of the page.
@@ -58,9 +58,9 @@ function setupMain(config) {
     while (from.childNodes[count]) {
         // Skip the main element, container element, and any configured top.
         if (
-            from.childNodes[count] === main
-            || from.childNodes[count] === container
-            || from.childNodes[count].id === config.main.top
+            from.childNodes[count] === main ||
+            from.childNodes[count] === container ||
+            from.childNodes[count].id === config.main.top
         ) {
             count += 1;
         } else {
@@ -142,16 +142,18 @@ export function header(config, before) {
 
     // Enable submenus to be togglable on desktop devices.
     if (config.menu) {
-        const toggleMenu = (menu, prefix) => menu.forEach((item, index) => {
-            if (item.menu) {
-                toggle(`[data-toggle=${prefix}_${index}]`, {
-                    closeOnClickOutside: true,
-                    mediaQuery: '(min-width: 992px)',
-                });
+        const toggleMenu = (menu, prefix) => {
+            for (const [index, item] of menu.entries()) {
+                if (item.menu) {
+                    toggle(`[data-toggle=${prefix}_${index}]`, {
+                        closeOnClickOutside: true,
+                        mediaQuery: '(min-width: 992px)',
+                    });
 
-                toggleMenu(item.menu, `${prefix}_${index}`);
+                    toggleMenu(item.menu, `${prefix}_${index}`);
+                }
             }
-        });
+        };
 
         toggleMenu(config.menu, css.template_header_nav_menu);
     }

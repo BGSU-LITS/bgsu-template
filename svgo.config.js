@@ -1,3 +1,1 @@
-module.exports = {
-    plugins: [{ name: 'preset-default' }],
-};
+export default { plugins: ['preset-default'] };
