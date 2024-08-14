@@ -13,7 +13,7 @@
     "start": "webpack-dev-server --mode development",
     "version": "npm run version:config.js && npm run version:path.txt",
     "version:config.js":
-      "genversion -P config,version -vt ejs/config.js.ejs dist/config.ejs",
+      "genversion -P config,version -vt ejs/config.js.ejs dist/config.js",
     "version:path.txt":
       "genversion -P config,version -vt ejs/path.txt.ejs dist/path.txt"
   },
