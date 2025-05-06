@@ -21,10 +21,15 @@ $font_sizes: map.merge(
     @include font(html);
     @include scut-fixed(null 0 0 null);
 
+    display: none;
     transform: translateY(-100%);
     transition: transform 1s ease;
     width: 320px;
     z-index: 998;
+
+    @include container_breakpoint_medium {
+        display: block;
+    }
 
     & > &_head {
         @include font(h3);
