@@ -101,6 +101,52 @@ export function jsonld(iid, lid, name = '') {
 }
 
 /**
+ * Callback function after hours have been rendered.
+ * @callback renderCallback
+ * @param {Element} element The element the hours have been rendered in.
+ * @param {Object} location The location data obtained from LibCal API.
+ */
+
+/**
+ * Renders hours for locations in elements with class bgsu_libcal_{lid}.
+ * @param {number} iid Institution ID of the hours data.
+ * @param {number} lid Library ID of the hours data.
+ * @param {renderCallback} callback Function called after hours have been
+ *      rendered in each element.
+ */
+export function render(iid, lid, callback) {
+    get(iid, lid, {}, (data) => {
+        if (!Array.isArray(data.locations)) {
+            return;
+        }
+
+        function loaded() {
+            for (const location of data.locations) {
+                if (location.lid && location.rendered) {
+                    const elements = document.querySelectorAll(
+                        `.bgsu_libcal_${location.lid}`,
+                    );
+
+                    for (const element of elements) {
+                        element.innerHTML = location.rendered;
+
+                        if (callback) {
+                            callback(element, location);
+                        }
+                    };
+                }
+            }
+        }
+
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', loaded);
+        } else {
+            loaded();
+        }
+    });
+}
+
+/**
  * Sets up a form to select among LibCal hours departments.
  * @param {string} selector Selector of element to set form as content.
  * @param {number} iid Institution ID of the form.
