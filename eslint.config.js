@@ -24,6 +24,8 @@ export default [
     {
         rules: {
             'sonarjs/no-inverted-boolean-check': 'error',
+            'sonarjs/constructor-for-side-effects': 'off',
+            'unicorn/prefer-global-this': 'off',
             'unicorn/no-document-cookie': 'off',
             'unicorn/prefer-export-from':
                 ['error', { ignoreUsedVariables: true }],

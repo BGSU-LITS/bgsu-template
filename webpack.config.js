@@ -125,7 +125,7 @@ export default function config(environment, argv) {
                             options: {
                                 sourceMap: development,
                                 sassOptions: {
-                                    silenceDeprecations: ['mixed-decls'],
+                                    silenceDeprecations: ['mixed-decls', 'global-builtin', 'import'],
                                 },
                             },
                         },
