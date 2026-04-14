@@ -84,6 +84,9 @@ export { css, toggle };
  *    content link. If the element already exists, it will be used as-is.
  *    Otherwise, a new anchor with this ID will be created and will link to
  *    the ID of the main element.
+ * @param {Object} [config.acc] Configuration values for accessibility.
+ * @param {string} [config.acc.id] The ID for the accessibility information.
+ *    Will default to "accessibility" if not specified.
  * @param {Object} [config.unit] Configure name of the unit of the University.
  * @param {string} [config.unit.text] Short name of the unit.
  * @param {string} [config.unit.thin] Thin text added before the short name to
@@ -162,6 +165,11 @@ export function header(config, before) {
 /**
  * Add the templated footer to the page.
  * @param {Object} config Configuration values for the template.
+ * @param {Object} [config.acc] Configuration values for accessibility.
+ * @param {string} [config.acc.id] The ID for the accessibility information.
+ *    Will default to "accessibility" if not specified.
+ * @param {string} [config.acc.statement] Any additional accessibility
+ *    statement to be prepended to the standard statement.
  * @param {Object} [config.help] Configure additional help as a button in the
  *    footer near the contact information.
  * @param {string} [config.help.heading] Heading  text for the help button.
@@ -196,6 +204,11 @@ export function footer(config, after) {
  *    content link. If the element already exists, it will be used as-is.
  *    Otherwise, a new anchor with this ID will be created and will link to
  *    the ID of the main element.
+ * @param {Object} [config.acc] Configuration values for accessibility.
+ * @param {string} [config.acc.id] The ID for the accessibility information.
+ *    Will default to "accessibility" if not specified.
+ * @param {string} [config.acc.statement] Any additional accessibility
+ *    statement to be prepended to the standard statement.
  * @param {boolean} [config.meta] If true, a meta viewport element is added to
  *    the head to prevent mobile devices from initially scaling the page.
  * @param {Object} [config.unit] Configure name of the unit of the University.

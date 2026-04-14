@@ -1,6 +1,3 @@
-mixin link(href, text, label)
-    p: a(href=href aria-label=label)=text
-
 footer(class=css.template_footer)
     if config.note && config.note.footer
         div(class=css.template_note)
@@ -10,99 +7,41 @@ footer(class=css.template_footer)
     div(class=css.template_footer_top)
         div(class=css.template_container)
             div
-                p
-                    include ../../svg/template_logo_use.svg
-                p
-                    strong Bowling Green State University
-                    | <br>Bowling Green, Ohio
-                    | <br>43403-0001
+                h2
+                    a(href="https://www.bgsu.edu/")
+                        include ../../svg/template_logo_use.svg
+                        | Bowling Green State University
+                div Bowling Green, Ohio<br>43403-0001
+                div(class=css.template_footer_top_links)
+                    a(href="https://www.bgsu.edu/accessibility.html")
+                        | University Accessibility
+                        small (including events)
+                    a(href="https://www.bgsu.edu/title-ix.html")
+                        | Title IX Resources
+            div
                 if config.help
                     div(class=css.template_footer_top_help)
                         if config.help.heading
-                            strong=config.help.heading
-                        if config.help.href
-                            a(href=config.help.href)
-                                =config.help.text || config.help.href
-            div(class=css.template_footer_top_links)
-                - bgsu = 'https://www.bgsu.edu/'
-                +link(
-                    bgsu + "accessibility.html",
-                    "Accessibility including events"
-                )
-                +link(
-                    bgsu + "academics.html",
-                    "Academics",
-                    "BGSU Academics"
-                )
-                +link(
-                    bgsu + "a-z-links.html#A-Z",
-                    "A-Z Links"
-                )
-                +link(
-                    "https://services.bgsu.edu/directorySearch/search.htm",
-                    "Campus Directory"
-                )
-                +link(
-                    bgsu + "institutional-effectiveness/" +
-                        "institutional-effectiveness/" +
-                        "important-consumer-information.html",
-                    "Consumer Information"
-                )
-                +link(
-                    bgsu + "employment.html",
-                    "Employment",
-                    "BGSU Employment Resources"
-                )
-                +link(
-                    bgsu + "faculty-staff.html",
-                    "Faculty/Staff",
-                    "BGSU Faculty/Staff Resources"
-                )
-                +link(
-                    bgsu + "firelands.html",
-                    "Firelands",
-                    "BGSU Firelands"
-                )
-                +link(
-                    bgsu + "library.html",
-                    "Libraries"
-                )
-                +link(
-                    bgsu + "news/online-media-newsroom.html",
-                    "Media Resources"
-                )
-                +link(
-                    bgsu + "equity-diversity-and-inclusion/" +
-                        "e-o-compliance.html",
-                    "Nondiscrimination"
-                )
-                +link(
-                    bgsu + "families.html",
-                    "Parents and Families"
-                )
-                +link(
-                    bgsu + "students.html",
-                    "Students",
-                    "BGSU Students Resources"
-                )
-                +link(
-                    bgsu + "its.html",
-                    "Technology Support"
-                )
-                +link(
-                    bgsu + "title-ix.html",
-                    "Title IX Resources"
-                )
+                            h3=config.help.heading
+                        div
+                            if config.help.href
+                                a(href=config.help.href)
+                                    =config.help.text || config.help.href
+                            else
+                                =config.help.text
+                if config.acc && config.acc.statement
+                    div(id=config.acc.id || "accessibility")
+                        h4 Accessibility
+                        div!=config.acc.statement
 
     div(class=css.template_footer_report)
         div(class=css.template_container)
             div
-                div(class=css.template_footer_report_title)
-                    | See It. Hear It. Report It.
-                p
-                    | It is the responsibility of each person within the
-                    | university community to take action when an issue or
-                    | concern arises.
+                h3 See It. Hear It. Report It.
+                div.
+                    It is the responsibility of each person within the
+                    university community to take action when an issue or
+                    concern arises.
             div
                 a(href="https://www.bgsu.edu/report-incident.html").
                     Report concerns or information of alleged misconduct

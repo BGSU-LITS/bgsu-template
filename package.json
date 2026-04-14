@@ -1,6 +1,6 @@
 {
   "name": "bgsu-template",
-  "version": "2.0.0-b21",
+  "version": "2.0.0-b23",
   "description": "BGSU template javascript for third-party systems.",
   "repository": {
     "type": "git",

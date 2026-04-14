@@ -41,6 +41,12 @@ header(class=css.template_header)
         )
             | Skip to main content
 
+        a(
+            href="#" + (config.acc && config.acc.id || "accessibility")
+            class=css.template_header_skip
+        )
+            | Skip to accessibility information
+
     div(class=css.template_header_top)
         div(class=css.template_container)
             a(
